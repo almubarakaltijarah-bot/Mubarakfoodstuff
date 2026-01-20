@@ -201,85 +201,105 @@
         
         .action-buttons {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             z-index: 1000;
+            align-items: flex-end;
         }
-        
+
         .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.9), rgba(18, 140, 126, 0.9));
             color: var(--white);
-            padding: 18px 28px;
+            padding: 14px 22px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .review-btn {
-            background: linear-gradient(135deg, #4285F4, #34A853);
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.9), rgba(52, 168, 83, 0.9));
             color: var(--white);
-            padding: 18px 28px;
+            padding: 14px 22px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.4);
+            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .instagram-btn {
-            background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+            background: linear-gradient(135deg, 
+                rgba(131, 58, 180, 0.9), 
+                rgba(253, 29, 29, 0.9), 
+                rgba(252, 175, 69, 0.9));
             color: var(--white);
-            padding: 18px 28px;
+            padding: 14px 22px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 10px 25px rgba(131, 58, 180, 0.3);
+            box-shadow: 0 8px 20px rgba(131, 58, 180, 0.3);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .whatsapp-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
-            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, 
+                rgba(18, 140, 126, 0.95), 
+                rgba(37, 211, 102, 0.95));
         }
-        
+
         .review-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(66, 133, 244, 0.5);
-            background: linear-gradient(135deg, #34A853, #4285F4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(66, 133, 244, 0.4);
+            background: linear-gradient(135deg, 
+                rgba(52, 168, 83, 0.95), 
+                rgba(66, 133, 244, 0.95));
         }
-        
+
         .instagram-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(131, 58, 180, 0.4);
-            background: linear-gradient(135deg, #FD1D1D, #833AB4, #FCAF45);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(131, 58, 180, 0.4);
+            background: linear-gradient(135deg, 
+                rgba(253, 29, 29, 0.95), 
+                rgba(131, 58, 180, 0.95), 
+                rgba(252, 175, 69, 0.95));
         }
-        
+
         .btn-icon {
-            margin-right: 12px;
-            font-size: 26px;
+            margin-right: 10px;
+            font-size: 22px;
         }
-        
+
         .section-icon {
             position: absolute;
             right: 20px;
@@ -312,13 +332,41 @@
             }
             
             .action-buttons {
-                bottom: 20px;
-                right: 20px;
+                bottom: 15px;
+                right: 15px;
+                gap: 10px;
             }
             
             .whatsapp-btn, .review-btn, .instagram-btn {
-                padding: 16px 22px;
-                font-size: 1rem;
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                min-width: 140px;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            .whatsapp-btn {
+                background: linear-gradient(135deg, 
+                    rgba(37, 211, 102, 0.85), 
+                    rgba(18, 140, 126, 0.85));
+            }
+            
+            .review-btn {
+                background: linear-gradient(135deg, 
+                    rgba(66, 133, 244, 0.85), 
+                    rgba(52, 168, 83, 0.85));
+            }
+            
+            .instagram-btn {
+                background: linear-gradient(135deg, 
+                    rgba(131, 58, 180, 0.85), 
+                    rgba(253, 29, 29, 0.85), 
+                    rgba(252, 175, 69, 0.85));
+            }
+            
+            .btn-icon {
+                font-size: 20px;
+                margin-right: 8px;
             }
             
             .section-icon {
@@ -350,14 +398,82 @@
             }
             
             .action-buttons {
-                bottom: 15px;
-                right: 15px;
-                gap: 12px;
+                bottom: 10px;
+                right: 10px;
+                gap: 8px;
             }
             
             .whatsapp-btn, .review-btn, .instagram-btn {
-                padding: 14px 20px;
-                font-size: 0.9rem;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                min-width: 130px;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+            }
+            
+            .whatsapp-btn {
+                background: linear-gradient(135deg, 
+                    rgba(37, 211, 102, 0.8), 
+                    rgba(18, 140, 126, 0.8));
+            }
+            
+            .review-btn {
+                background: linear-gradient(135deg, 
+                    rgba(66, 133, 244, 0.8), 
+                    rgba(52, 168, 83, 0.8));
+            }
+            
+            .instagram-btn {
+                background: linear-gradient(135deg, 
+                    rgba(131, 58, 180, 0.8), 
+                    rgba(253, 29, 29, 0.8), 
+                    rgba(252, 175, 69, 0.8));
+            }
+            
+            .btn-icon {
+                font-size: 18px;
+                margin-right: 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .action-buttons {
+                bottom: 8px;
+                right: 8px;
+                gap: 6px;
+            }
+            
+            .whatsapp-btn, .review-btn, .instagram-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                min-width: 120px;
+            }
+            
+            .btn-icon {
+                font-size: 16px;
+                margin-right: 5px;
+            }
+        }
+
+        @media (max-width: 300px) {
+            .whatsapp-btn span:not(.btn-icon),
+            .review-btn span:not(.btn-icon),
+            .instagram-btn span:not(.btn-icon) {
+                display: none;
+            }
+            
+            .whatsapp-btn, .review-btn, .instagram-btn {
+                padding: 10px;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                justify-content: center;
+                min-width: auto;
+            }
+            
+            .btn-icon {
+                margin-right: 0;
+                font-size: 22px;
             }
         }
     </style>
@@ -399,7 +515,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Fruits data remains exactly the same -->
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>72</td><td>50</td></tr>
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>88</td><td>55</td></tr>
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>64</td><td>60</td></tr>
@@ -466,7 +581,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Berries data remains exactly the same -->
                     <tr><td>BlueBerry</td><td>Peru</td><td>125 gm</td><td>-</td><td>8</td></tr>
                     <tr><td>BlueBerry</td><td>Peru</td><td>500 gm</td><td>-</td><td>35</td></tr>
                     <tr><td>BlueBerry</td><td>Africa</td><td>125 gm</td><td>-</td><td>7</td></tr>
@@ -499,7 +613,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Vegetables data remains exactly the same -->
                     <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td>6</td></tr>
                     <tr><td>Potato</td><td>Pakistan</td><td>7 kg</td><td>-</td><td>15</td></tr>
                     <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr>
@@ -512,7 +625,7 @@
                     <tr><td>Ginger</td><td>India</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
                     <tr><td>Garlic</td><td>China</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
                     <tr><td>Garlic-Premium</td><td>China</td><td>250 gm</td><td>-</td><td>7</td></tr>
-                    <tr><td>Peeled Garlic</td><td>India</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Peeled Garlic</td><td>China</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
                     <tr><td>Carrot</td><td>China</td><td>3.5 kg</td><td>-</td><td>15</td></tr>
                     <tr><td>Carrot</td><td>India</td><td>6 kg</td><td>-</td><td>30</td></tr>
                     <tr><td>Lemon</td><td>Egypt</td><td>10 kg</td><td>-</td><td>55</td></tr>
@@ -563,7 +676,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Bhaji data remains exactly the same -->
                     <tr><td>Spinach/Palak</td><td>Alain</td><td>1 kg</td><td>-</td><td>5</td></tr>
                     <tr><td>Mint</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
                     <tr><td>Coriander/Dhanya</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
@@ -574,229 +686,22 @@
             </table>
 
             <div class="disclaimer">
-                <strong>Important Note:</strong> All prices are approximate and subject to market fluctuations.
+                <strong>Important Note:</strong> All prices are approximate and subject to market fluctuations. 
             </div>
         </div>
     </div>
 
-    .action-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 1000;
-    align-items: flex-end;
-}
-
-.whatsapp-btn {
-    background: linear-gradient(135deg, rgba(37, 211, 102, 0.9), rgba(18, 140, 126, 0.9));
-    color: var(--white);
-    padding: 14px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
-    font-size: 1rem;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.review-btn {
-    background: linear-gradient(135deg, rgba(66, 133, 244, 0.9), rgba(52, 168, 83, 0.9));
-    color: var(--white);
-    padding: 14px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
-    font-size: 1rem;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.instagram-btn {
-    background: linear-gradient(135deg, 
-        rgba(131, 58, 180, 0.9), 
-        rgba(253, 29, 29, 0.9), 
-        rgba(252, 175, 69, 0.9));
-    color: var(--white);
-    padding: 14px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(131, 58, 180, 0.3);
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
-    font-size: 1rem;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.whatsapp-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
-    background: linear-gradient(135deg, 
-        rgba(18, 140, 126, 0.95), 
-        rgba(37, 211, 102, 0.95));
-}
-
-.review-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 25px rgba(66, 133, 244, 0.4);
-    background: linear-gradient(135deg, 
-        rgba(52, 168, 83, 0.95), 
-        rgba(66, 133, 244, 0.95));
-}
-
-.instagram-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 25px rgba(131, 58, 180, 0.4);
-    background: linear-gradient(135deg, 
-        rgba(253, 29, 29, 0.95), 
-        rgba(131, 58, 180, 0.95), 
-        rgba(252, 175, 69, 0.95));
-}
-
-.btn-icon {
-    margin-right: 10px;
-    font-size: 22px;
-}
-
-/* Mobile-specific adjustments */
-@media (max-width: 768px) {
-    .action-buttons {
-        bottom: 15px;
-        right: 15px;
-        gap: 10px;
-    }
-    
-    .whatsapp-btn, .review-btn, .instagram-btn {
-        padding: 12px 18px;
-        font-size: 0.9rem;
-        min-width: 140px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background: linear-gradient(135deg, 
-            rgba(37, 211, 102, 0.85), 
-            rgba(18, 140, 126, 0.85));
-    }
-    
-    .review-btn {
-        background: linear-gradient(135deg, 
-            rgba(66, 133, 244, 0.85), 
-            rgba(52, 168, 83, 0.85));
-    }
-    
-    .instagram-btn {
-        background: linear-gradient(135deg, 
-            rgba(131, 58, 180, 0.85), 
-            rgba(253, 29, 29, 0.85), 
-            rgba(252, 175, 69, 0.85));
-    }
-    
-    .btn-icon {
-        font-size: 20px;
-        margin-right: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .action-buttons {
-        bottom: 10px;
-        right: 10px;
-        gap: 8px;
-    }
-    
-    .whatsapp-btn, .review-btn, .instagram-btn {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-        min-width: 130px;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        background: linear-gradient(135deg, 
-            rgba(37, 211, 102, 0.8), 
-            rgba(18, 140, 126, 0.8));
-    }
-    
-    .review-btn {
-        background: linear-gradient(135deg, 
-            rgba(66, 133, 244, 0.8), 
-            rgba(52, 168, 83, 0.8));
-    }
-    
-    .instagram-btn {
-        background: linear-gradient(135deg, 
-            rgba(131, 58, 180, 0.8), 
-            rgba(253, 29, 29, 0.8), 
-            rgba(252, 175, 69, 0.8));
-    }
-    
-    .btn-icon {
-        font-size: 18px;
-        margin-right: 6px;
-    }
-}
-
-/* Small phones */
-@media (max-width: 360px) {
-    .action-buttons {
-        bottom: 8px;
-        right: 8px;
-        gap: 6px;
-    }
-    
-    .whatsapp-btn, .review-btn, .instagram-btn {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-        min-width: 120px;
-    }
-    
-    .btn-icon {
-        font-size: 16px;
-        margin-right: 5px;
-    }
-}
-
-/* Very small screens - hide text, show only icons */
-@media (max-width: 300px) {
-    .whatsapp-btn span:not(.btn-icon),
-    .review-btn span:not(.btn-icon),
-    .instagram-btn span:not(.btn-icon) {
-        display: none;
-    }
-    
-    .whatsapp-btn, .review-btn, .instagram-btn {
-        padding: 10px;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        justify-content: center;
-        min-width: auto;
-    }
-    
-    .btn-icon {
-        margin-right: 0;
-        font-size: 22px;
-    }
-}
+    <div class="action-buttons">
+        <a href="https://www.instagram.com/almubarakaltijarah/" class="instagram-btn" target="_blank">
+            <span class="btn-icon">📸</span> Follow Us
+        </a>
+        
+        <a href="https://maps.app.goo.gl/L29gi7fLLJvRXWUM8?g_st=ig" class="review-btn" target="_blank">
+            <span class="btn-icon">⭐</span> Rate Us
+        </a>
+        
+        <a href="https://wa.me/971521790412" class="whatsapp-btn" target="_blank">
+            <span class="btn-icon">💬</span> WhatsApp Us
         </a>
     </div>
 </body>
