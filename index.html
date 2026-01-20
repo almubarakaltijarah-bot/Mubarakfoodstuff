@@ -16,6 +16,16 @@
             --text-dark: #263238;
             --text-light: #546E7A;
             --white: #FFFFFF;
+            
+            /* Colorful category colors */
+            --fruit-color: #FF9800;      /* Orange for fruits */
+            --berry-color: #E91E63;      /* Pink/Red for berries */
+            --veg-color: #8BC34A;        /* Green for vegetables */
+            --bhaji-color: #4CAF50;      /* Light green for bhaji */
+            --origin-color: #2196F3;     /* Blue for origin column */
+            --weight-color: #9C27B0;     /* Purple for weight column */
+            --pieces-color: #FF5722;     /* Deep orange for pieces column */
+            --price-color: #F44336;      /* Red for price column */
         }
         
         body {
@@ -168,8 +178,96 @@
             padding: 16px 15px;
             border-bottom: 1px solid #EEEEEE;
             font-size: 1rem;
-            color: var(--text-dark);
             font-weight: 400;
+        }
+        
+        /* Colorful text for different columns */
+        .fruits-section td:first-child { /* Item column for fruits */
+            color: var(--fruit-color);
+            font-weight: 600;
+        }
+        
+        .fruits-section td:nth-child(2) { /* Origin column for fruits */
+            color: var(--origin-color);
+        }
+        
+        .fruits-section td:nth-child(3) { /* Weight column for fruits */
+            color: var(--weight-color);
+        }
+        
+        .fruits-section td:nth-child(4) { /* Pieces column for fruits */
+            color: var(--pieces-color);
+        }
+        
+        .fruits-section td:nth-child(5) { /* Price column for fruits */
+            color: var(--price-color);
+            font-weight: 700;
+        }
+        
+        .berries-section td:first-child { /* Item column for berries */
+            color: var(--berry-color);
+            font-weight: 600;
+        }
+        
+        .berries-section td:nth-child(2) { /* Origin column for berries */
+            color: var(--origin-color);
+        }
+        
+        .berries-section td:nth-child(3) { /* Weight column for berries */
+            color: var(--weight-color);
+        }
+        
+        .berries-section td:nth-child(4) { /* Pieces column for berries */
+            color: var(--pieces-color);
+        }
+        
+        .berries-section td:nth-child(5) { /* Price column for berries */
+            color: var(--price-color);
+            font-weight: 700;
+        }
+        
+        .vegetables-section td:first-child { /* Item column for vegetables */
+            color: var(--veg-color);
+            font-weight: 600;
+        }
+        
+        .vegetables-section td:nth-child(2) { /* Origin column for vegetables */
+            color: var(--origin-color);
+        }
+        
+        .vegetables-section td:nth-child(3) { /* Weight column for vegetables */
+            color: var(--weight-color);
+        }
+        
+        .vegetables-section td:nth-child(4) { /* Pieces column for vegetables */
+            color: var(--pieces-color);
+        }
+        
+        .vegetables-section td:nth-child(5) { /* Price column for vegetables */
+            color: var(--price-color);
+            font-weight: 700;
+        }
+        
+        .bhaji-section td:first-child { /* Item column for bhaji */
+            color: var(--bhaji-color);
+            font-weight: 600;
+        }
+        
+        .bhaji-section td:nth-child(2) { /* Origin column for bhaji */
+            color: var(--origin-color);
+        }
+        
+        .bhaji-section td:nth-child(3) { /* Weight column for bhaji */
+            color: var(--weight-color);
+        }
+        
+        .bhaji-section td:nth-child(4) { /* Pieces column for bhaji */
+            color: var(--pieces-color);
+        }
+        
+        .bhaji-section td:nth-child(5) { /* Price column for bhaji */
+            color: var(--price-color);
+            font-weight: 700;
         }
         
         tr:hover {
@@ -205,99 +303,99 @@
             right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 1000;
             align-items: flex-end;
         }
 
         .whatsapp-btn {
-            background: linear-gradient(135deg, rgba(37, 211, 102, 0.9), rgba(18, 140, 126, 0.9));
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.75), rgba(18, 140, 126, 0.75));
             color: var(--white);
-            padding: 14px 22px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.25);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .review-btn {
-            background: linear-gradient(135deg, rgba(66, 133, 244, 0.9), rgba(52, 168, 83, 0.9));
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.75), rgba(52, 168, 83, 0.75));
             color: var(--white);
-            padding: 14px 22px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
+            box-shadow: 0 6px 15px rgba(66, 133, 244, 0.25);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .instagram-btn {
             background: linear-gradient(135deg, 
-                rgba(131, 58, 180, 0.9), 
-                rgba(253, 29, 29, 0.9), 
-                rgba(252, 175, 69, 0.9));
+                rgba(131, 58, 180, 0.75), 
+                rgba(253, 29, 29, 0.75), 
+                rgba(252, 175, 69, 0.75));
             color: var(--white);
-            padding: 14px 22px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            box-shadow: 0 8px 20px rgba(131, 58, 180, 0.3);
+            box-shadow: 0 6px 15px rgba(131, 58, 180, 0.25);
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .whatsapp-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
             background: linear-gradient(135deg, 
-                rgba(18, 140, 126, 0.95), 
-                rgba(37, 211, 102, 0.95));
+                rgba(37, 211, 102, 0.85), 
+                rgba(18, 140, 126, 0.85));
         }
 
         .review-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(66, 133, 244, 0.4);
+            box-shadow: 0 10px 20px rgba(66, 133, 244, 0.35);
             background: linear-gradient(135deg, 
-                rgba(52, 168, 83, 0.95), 
-                rgba(66, 133, 244, 0.95));
+                rgba(66, 133, 244, 0.85), 
+                rgba(52, 168, 83, 0.85));
         }
 
         .instagram-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(131, 58, 180, 0.4);
+            box-shadow: 0 10px 20px rgba(131, 58, 180, 0.35);
             background: linear-gradient(135deg, 
-                rgba(253, 29, 29, 0.95), 
-                rgba(131, 58, 180, 0.95), 
-                rgba(252, 175, 69, 0.95));
+                rgba(253, 29, 29, 0.85), 
+                rgba(131, 58, 180, 0.85), 
+                rgba(252, 175, 69, 0.85));
         }
 
         .btn-icon {
-            margin-right: 10px;
-            font-size: 22px;
+            margin-right: 8px;
+            font-size: 20px;
         }
 
         .section-icon {
@@ -334,39 +432,39 @@
             .action-buttons {
                 bottom: 15px;
                 right: 15px;
-                gap: 10px;
+                gap: 8px;
             }
             
             .whatsapp-btn, .review-btn, .instagram-btn {
-                padding: 12px 18px;
-                font-size: 0.9rem;
-                min-width: 140px;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                min-width: 130px;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
             }
             
             .whatsapp-btn {
                 background: linear-gradient(135deg, 
-                    rgba(37, 211, 102, 0.85), 
-                    rgba(18, 140, 126, 0.85));
+                    rgba(37, 211, 102, 0.65), 
+                    rgba(18, 140, 126, 0.65));
             }
             
             .review-btn {
                 background: linear-gradient(135deg, 
-                    rgba(66, 133, 244, 0.85), 
-                    rgba(52, 168, 83, 0.85));
+                    rgba(66, 133, 244, 0.65), 
+                    rgba(52, 168, 83, 0.65));
             }
             
             .instagram-btn {
                 background: linear-gradient(135deg, 
-                    rgba(131, 58, 180, 0.85), 
-                    rgba(253, 29, 29, 0.85), 
-                    rgba(252, 175, 69, 0.85));
+                    rgba(131, 58, 180, 0.65), 
+                    rgba(253, 29, 29, 0.65), 
+                    rgba(252, 175, 69, 0.65));
             }
             
             .btn-icon {
-                font-size: 20px;
-                margin-right: 8px;
+                font-size: 18px;
+                margin-right: 6px;
             }
             
             .section-icon {
@@ -400,46 +498,6 @@
             .action-buttons {
                 bottom: 10px;
                 right: 10px;
-                gap: 8px;
-            }
-            
-            .whatsapp-btn, .review-btn, .instagram-btn {
-                padding: 10px 16px;
-                font-size: 0.85rem;
-                min-width: 130px;
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-            }
-            
-            .whatsapp-btn {
-                background: linear-gradient(135deg, 
-                    rgba(37, 211, 102, 0.8), 
-                    rgba(18, 140, 126, 0.8));
-            }
-            
-            .review-btn {
-                background: linear-gradient(135deg, 
-                    rgba(66, 133, 244, 0.8), 
-                    rgba(52, 168, 83, 0.8));
-            }
-            
-            .instagram-btn {
-                background: linear-gradient(135deg, 
-                    rgba(131, 58, 180, 0.8), 
-                    rgba(253, 29, 29, 0.8), 
-                    rgba(252, 175, 69, 0.8));
-            }
-            
-            .btn-icon {
-                font-size: 18px;
-                margin-right: 6px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .action-buttons {
-                bottom: 8px;
-                right: 8px;
                 gap: 6px;
             }
             
@@ -447,11 +505,72 @@
                 padding: 8px 14px;
                 font-size: 0.8rem;
                 min-width: 120px;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+            
+            .whatsapp-btn {
+                background: linear-gradient(135deg, 
+                    rgba(37, 211, 102, 0.6), 
+                    rgba(18, 140, 126, 0.6));
+            }
+            
+            .review-btn {
+                background: linear-gradient(135deg, 
+                    rgba(66, 133, 244, 0.6), 
+                    rgba(52, 168, 83, 0.6));
+            }
+            
+            .instagram-btn {
+                background: linear-gradient(135deg, 
+                    rgba(131, 58, 180, 0.6), 
+                    rgba(253, 29, 29, 0.6), 
+                    rgba(252, 175, 69, 0.6));
             }
             
             .btn-icon {
                 font-size: 16px;
                 margin-right: 5px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .action-buttons {
+                bottom: 8px;
+                right: 8px;
+                gap: 5px;
+            }
+            
+            .whatsapp-btn, .review-btn, .instagram-btn {
+                padding: 7px 12px;
+                font-size: 0.75rem;
+                min-width: 110px;
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+            }
+            
+            .whatsapp-btn {
+                background: linear-gradient(135deg, 
+                    rgba(37, 211, 102, 0.55), 
+                    rgba(18, 140, 126, 0.55));
+            }
+            
+            .review-btn {
+                background: linear-gradient(135deg, 
+                    rgba(66, 133, 244, 0.55), 
+                    rgba(52, 168, 83, 0.55));
+            }
+            
+            .instagram-btn {
+                background: linear-gradient(135deg, 
+                    rgba(131, 58, 180, 0.55), 
+                    rgba(253, 29, 29, 0.55), 
+                    rgba(252, 175, 69, 0.55));
+            }
+            
+            .btn-icon {
+                font-size: 14px;
+                margin-right: 4px;
             }
         }
 
@@ -463,17 +582,38 @@
             }
             
             .whatsapp-btn, .review-btn, .instagram-btn {
-                padding: 10px;
+                padding: 8px;
                 border-radius: 50%;
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
                 justify-content: center;
                 min-width: auto;
+                backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
+            }
+            
+            .whatsapp-btn {
+                background: linear-gradient(135deg, 
+                    rgba(37, 211, 102, 0.5), 
+                    rgba(18, 140, 126, 0.5));
+            }
+            
+            .review-btn {
+                background: linear-gradient(135deg, 
+                    rgba(66, 133, 244, 0.5), 
+                    rgba(52, 168, 83, 0.5));
+            }
+            
+            .instagram-btn {
+                background: linear-gradient(135deg, 
+                    rgba(131, 58, 180, 0.5), 
+                    rgba(253, 29, 29, 0.5), 
+                    rgba(252, 175, 69, 0.5));
             }
             
             .btn-icon {
                 margin-right: 0;
-                font-size: 22px;
+                font-size: 18px;
             }
         }
     </style>
@@ -504,7 +644,7 @@
                 Fresh Fruits
                 <span class="section-icon">🍎</span>
             </h2>
-            <table>
+            <table class="fruits-section">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -515,6 +655,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Fruits data with colorful text -->
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>72</td><td>50</td></tr>
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>88</td><td>55</td></tr>
                     <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>64</td><td>60</td></tr>
@@ -570,7 +711,7 @@
                 Fresh Berries
                 <span class="section-icon">🫐</span>
             </h2>
-            <table>
+            <table class="berries-section">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -581,6 +722,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Berries data with colorful text -->
                     <tr><td>BlueBerry</td><td>Peru</td><td>125 gm</td><td>-</td><td>8</td></tr>
                     <tr><td>BlueBerry</td><td>Peru</td><td>500 gm</td><td>-</td><td>35</td></tr>
                     <tr><td>BlueBerry</td><td>Africa</td><td>125 gm</td><td>-</td><td>7</td></tr>
@@ -602,7 +744,7 @@
                 Fresh Vegetables
                 <span class="section-icon">🥦</span>
             </h2>
-            <table>
+            <table class="vegetables-section">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -613,6 +755,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Vegetables data with colorful text -->
                     <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td>6</td></tr>
                     <tr><td>Potato</td><td>Pakistan</td><td>7 kg</td><td>-</td><td>15</td></tr>
                     <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr>
@@ -665,7 +808,7 @@
                 Fresh Bhaji
                 <span class="section-icon">🌿</span>
             </h2>
-            <table>
+            <table class="bhaji-section">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -676,6 +819,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Bhaji data with colorful text -->
                     <tr><td>Spinach/Palak</td><td>Alain</td><td>1 kg</td><td>-</td><td>5</td></tr>
                     <tr><td>Mint</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
                     <tr><td>Coriander/Dhanya</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
@@ -687,6 +831,7 @@
 
             <div class="disclaimer">
                 <strong>Important Note:</strong> All prices are approximate and subject to market fluctuations. 
+                Please confirm final pricing before placing your order. Freshness and quality guaranteed on all products.
             </div>
         </div>
     </div>
