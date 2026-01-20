@@ -241,6 +241,22 @@
             font-size: 1.1rem;
         }
         
+        .instagram-btn {
+            background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+            color: var(--white);
+            padding: 18px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(131, 58, 180, 0.3);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
+        
         .whatsapp-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
@@ -251,6 +267,12 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(66, 133, 244, 0.5);
             background: linear-gradient(135deg, #34A853, #4285F4);
+        }
+        
+        .instagram-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(131, 58, 180, 0.4);
+            background: linear-gradient(135deg, #FD1D1D, #833AB4, #FCAF45);
         }
         
         .btn-icon {
@@ -294,7 +316,7 @@
                 right: 20px;
             }
             
-            .whatsapp-btn, .review-btn {
+            .whatsapp-btn, .review-btn, .instagram-btn {
                 padding: 16px 22px;
                 font-size: 1rem;
             }
@@ -333,7 +355,7 @@
                 gap: 12px;
             }
             
-            .whatsapp-btn, .review-btn {
+            .whatsapp-btn, .review-btn, .instagram-btn {
                 padding: 14px 20px;
                 font-size: 0.9rem;
             }
@@ -552,17 +574,19 @@
             </table>
 
             <div class="disclaimer">
-                <strong>Important Note:</strong> All prices are approximate and subject to market fluctuations. 
-                Please confirm final pricing before placing your order. Freshness and quality guaranteed on all products.
+                <strong>Important Note:</strong> All prices are approximate and subject to market fluctuations.
             </div>
         </div>
     </div>
 
     <div class="action-buttons">
+        <a href="https://www.instagram.com/almubarakaltijarah/" class="instagram-btn" target="_blank">
+            <span class="btn-icon">📸</span> Follow Us
+        </a>
+        
         <a href="https://maps.app.goo.gl/L29gi7fLLJvRXWUM8?g_st=ig" class="review-btn" target="_blank">
             <span class="btn-icon">⭐</span> Rate Us
         </a>
-        
         <a href="https://wa.me/971521790412" class="whatsapp-btn" target="_blank">
             <span class="btn-icon">💬</span> WhatsApp Us
         </a>
