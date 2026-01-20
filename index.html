@@ -5,226 +5,509 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMT Fresh Products Price List</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary-green: #4CAF50;
+            --light-green: #8BC34A;
+            --dark-green: #388E3C;
+            --background-green: #F1F8E9;
+            --accent-green: #C8E6C9;
+            --text-dark: #2D3436;
+            --text-light: #5C6B6F;
+        }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background: url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
-            color: #2d3436;
+            color: var(--text-dark);
         }
+        
         .overlay {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
+        
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: auto;
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-top: 8px solid #8bc34a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-top: 10px solid var(--primary-green);
+            position: relative;
+            overflow: hidden;
         }
-        h1 { text-align: center; color: #388e3c; font-weight: 600; margin-bottom: 5px; }
-        .tagline-container { text-align: center; margin-bottom: 30px; }
-        .tagline { color: #555; font-size: 0.95em; margin: 5px 0; font-style: italic; }
-        .policy { color: #2e7d32; font-weight: 600; margin-top: 10px; border-bottom: 1px solid #c8e6c9; display: inline-block; padding-bottom: 5px; }
         
-        h2 { 
-            background: #f1f8e9; 
-            color: #33691e; 
-            padding: 12px 20px; 
-            border-radius: 10px; 
-            margin-top: 40px; 
-            border-left: 5px solid #8bc34a;
-            font-size: 1.4em;
-        }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; }
-        th { background-color: #f9fbf7; color: #558b2f; text-align: left; padding: 15px; border-bottom: 2px solid #e8f5e9; font-size: 0.9em; text-transform: uppercase; }
-        td { padding: 12px 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; }
-        tr:hover { background-color: #f1f8e9; }
-        
-        .disclaimer { 
-            margin-top: 40px; 
-            padding: 20px; 
-            background: #fff3e0; 
-            border-radius: 10px; 
-            font-size: 0.9em; 
-            color: #e65100; 
+        .logo-container {
             text-align: center;
-            border: 1px solid #ffe0b2;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--accent-green);
+        }
+        
+        .logo {
+            max-width: 250px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+        
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--dark-green);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+        
+        .company-subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tagline-container {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--background-green);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid var(--light-green);
+        }
+        
+        .tagline {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+        
+        .policy {
+            color: var(--dark-green);
+            font-weight: 600;
+            margin-top: 12px;
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--accent-green);
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        h2 {
+            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h2:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+        
+        th {
+            background-color: var(--background-green);
+            color: var(--dark-green);
+            text-align: left;
+            padding: 18px 15px;
+            border-bottom: 2px solid var(--accent-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 16px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        
+        tr:hover {
+            background-color: var(--background-green);
+            transition: background-color 0.2s ease;
+        }
+        
+        .disclaimer {
+            margin-top: 40px;
+            padding: 25px;
+            background: #FFF8E1;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #E65100;
+            text-align: center;
+            border-left: 5px solid #FFB74D;
             line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
         }
         
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366;
+            background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
-            padding: 15px 25px;
+            padding: 16px 28px;
             border-radius: 50px;
             text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             display: flex;
             align-items: center;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             z-index: 1000;
+            letter-spacing: 0.5px;
         }
-        .whatsapp-btn:hover { transform: translateY(-5px); background-color: #128c7e; }
-        .whatsapp-icon { margin-right: 10px; font-size: 22px; }
-
-        @media (max-width: 600px) {
-            .container { padding: 20px; }
-            th, td { padding: 10px 5px; font-size: 12px; }
-            h1 { font-size: 1.8em; }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #128c7e, #25d366);
+        }
+        
+        .whatsapp-icon {
+            margin-right: 12px;
+            font-size: 24px;
+        }
+        
+        .section-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.3;
+            font-size: 1.8rem;
+        }
+        
+        .fruit-icon {
+            color: #FF9800;
+        }
+        
+        .berry-icon {
+            color: #E91E63;
+        }
+        
+        .veg-icon {
+            color: #8BC34A;
+        }
+        
+        .bhaji-icon {
+            color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                max-width: 200px;
+            }
+            
+            .company-name {
+                font-size: 1.4rem;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.85rem;
+            }
+            
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-icon {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+                padding: 12px 15px;
+            }
+            
+            th, td {
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .tagline {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="overlay">
         <div class="container">
-            <h1>AMT Fresh Products</h1>
+            <div class="logo-container">
+                <!-- Logo Placeholder - Replace with actual logo image URL -->
+                <div class="logo-placeholder" style="text-align: center; margin-bottom: 15px;">
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: #388E3C; font-weight: 700; margin-bottom: 5px;">AMT</div>
+                    <div style="font-size: 1.2rem; color: #4CAF50; font-weight: 600; margin-bottom: 3px;">AL Mubarak Al Tijarah</div>
+                    <div style="font-size: 0.9rem; color: #5C6B6F;">FRESH AS EXPECTED</div>
+                </div>
+                <!-- In production, replace the above with: <img src="AMT-logo.png" alt="AMT Logo" class="logo"> -->
+            </div>
+            
+            <h1>Fresh Products Price List</h1>
+            
             <div class="tagline-container">
-                <p class="tagline">Vegetables / Fruit / Bhaaji will be freshly delivered</p>
-                <p class="tagline">Mentioned quantity is for bulk buy, can be used complete week.</p>
-                <p class="tagline">Bulk buy will save your time and money</p>
-                <p class="policy">My Policy: Pay once satisfied with the delivered goods</p>
+                <p class="tagline">Vegetables / Fruit / Bhaaji will be freshly delivered to your doorstep</p>
+                <p class="tagline">Mentioned quantity is for bulk buy, can be used throughout the week</p>
+                <p class="tagline">Bulk buy saves your time and money with premium quality produce</p>
+                <div class="policy">My Policy: Pay only after you're satisfied with the delivered goods</div>
             </div>
 
-            <h2>Fruits</h2>
-            <table><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Price (AED)</th></tr></thead><tbody>
-            <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>72</td><td>50</td></tr>
-            <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>88</td><td>55</td></tr>
-            <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>64</td><td>60</td></tr>
-            <tr><td>Orange-Navel</td><td>Egypt</td><td>8 kg</td><td>24</td><td>30</td></tr>
-            <tr><td>Orange-Navel</td><td>Egypt</td><td>7 kg</td><td>36</td><td>22</td></tr>
-            <tr><td>Orange-Navel</td><td>Egypt</td><td>7 kg</td><td>42</td><td>25</td></tr>
-            <tr><td>Mandarin</td><td>Egypt</td><td>9/10 kg</td><td>50</td><td>40</td></tr>
-            <tr><td>Mandarin-Mini</td><td>Egypt</td><td>9/10 kg</td><td>70/80</td><td>35</td></tr>
-            <tr><td>Mandarin</td><td>Pakistan</td><td>10 kg</td><td>48</td><td>38</td></tr>
-            <tr><td>Mandarin</td><td>Pakistan</td><td>10 kg</td><td>54</td><td>35</td></tr>
-            <tr><td>Mandarin</td><td>Spain</td><td>10 kg</td><td>60</td><td>75</td></tr>
-            <tr><td>Mandarin-Mini</td><td>Spain</td><td>10 kg</td><td>90/100</td><td>95</td></tr>
-            <tr><td>Banana</td><td>Ecuador</td><td>14 kg</td><td>70</td><td>60</td></tr>
-            <tr><td>Banana</td><td>India</td><td>14 kg</td><td>65</td><td>45</td></tr>
-            <tr><td>Banana</td><td>Chiquita</td><td>14 kg</td><td>75</td><td>70</td></tr>
-            <tr><td>Banana</td><td>Philippine</td><td>14 kg</td><td>75</td><td>65</td></tr>
-            <tr><td>Mini-Apple</td><td>Iran</td><td>2.5 kg</td><td>30</td><td>12</td></tr>
-            <tr><td>Apple</td><td>Iran</td><td>8/9 kg</td><td>55/60</td><td>35</td></tr>
-            <tr><td>Apple-Premium</td><td>Iran</td><td>10 kg</td><td>50</td><td>40</td></tr>
-            <tr><td>Apple-Premium</td><td>Iran</td><td>10 kg</td><td>60</td><td>40</td></tr>
-            <tr><td>Apple</td><td>Italy</td><td>14 kg</td><td>90/95</td><td>115</td></tr>
-            <tr><td>Apple</td><td>France</td><td>14 kg</td><td>90/95</td><td>115</td></tr>
-            <tr><td>Green Apple</td><td>Africa</td><td>13 kg</td><td>70/75</td><td>85</td></tr>
-            <tr><td>Green Apple</td><td>New zealand</td><td>14 kg</td><td>80/85</td><td>110</td></tr>
-            <tr><td>Pears</td><td>US</td><td>14 kg</td><td>95</td><td>125</td></tr>
-            <tr><td>Pears</td><td>Africa</td><td>12 kg</td><td>80/85</td><td>110</td></tr>
-            <tr><td>Mango</td><td>Yemen</td><td>2 kg</td><td>8//9</td><td>40</td></tr>
-            <tr><td>Mango</td><td>Yemen</td><td>2 kg</td><td>8//9</td><td>30</td></tr>
-            <tr><td>Mango</td><td>Africa</td><td>2.25 kg</td><td>9//10</td><td>35</td></tr>
-            <tr><td>Mango</td><td>Kenya</td><td>2.25 kg</td><td>9//10</td><td>20</td></tr>
-            <tr><td>Pomegranate</td><td>India</td><td>1.8 kg</td><td>9//10</td><td>22</td></tr>
-            <tr><td>Pomegranate</td><td>Iran</td><td>2.2 kg</td><td>12//15</td><td>27</td></tr>
-            <tr><td>Avacado</td><td>Uganda</td><td>2.8 kg</td><td>10//12</td><td>40</td></tr>
-            <tr><td>Avacado</td><td>Mexico</td><td>1 kg</td><td>6//7</td><td>50</td></tr>
-            <tr><td>chikoo</td><td>India</td><td>1.8 kg</td><td>22//24</td><td>35</td></tr>
-            <tr><td>Custard Apple</td><td>India</td><td>2.2 kg</td><td>9//10</td><td>45</td></tr>
-            <tr><td>Guava</td><td>India</td><td>1 kg</td><td>6//7</td><td>15</td></tr>
-            <tr><td>Pomelo</td><td>Lebanon</td><td>1 kg</td><td>1</td><td>7</td></tr>
-            <tr><td>Watermelon</td><td>Iran</td><td>8/9 kg</td><td>1</td><td>15</td></tr>
-            <tr><td>Watermelon</td><td>Oman</td><td>8/9 kg</td><td>1</td><td>15</td></tr>
-            <tr><td>Pineapple Peeled</td><td>Thailand</td><td>500 gm</td><td>5</td><td>20</td></tr>
-            <tr><td>Pineapple</td><td>India</td><td>7/8 kg</td><td>6</td><td>40</td></tr>
-            <tr><td>Pineapple</td><td>Phillippine</td><td>15 kg</td><td>9</td><td>65</td></tr>
-            <tr><td>Pineapple-Mini</td><td>Africa</td><td>9 kg</td><td>8</td><td>60</td></tr>
-            <tr><td>Papaya</td><td>Srilanka</td><td>10 kg</td><td>6//7</td><td>50</td></tr>
-            <tr><td>Fresh Coconut</td><td>Srilanka</td><td>-</td><td>6</td><td>35</td></tr>
-            <tr><td>Fresh Coconut</td><td>Vietnam</td><td>-</td><td>9</td><td>45</td></tr>
-            <tr><td>Mangosteen</td><td>Thailand</td><td>1 kg</td><td>15/18</td><td>35</td></tr></tbody></table>
+            <h2>
+                Fruits
+                <span class="section-icon fruit-icon">🍊</span>
+            </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Origin</th>
+                        <th>Weight</th>
+                        <th>Pieces</th>
+                        <th>Price (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Fruits data remains exactly the same -->
+                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>72</td><td>50</td></tr>
+                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>88</td><td>55</td></tr>
+                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>64</td><td>60</td></tr>
+                    <tr><td>Orange-Navel</td><td>Egypt</td><td>8 kg</td><td>24</td><td>30</td></tr>
+                    <tr><td>Orange-Navel</td><td>Egypt</td><td>7 kg</td><td>36</td><td>22</td></tr>
+                    <tr><td>Orange-Navel</td><td>Egypt</td><td>7 kg</td><td>42</td><td>25</td></tr>
+                    <tr><td>Mandarin</td><td>Egypt</td><td>9/10 kg</td><td>50</td><td>40</td></tr>
+                    <tr><td>Mandarin-Mini</td><td>Egypt</td><td>9/10 kg</td><td>70/80</td><td>35</td></tr>
+                    <tr><td>Mandarin</td><td>Pakistan</td><td>10 kg</td><td>48</td><td>38</td></tr>
+                    <tr><td>Mandarin</td><td>Pakistan</td><td>10 kg</td><td>54</td><td>35</td></tr>
+                    <tr><td>Mandarin</td><td>Spain</td><td>10 kg</td><td>60</td><td>75</td></tr>
+                    <tr><td>Mandarin-Mini</td><td>Spain</td><td>10 kg</td><td>90/100</td><td>95</td></tr>
+                    <tr><td>Banana</td><td>Ecuador</td><td>14 kg</td><td>70</td><td>60</td></tr>
+                    <tr><td>Banana</td><td>India</td><td>14 kg</td><td>65</td><td>45</td></tr>
+                    <tr><td>Banana</td><td>Chiquita</td><td>14 kg</td><td>75</td><td>70</td></tr>
+                    <tr><td>Banana</td><td>Philippine</td><td>14 kg</td><td>75</td><td>65</td></tr>
+                    <tr><td>Mini-Apple</td><td>Iran</td><td>2.5 kg</td><td>30</td><td>12</td></tr>
+                    <tr><td>Apple</td><td>Iran</td><td>8/9 kg</td><td>55/60</td><td>35</td></tr>
+                    <tr><td>Apple-Premium</td><td>Iran</td><td>10 kg</td><td>50</td><td>40</td></tr>
+                    <tr><td>Apple-Premium</td><td>Iran</td><td>10 kg</td><td>60</td><td>40</td></tr>
+                    <tr><td>Apple</td><td>Italy</td><td>14 kg</td><td>90/95</td><td>115</td></tr>
+                    <tr><td>Apple</td><td>France</td><td>14 kg</td><td>90/95</td><td>115</td></tr>
+                    <tr><td>Green Apple</td><td>Africa</td><td>13 kg</td><td>70/75</td><td>85</td></tr>
+                    <tr><td>Green Apple</td><td>New zealand</td><td>14 kg</td><td>80/85</td><td>110</td></tr>
+                    <tr><td>Pears</td><td>US</td><td>14 kg</td><td>95</td><td>125</td></tr>
+                    <tr><td>Pears</td><td>Africa</td><td>12 kg</td><td>80/85</td><td>110</td></tr>
+                    <tr><td>Mango</td><td>Yemen</td><td>2 kg</td><td>8//9</td><td>40</td></tr>
+                    <tr><td>Mango</td><td>Yemen</td><td>2 kg</td><td>8//9</td><td>30</td></tr>
+                    <tr><td>Mango</td><td>Africa</td><td>2.25 kg</td><td>9//10</td><td>35</td></tr>
+                    <tr><td>Mango</td><td>Kenya</td><td>2.25 kg</td><td>9//10</td><td>20</td></tr>
+                    <tr><td>Pomegranate</td><td>India</td><td>1.8 kg</td><td>9//10</td><td>22</td></tr>
+                    <tr><td>Pomegranate</td><td>Iran</td><td>2.2 kg</td><td>12//15</td><td>27</td></tr>
+                    <tr><td>Avacado</td><td>Uganda</td><td>2.8 kg</td><td>10//12</td><td>40</td></tr>
+                    <tr><td>Avacado</td><td>Mexico</td><td>1 kg</td><td>6//7</td><td>50</td></tr>
+                    <tr><td>chikoo</td><td>India</td><td>1.8 kg</td><td>22//24</td><td>35</td></tr>
+                    <tr><td>Custard Apple</td><td>India</td><td>2.2 kg</td><td>9//10</td><td>45</td></tr>
+                    <tr><td>Guava</td><td>India</td><td>1 kg</td><td>6//7</td><td>15</td></tr>
+                    <tr><td>Pomelo</td><td>Lebanon</td><td>1 kg</td><td>1</td><td>7</td></tr>
+                    <tr><td>Watermelon</td><td>Iran</td><td>8/9 kg</td><td>1</td><td>15</td></tr>
+                    <tr><td>Watermelon</td><td>Oman</td><td>8/9 kg</td><td>1</td><td>15</td></tr>
+                    <tr><td>Pineapple Peeled</td><td>Thailand</td><td>500 gm</td><td>5</td><td>20</td></tr>
+                    <tr><td>Pineapple</td><td>India</td><td>7/8 kg</td><td>6</td><td>40</td></tr>
+                    <tr><td>Pineapple</td><td>Phillippine</td><td>15 kg</td><td>9</td><td>65</td></tr>
+                    <tr><td>Pineapple-Mini</td><td>Africa</td><td>9 kg</td><td>8</td><td>60</td></tr>
+                    <tr><td>Papaya</td><td>Srilanka</td><td>10 kg</td><td>6//7</td><td>50</td></tr>
+                    <tr><td>Fresh Coconut</td><td>Srilanka</td><td>-</td><td>6</td><td>35</td></tr>
+                    <tr><td>Fresh Coconut</td><td>Vietnam</td><td>-</td><td>9</td><td>45</td></tr>
+                    <tr><td>Mangosteen</td><td>Thailand</td><td>1 kg</td><td>15/18</td><td>35</td></tr>
+                </tbody>
+            </table>
 
-            <h2>Berries</h2>
-            <table><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Price (AED)</th></tr></thead><tbody>
-            <tr><td>BlueBerry</td><td>Peru</td><td>125 gm</td><td>-</td><td>8</td></tr>
-            <tr><td>BlueBerry</td><td>Peru</td><td>500 gm</td><td>-</td><td>35</td></tr>
-            <tr><td>BlueBerry</td><td>Africa</td><td>125 gm</td><td>-</td><td>7</td></tr>
-            <tr><td>BlueBerry</td><td>Africa</td><td>500 gm</td><td>-</td><td>30</td></tr>
-            <tr><td>Strawberry</td><td>Egypt</td><td>250 gm</td><td>-</td><td>4</td></tr>
-            <tr><td>Strawberry</td><td>Egypt</td><td>1 kg</td><td>-</td><td>12</td></tr>
-            <tr><td>Strawberry</td><td>Morocco</td><td>1 Kg</td><td>-</td><td>32</td></tr>
-            <tr><td>Lychee</td><td>Africa</td><td>2.25 kg</td><td>-</td><td>65</td></tr>
-            <tr><td>Lychee</td><td>Madagascar</td><td>2.25 kg</td><td>-</td><td>40</td></tr>
-            <tr><td>Longan</td><td>Thailand</td><td>1 kg</td><td>-</td><td>30</td></tr>
-            <tr><td>Red Grapes</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45</td></tr>
-            <tr><td>Red Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55</td></tr>
-            <tr><td>Black Grape</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45</td></tr>
-            <tr><td>Black Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55</td></tr></tbody></table>
+            <h2>
+                Berries
+                <span class="section-icon berry-icon">🫐</span>
+            </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Origin</th>
+                        <th>Weight</th>
+                        <th>Pieces</th>
+                        <th>Price (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>BlueBerry</td><td>Peru</td><td>125 gm</td><td>-</td><td>8</td></tr>
+                    <tr><td>BlueBerry</td><td>Peru</td><td>500 gm</td><td>-</td><td>35</td></tr>
+                    <tr><td>BlueBerry</td><td>Africa</td><td>125 gm</td><td>-</td><td>7</td></tr>
+                    <tr><td>BlueBerry</td><td>Africa</td><td>500 gm</td><td>-</td><td>30</td></tr>
+                    <tr><td>Strawberry</td><td>Egypt</td><td>250 gm</td><td>-</td><td>4</td></tr>
+                    <tr><td>Strawberry</td><td>Egypt</td><td>1 kg</td><td>-</td><td>12</td></tr>
+                    <tr><td>Strawberry</td><td>Morocco</td><td>1 Kg</td><td>-</td><td>32</td></tr>
+                    <tr><td>Lychee</td><td>Africa</td><td>2.25 kg</td><td>-</td><td>65</td></tr>
+                    <tr><td>Lychee</td><td>Madagascar</td><td>2.25 kg</td><td>-</td><td>40</td></tr>
+                    <tr><td>Longan</td><td>Thailand</td><td>1 kg</td><td>-</td><td>30</td></tr>
+                    <tr><td>Red Grapes</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45</td></tr>
+                    <tr><td>Red Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55</td></tr>
+                    <tr><td>Black Grape</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45</td></tr>
+                    <tr><td>Black Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55</td></tr>
+                </tbody>
+            </table>
 
-            <h2>Vegetables</h2>
-            <table><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Price (AED)</th></tr></thead><tbody>
-            <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td>6</td></tr>
-            <tr><td>Potato</td><td>Pakistan</td><td>7 kg</td><td>-</td><td>15</td></tr>
-            <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Chilly</td><td>Indian</td><td>4 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Green Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>35</td></tr>
-            <tr><td>Red Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>45</td></tr>
-            <tr><td>Yellow Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>55</td></tr>
-            <tr><td>Cucumber</td><td>Iran</td><td>10 kg</td><td>-</td><td>30</td></tr>
-            <tr><td>Ginger</td><td>China</td><td>2.5 kg</td><td>-</td><td>20</td></tr>
-            <tr><td>Ginger</td><td>India</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Garlic</td><td>China</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Garlic-Premium</td><td>China</td><td>250 gm</td><td>-</td><td>7</td></tr>
-            <tr><td>Peeled Garlic</td><td>India</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Carrot</td><td>China</td><td>3.5 kg</td><td>-</td><td>15</td></tr>
-            <tr><td>Carrot</td><td>India</td><td>6 kg</td><td>-</td><td>30</td></tr>
-            <tr><td>Lemon</td><td>Egypt</td><td>10 kg</td><td>-</td><td>55</td></tr>
-            <tr><td>Lemon</td><td>Africa</td><td>10 kg</td><td>-</td><td>45</td></tr>
-            <tr><td>Lime Seedless</td><td>Vietnam</td><td>3.5 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Lime</td><td>India</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Onion</td><td>India</td><td>5 kg</td><td>-</td><td>15</td></tr>
-            <tr><td>Onion</td><td>India</td><td>18 kg</td><td>-</td><td>50</td></tr>
-            <tr><td>Onion</td><td>Iran</td><td>5 kg</td><td>-</td><td>8</td></tr>
-            <tr><td>Onion</td><td>Iran</td><td>18 kg</td><td>-</td><td>32</td></tr>
-            <tr><td>Beetroot</td><td>India</td><td>3 kg</td><td>-</td><td>12</td></tr>
-            <tr><td>Brinjal</td><td>India</td><td>5 kg</td><td>-</td><td>15</td></tr>
-            <tr><td>Brinjal Mini</td><td>India</td><td>5 kg</td><td>-</td><td>20</td></tr>
-            <tr><td>Brinjal Big</td><td>India</td><td>5 kg</td><td>-</td><td>30</td></tr>
-            <tr><td>Lady’s finger</td><td>India</td><td>5 kg</td><td>-</td><td>35</td></tr>
-            <tr><td>French Beans</td><td>India</td><td>5 kg</td><td>-</td><td>40</td></tr>
-            <tr><td>Pumpkin</td><td>Iran</td><td>1 kg</td><td>-</td><td>1.5</td></tr>
-            <tr><td>Pumpkin big</td><td>Iran</td><td>1 kg</td><td>-</td><td>1</td></tr>
-            <tr><td>Green Peas</td><td>India</td><td>1 kg</td><td>-</td><td>10</td></tr>
-            <tr><td>Bottle Gourd</td><td>India</td><td>5 kg</td><td>-</td><td>35</td></tr>
-            <tr><td>Bottle Gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Bitter gourd</td><td>India</td><td>5 kg</td><td>-</td><td>45</td></tr>
-            <tr><td>Bitter gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td>30</td></tr>
-            <tr><td>Green papaya</td><td>Srilanka</td><td>8 kg</td><td>-</td><td>20</td></tr>
-            <tr><td>Drumstick</td><td>India</td><td>3 kg</td><td>-</td><td>40</td></tr>
-            <tr><td>Mushroom</td><td>Iran</td><td>150 gm</td><td>-</td><td>5</td></tr>
-            <tr><td>Sweet potato White</td><td>Egypt</td><td>4 kg</td><td>-</td><td>20</td></tr>
-            <tr><td>Sweet potato Red</td><td>Egypt</td><td>4 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Cauliflower</td><td>Iran</td><td>7 kg</td><td>-</td><td>40</td></tr>
-            <tr><td>Broccoli</td><td>Iran</td><td>4 kg</td><td>-</td><td>55</td></tr>
-            <tr><td>Cabbage</td><td>Iran</td><td>12 kg</td><td>-</td><td>25</td></tr>
-            <tr><td>Lettuce</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr></tbody></table>
+            <h2>
+                Vegetables
+                <span class="section-icon veg-icon">🥦</span>
+            </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Origin</th>
+                        <th>Weight</th>
+                        <th>Pieces</th>
+                        <th>Price (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td>6</td></tr>
+                    <tr><td>Potato</td><td>Pakistan</td><td>7 kg</td><td>-</td><td>15</td></tr>
+                    <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Chilly</td><td>Indian</td><td>4 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Green Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>35</td></tr>
+                    <tr><td>Red Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>45</td></tr>
+                    <tr><td>Yellow Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>55</td></tr>
+                    <tr><td>Cucumber</td><td>Iran</td><td>10 kg</td><td>-</td><td>30</td></tr>
+                    <tr><td>Ginger</td><td>China</td><td>2.5 kg</td><td>-</td><td>20</td></tr>
+                    <tr><td>Ginger</td><td>India</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Garlic</td><td>China</td><td>1.8 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Garlic-Premium</td><td>China</td><td>250 gm</td><td>-</td><td>7</td></tr>
+                    <tr><td>Peeled Garlic</td><td>China</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Carrot</td><td>China</td><td>3.5 kg</td><td>-</td><td>15</td></tr>
+                    <tr><td>Carrot</td><td>India</td><td>6 kg</td><td>-</td><td>30</td></tr>
+                    <tr><td>Lemon</td><td>Egypt</td><td>10 kg</td><td>-</td><td>55</td></tr>
+                    <tr><td>Lemon</td><td>Africa</td><td>10 kg</td><td>-</td><td>45</td></tr>
+                    <tr><td>Lime Seedless</td><td>Vietnam</td><td>3.5 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Lime</td><td>India</td><td>2.5 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Onion</td><td>India</td><td>5 kg</td><td>-</td><td>15</td></tr>
+                    <tr><td>Onion</td><td>India</td><td>18 kg</td><td>-</td><td>50</td></tr>
+                    <tr><td>Onion</td><td>Iran</td><td>5 kg</td><td>-</td><td>8</td></tr>
+                    <tr><td>Onion</td><td>Iran</td><td>18 kg</td><td>-</td><td>32</td></tr>
+                    <tr><td>Beetroot</td><td>India</td><td>3 kg</td><td>-</td><td>12</td></tr>
+                    <tr><td>Brinjal</td><td>India</td><td>5 kg</td><td>-</td><td>15</td></tr>
+                    <tr><td>Brinjal Mini</td><td>India</td><td>5 kg</td><td>-</td><td>20</td></tr>
+                    <tr><td>Brinjal Big</td><td>India</td><td>5 kg</td><td>-</td><td>30</td></tr>
+                    <tr><td>Lady's finger</td><td>India</td><td>5 kg</td><td>-</td><td>35</td></tr>
+                    <tr><td>French Beans</td><td>India</td><td>5 kg</td><td>-</td><td>40</td></tr>
+                    <tr><td>Pumpkin</td><td>Iran</td><td>1 kg</td><td>-</td><td>1.5</td></tr>
+                    <tr><td>Pumpkin big</td><td>Iran</td><td>1 kg</td><td>-</td><td>1</td></tr>
+                    <tr><td>Green Peas</td><td>India</td><td>1 kg</td><td>-</td><td>10</td></tr>
+                    <tr><td>Bottle Gourd</td><td>India</td><td>5 kg</td><td>-</td><td>35</td></tr>
+                    <tr><td>Bottle Gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Bitter gourd</td><td>India</td><td>5 kg</td><td>-</td><td>45</td></tr>
+                    <tr><td>Bitter gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td>30</td></tr>
+                    <tr><td>Green papaya</td><td>Srilanka</td><td>8 kg</td><td>-</td><td>20</td></tr>
+                    <tr><td>Drumstick</td><td>India</td><td>3 kg</td><td>-</td><td>40</td></tr>
+                    <tr><td>Mushroom</td><td>Iran</td><td>150 gm</td><td>-</td><td>5</td></tr>
+                    <tr><td>Sweet potato White</td><td>Egypt</td><td>4 kg</td><td>-</td><td>20</td></tr>
+                    <tr><td>Sweet potato Red</td><td>Egypt</td><td>4 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Cauliflower</td><td>Iran</td><td>7 kg</td><td>-</td><td>40</td></tr>
+                    <tr><td>Broccoli</td><td>Iran</td><td>4 kg</td><td>-</td><td>55</td></tr>
+                    <tr><td>Cabbage</td><td>Iran</td><td>12 kg</td><td>-</td><td>25</td></tr>
+                    <tr><td>Lettuce</td><td>Iran</td><td>10 kg</td><td>-</td><td>25</td></tr>
+                </tbody>
+            </table>
 
-            <h2>Bhaji</h2>
-            <table><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Price (AED)</th></tr></thead><tbody>
-            <tr><td>Spinach/Palak</td><td>Alain</td><td>1 kg</td><td>-</td><td>5</td></tr>
-            <tr><td>Mint</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
-            <tr><td>Coriander/Dhanya</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
-            <tr><td>Curry leaves/ Kari Patta</td><td>Alain</td><td>250 gm</td><td>-</td><td>7</td></tr>
-            <tr><td>Spring onion</td><td>Alain</td><td>1 kg</td><td>-</td><td>10</td></tr>
-            <tr><td>Methi</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr></tbody></tbody></table>
+            <h2>
+                Bhaji
+                <span class="section-icon bhaji-icon">🌿</span>
+            </h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Origin</th>
+                        <th>Weight</th>
+                        <th>Pieces</th>
+                        <th>Price (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Spinach/Palak</td><td>Alain</td><td>1 kg</td><td>-</td><td>5</td></tr>
+                    <tr><td>Mint</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
+                    <tr><td>Coriander/Dhanya</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
+                    <tr><td>Curry leaves/ Kari Patta</td><td>Alain</td><td>250 gm</td><td>-</td><td>7</td></tr>
+                    <tr><td>Spring onion</td><td>Alain</td><td>1 kg</td><td>-</td><td>10</td></tr>
+                    <tr><td>Methi</td><td>Alain</td><td>1 kg</td><td>-</td><td>7</td></tr>
+                </tbody>
+            </table>
 
             <div class="disclaimer">
-                Note: Prices are approximate and subject to market fluctuations. 
-                Kindly confirm the final price with us before placing your order to ensure the most accurate rates.
+                <strong>Note:</strong> Prices are approximate and subject to market fluctuations. 
             </div>
         </div>
     </div>
