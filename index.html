@@ -265,12 +265,18 @@
             color: #AA6F20;
         }
     </style>
+    @keyframes floatSoft {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
 </head>
 <body>
 <div class="app-wrapper">
     <div class="hero-header">
         <div class="amt-brand">AMT <span style="font-weight:400">Fresh Market</span></div>
-        <div class="amt-sub floating-badge">AL Mubarak Al Tijarah • Fresh as Expected</div>
+        <div class="amt-sub" style="animation: floatSoft 2.5s ease-in-out infinite; display: inline-block;">AL Mubarak Al Tijarah • Fresh as Expected</div>
+        <div class="policy-badge" style="animation: floatSoft 2.2s ease-in-out infinite; display: inline-block;">✅ Satisfaction First: Pay after you're happy!</div>
     </div>
     
     <div class="category-tabs">
