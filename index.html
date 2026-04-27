@@ -2,400 +2,505 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMT Fresh Products Price List | Market Update</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AMT Fresh Market | Easy View Catalog</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital@0;1&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         :root {
-            --primary-green: #2E7D32;
-            --light-green: #4CAF50;
-            --medium-green: #388E3C;
-            --background-green: #F1F8E9;
-            --accent-green: #C8E6C9;
-            --text-dark: #263238;
-            --text-light: #546E7A;
-            --white: #FFFFFF;
-            
-            /* Colorful category colors */
-            --fruit-color: #FF9800;
-            --berry-color: #E91E63;
-            --veg-color: #8BC34A;
-            --bhaji-color: #4CAF50;
-            --baby-color: #FF6D00;      /* Orange-amber for baby veg & specialty */
-            --origin-color: #2196F3;
-            --weight-color: #9C27B0;
-            --pieces-color: #FF5722;
-            --price-color: #D32F2F;
+            --primary-green: #1B5E20;
+            --light-green: #43A047;
+            --lime-accent: #AED581;
+            --cream-bg: #FEF9E6;
+            --card-white: #FFFFFF;
+            --soft-gray: #F5F7FA;
+            --text-dark: #2C3E2F;
+            --text-muted: #5D6E5D;
+            --fruit-tab: #FF8A65;
+            --berry-tab: #EC407A;
+            --veg-tab: #66BB6A;
+            --bhaji-tab: #26A69A;
+            --special-tab: #FFA726;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05);
+            --shadow-hover: 0 12px 28px rgba(0,0,0,0.08);
         }
         
         body {
-            font-family: 'Lato', sans-serif;
-            background: url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #EFF5E8;
             color: var(--text-dark);
+            line-height: 1.4;
         }
         
-        .overlay {
-            background: rgba(255, 255, 255, 0.95);
-            min-height: 100vh;
-            padding: 30px 20px;
+        /* Main container */
+        .app-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border-top: 8px solid var(--primary-green);
-            position: relative;
-        }
-        
-        .logo-container {
+        /* header style */
+        .hero-header {
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--accent-green);
+            margin-bottom: 28px;
         }
         
-        h1 {
-            text-align: center;
+        .amt-brand {
+            font-size: 2.2rem;
+            font-weight: 800;
             color: var(--primary-green);
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            font-size: 2.5rem;
-            margin: 20px 0 15px;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
         }
         
-        .tagline-container {
-            text-align: center;
-            margin: 25px 0 30px;
-            background: linear-gradient(135deg, var(--background-green), #E8F5E9);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid var(--light-green);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
-        }
-        
-        .tagline {
-            color: var(--text-light);
-            font-size: 1.05rem;
-            margin: 10px 0;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-        
-        .policy {
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-top: 15px;
+        .amt-sub {
+            color: var(--light-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-top: 1px solid #DCE8D2;
             display: inline-block;
-            padding: 12px 25px;
-            background: var(--accent-green);
-            border-radius: 30px;
-            font-size: 1rem;
-            border: 2px solid var(--light-green);
-            font-family: 'Roboto', sans-serif;
+            margin-top: 6px;
+            padding-top: 6px;
         }
         
-        h2 {
-            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
-            color: var(--white);
-            padding: 16px 25px;
-            border-radius: 10px;
-            margin-top: 40px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.5rem;
+        .policy-badge {
+            background: #FFF3E0;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
             font-weight: 600;
-            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 0.5px;
+            color: #BF5B1C;
+            margin-top: 12px;
+            box-shadow: var(--shadow-sm);
         }
         
-        table {
+        /* EASY NAVIGATION TABS */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 24px 0 20px;
+            position: sticky;
+            top: 10px;
+            background: rgba(255,255,240,0.92);
+            backdrop-filter: blur(12px);
+            padding: 12px 8px;
+            border-radius: 60px;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: #2C4B2C;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab-btn i { font-style: normal; font-size: 1.2rem; }
+        
+        .tab-btn.active {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: 0 6px 14px rgba(27,94,32,0.25);
+            transform: scale(1.02);
+        }
+        
+        /* fruit active color variants (just for fun) */
+        .tab-btn[data-tab="fruits"].active { background: #E65100; }
+        .tab-btn[data-tab="berries"].active { background: #C2185B; }
+        .tab-btn[data-tab="vegetables"].active { background: #2E7D32; }
+        .tab-btn[data-tab="bhaji"].active { background: #00897B; }
+        .tab-btn[data-tab="specialty"].active { background: #EF6C00; }
+        
+        /* PANELS */
+        .panel {
+            display: none;
+            animation: fadeSlide 0.25s ease-out;
+        }
+        
+        .panel.active-panel {
+            display: block;
+        }
+        
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        
+        /* card & table styling - modern & clean */
+        .section-card {
+            background: var(--card-white);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 28px;
+            transition: all 0.2s;
+            border: 1px solid rgba(167, 199, 138, 0.3);
+        }
+        
+        .section-header {
+            background: linear-gradient(95deg, #F1F8E9 0%, #FFFFFF 100%);
+            padding: 20px 24px;
+            border-bottom: 2px solid var(--lime-accent);
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1F3B1C;
+        }
+        
+        .section-header p {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .market-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #E0E0E0;
         }
         
-        th {
-            background-color: var(--background-green);
-            color: var(--primary-green);
+        .market-table th {
             text-align: left;
-            padding: 18px 15px;
-            border-bottom: 3px solid var(--accent-green);
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-            text-transform: uppercase;
+            padding: 16px 16px 12px 20px;
+            background-color: #F9FDF5;
             font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #54704A;
+            border-bottom: 1px solid #E2EAD9;
         }
         
-        td {
-            padding: 16px 15px;
-            border-bottom: 1px solid #EEEEEE;
-            font-size: 1rem;
-            font-weight: 400;
+        .market-table td {
+            padding: 14px 16px 14px 20px;
+            border-bottom: 1px solid #EDF2E8;
+            font-size: 0.9rem;
+            vertical-align: top;
         }
         
-        /* Colorful text for different sections */
-        .fruits-section td:first-child { color: var(--fruit-color); font-weight: 600; }
-        .fruits-section td:nth-child(2) { color: var(--origin-color); }
-        .fruits-section td:nth-child(3) { color: var(--weight-color); }
-        .fruits-section td:nth-child(4) { color: var(--pieces-color); }
-        .fruits-section td:nth-child(5) { color: var(--price-color); font-weight: 700; font-size: 1.05rem; }
+        .price-range {
+            font-weight: 800;
+            color: #C7362B;
+            background: #FFF2F0;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
         
-        .berries-section td:first-child { color: var(--berry-color); font-weight: 600; }
-        .berries-section td:nth-child(2) { color: var(--origin-color); }
-        .berries-section td:nth-child(3) { color: var(--weight-color); }
-        .berries-section td:nth-child(4) { color: var(--pieces-color); }
-        .berries-section td:nth-child(5) { color: var(--price-color); font-weight: 700; font-size: 1.05rem; }
-        
-        .vegetables-section td:first-child { color: var(--veg-color); font-weight: 600; }
-        .vegetables-section td:nth-child(2) { color: var(--origin-color); }
-        .vegetables-section td:nth-child(3) { color: var(--weight-color); }
-        .vegetables-section td:nth-child(4) { color: var(--pieces-color); }
-        .vegetables-section td:nth-child(5) { color: var(--price-color); font-weight: 700; font-size: 1.05rem; }
-        
-        .bhaji-section td:first-child { color: var(--bhaji-color); font-weight: 600; }
-        .bhaji-section td:nth-child(2) { color: var(--origin-color); }
-        .bhaji-section td:nth-child(3) { color: var(--weight-color); }
-        .bhaji-section td:nth-child(4) { color: var(--pieces-color); }
-        .bhaji-section td:nth-child(5) { color: var(--price-color); font-weight: 700; font-size: 1.05rem; }
-        
-        .baby-section td:first-child { color: var(--baby-color); font-weight: 700; }
-        .baby-section td:nth-child(2) { color: var(--origin-color); }
-        .baby-section td:nth-child(3) { color: var(--weight-color); }
-        .baby-section td:nth-child(4) { color: var(--pieces-color); }
-        .baby-section td:nth-child(5) { color: var(--price-color); font-weight: 700; font-size: 1.05rem; }
-        
-        tr:hover { background-color: var(--background-green); transition: background-color 0.3s ease; }
-        tr:nth-child(even) { background-color: #FAFAFA; }
-        tr:nth-child(even):hover { background-color: var(--background-green); }
-        
-        .disclaimer {
-            margin-top: 40px;
-            padding: 25px;
-            background: #FFF8E1;
-            border-radius: 10px;
-            font-size: 1rem;
-            color: #E65100;
-            text-align: center;
-            border-left: 5px solid #FF9800;
-            line-height: 1.6;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .origin-badge {
+            background: #EFF7E6;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 500;
+            display: inline-block;
         }
         
-        .action-buttons {
+        /* quick tip banner */
+        .easy-tip {
+            background: #E8F0E3;
+            border-radius: 60px;
+            padding: 12px 20px;
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2A5C2E;
+        }
+        
+        .easy-tip span {
+            font-size: 1.1rem;
+            margin-right: 6px;
+        }
+        
+        /* mobile responsiveness */
+        @media (max-width: 700px) {
+            .category-tabs { gap: 6px; padding: 10px 6px; border-radius: 40px; }
+            .tab-btn { padding: 7px 16px; font-size: 0.8rem; }
+            .market-table th, .market-table td { padding: 12px 8px 12px 12px; font-size: 0.8rem; }
+            .section-header h2 { font-size: 1.4rem; }
+            .price-range { font-size: 0.75rem; padding: 2px 8px; }
+        }
+        
+        @media (max-width: 480px) {
+            .market-table td, .market-table th { padding: 10px 6px; }
+            .market-table td:first-child, .market-table th:first-child { padding-left: 12px; }
+        }
+        
+        .action-buttons-fixed {
             position: fixed;
             bottom: 20px;
             right: 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            z-index: 1000;
-            align-items: flex-end;
+            z-index: 99;
         }
-
-        .whatsapp-btn, .review-btn, .instagram-btn {
-            padding: 12px 20px;
-            border-radius: 50px;
+        
+        .float-btn {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 10px 18px;
+            border-radius: 40px;
+            color: white;
             text-decoration: none;
-            font-family: 'Roboto', sans-serif;
             font-weight: 600;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: var(--white);
+            gap: 8px;
+            transition: 0.2s;
         }
-
-        .whatsapp-btn { background: linear-gradient(135deg, rgba(37, 211, 102, 0.75), rgba(18, 140, 126, 0.75)); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.25); }
-        .review-btn { background: linear-gradient(135deg, rgba(66, 133, 244, 0.75), rgba(52, 168, 83, 0.75)); box-shadow: 0 6px 15px rgba(66, 133, 244, 0.25); }
-        .instagram-btn { background: linear-gradient(135deg, rgba(131, 58, 180, 0.75), rgba(253, 29, 29, 0.75), rgba(252, 175, 69, 0.75)); box-shadow: 0 6px 15px rgba(131, 58, 180, 0.25); }
-
-        .whatsapp-btn:hover, .review-btn:hover, .instagram-btn:hover { transform: translateY(-5px) scale(1.05); }
-        .btn-icon { margin-right: 8px; font-size: 20px; }
-        .section-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); opacity: 0.2; font-size: 2rem; }
         
-        .price-note { font-size: 0.85rem; background: #FBE9E7; padding: 8px 15px; border-radius: 30px; display: inline-block; margin-top: 10px; color: #BF360C; font-weight: 500; }
+        .float-btn.whats { background: #25D366; box-shadow: 0 4px 12px rgba(37,211,102,0.3);}
+        .float-btn.insta { background: linear-gradient(45deg, #f09433, #d62976);}
+        .float-btn:hover { transform: translateY(-3px);}
         
-        @media (max-width: 768px) {
-            .container { padding: 20px 15px; }
-            h1 { font-size: 2rem; }
-            th, td { padding: 12px 8px; font-size: 0.9rem; }
-            .section-icon { display: none; }
-            .whatsapp-btn, .review-btn, .instagram-btn { padding: 10px 16px; font-size: 0.85rem; min-width: 130px; }
+        .disclaimer-note {
+            background: #FFF7E5;
+            border-radius: 24px;
+            padding: 15px 20px;
+            margin-top: 32px;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #AA6F20;
         }
-        @media (max-width: 480px) {
-            h1 { font-size: 1.7rem; }
-            h2 { font-size: 1.3rem; padding: 14px 18px; }
-            th, td { padding: 10px 5px; font-size: 0.85rem; }
-            .whatsapp-btn, .review-btn, .instagram-btn { padding: 8px 14px; font-size: 0.8rem; min-width: 120px; }
-        }
-        @media (max-width: 300px) {
-            .whatsapp-btn span:not(.btn-icon), .review-btn span:not(.btn-icon), .instagram-btn span:not(.btn-icon) { display: none; }
-            .whatsapp-btn, .review-btn, .instagram-btn { padding: 8px; border-radius: 50%; width: 45px; height: 45px; justify-content: center; min-width: auto; }
-            .btn-icon { margin-right: 0; font-size: 18px; }
-        }
+        
+        .local-badge { background: #D9F0CA; color: #2C6E2C; }
+        
+        .mouthfresh-section td:first-child { font-weight: 700; color: #FF8F3C; }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="container">
-            <div class="logo-container">
-                <div class="logo-placeholder" style="text-align: center; margin-bottom: 20px;">
-                    <div style="font-family: 'Roboto', sans-serif; font-size: 3rem; color: #2E7D32; font-weight: 800; margin-bottom: 10px;">AMT</div>
-                    <div style="font-size: 1.3rem; color: #388E3C; font-weight: 700;">AL Mubarak Al Tijarah</div>
-                    <div style="font-size: 1.1rem; color: #4CAF50; font-weight: 600; font-style: italic;">FRESH AS EXPECTED</div>
-                </div>
+<div class="app-wrapper">
+    <div class="hero-header">
+        <div class="amt-brand">AMT <span style="font-weight:400">Fresh Market</span></div>
+        <div class="amt-sub">AL Mubarak Al Tijarah • Fresh as Expected</div>
+        <div class="policy-badge">✅ Satisfaction First: Pay after you're happy!</div>
+    </div>
+    
+    <!-- Easy navigation: click section to view only that category -->
+    <div class="easy-tip">
+        <span>👆</span> TAP on any category below — fruits, veggies, bhaji, or specialties — to view products quickly. No more scrolling!
+    </div>
+    
+    <div class="category-tabs">
+        <button class="tab-btn active" data-tab="fruits">🍎 Fruits</button>
+        <button class="tab-btn" data-tab="berries">🍇 Berries & Grapes</button>
+        <button class="tab-btn" data-tab="vegetables">🥦 Vegetables</button>
+        <button class="tab-btn" data-tab="bhaji">🌿 Fresh Bhaji (Greens)</button>
+        <button class="tab-btn" data-tab="specialty">✨ Specialties & Mukhwas</button>
+    </div>
+    
+    <!-- =========================  PANEL 1: FRUITS ========================= -->
+    <div id="fruitsPanel" class="panel active-panel">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>🍊 Fresh Fruits Collection</h2>
+                <p>Premium origin | Bulk & fresh | Price range per pack</p>
             </div>
-            
-            <h1>Premium Fresh Products Price List</h1>
-            
-            <div class="tagline-container">
-                <p class="tagline">Fresh Vegetables, Fruits & Bhaaji delivered directly to your doorstep</p>
-                <p class="tagline">Bulk quantities perfect for weekly use - save both time and money</p>
-                <p class="tagline">Premium quality guaranteed with every delivery</p>
-                <div class="policy">Satisfaction First: Pay Only After You're Happy!</div>
-                <div class="price-note">📊 Market Update: Prices shown are ranges (min - max) based on availability & seasonality</div>
-            </div>
-
-            <!-- Fresh Fruits Section (same as before but with ranges) -->
-            <h2>Fresh Fruits <span class="section-icon">🍎</span></h2>
-            <table class="fruits-section">
-                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+            <table class="market-table">
+                <thead><tr><th>Item</th><th>Origin</th><th>Weight / Pack</th><th>Avg Price (AED)</th></tr></thead>
                 <tbody>
-                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>72</td><td>50-70</td></tr>
-                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>88</td><td>55-75</td></tr>
-                    <tr><td>Orange-Valencia</td><td>Egypt</td><td>15 kg</td><td>64</td><td>60-85</td></tr>
-                    <tr><td>Orange-Navel</td><td>Egypt</td><td>8 kg</td><td>24</td><td>30-45</td></tr>
-                    <tr><td>Mandarin</td><td>Egypt</td><td>9/10 kg</td><td>50</td><td>40-58</td></tr>
-                    <tr><td>Banana</td><td>Ecuador</td><td>14 kg</td><td>70</td><td>60-85</td></tr>
-                    <tr><td>Apple-Premium</td><td>Iran</td><td>10 kg</td><td>50</td><td>40-60</td></tr>
-                    <tr><td>Green Apple</td><td>New zealand</td><td>14 kg</td><td>80/85</td><td>110-135</td></tr>
-                    <tr><td>Mango</td><td>Yemen</td><td>2 kg</td><td>8//9</td><td>40-60</td></tr>
-                    <tr><td>Pomegranate</td><td>India</td><td>1.8 kg</td><td>9//10</td><td>22-35</td></tr>
-                    <tr><td>Avacado</td><td>Uganda</td><td>2.8 kg</td><td>10//12</td><td>40-65</td></tr>
-                    <tr><td>Watermelon</td><td>Iran</td><td>8/9 kg</td><td>1</td><td>15-28</td></tr>
-                    <tr><td>Pineapple</td><td>India</td><td>7/8 kg</td><td>6</td><td>40-60</td></tr>
-                    <tr><td>Fresh Coconut</td><td>Srilanka</td><td>-</td><td>6</td><td>35-55</td></tr>
+                    <tr><td>Orange-Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg (72 pcs)</td><td><span class="price-range">50-70</span></td></tr>
+                    <tr><td>Orange-Navel</td><td><span class="origin-badge">Egypt</span></td><td>8 kg (24 pcs)</td><td><span class="price-range">30-45</span></td></tr>
+                    <tr><td>Mandarin (Pakistan)</td><td><span class="origin-badge">Pakistan</span></td><td>10 kg (48-54 pcs)</td><td><span class="price-range">35-55</span></td></tr>
+                    <tr><td>Mandarin (Spain)</td><td><span class="origin-badge">Spain</span></td><td>10 kg (60 pcs)</td><td><span class="price-range">75-95</span></td></tr>
+                    <tr><td>Banana Ecuador</td><td><span class="origin-badge">Ecuador</span></td><td>14 kg (70 pcs)</td><td><span class="price-range">60-85</span></td></tr>
+                    <tr><td>Apple Premium (Iran)</td><td><span class="origin-badge">Iran</span></td><td>10 kg (50-60 pcs)</td><td><span class="price-range">40-60</span></td></tr>
+                    <tr><td>Green Apple (New Zealand)</td><td><span class="origin-badge">New Zealand</span></td><td>14 kg (80-85 pcs)</td><td><span class="price-range">110-135</span></td></tr>
+                    <tr><td>Mango (Yemen)</td><td><span class="origin-badge">Yemen</span></td><td>2 kg (8-9 pcs)</td><td><span class="price-range">40-60</span></td></tr>
+                    <tr><td>Pomegranate (India)</td><td><span class="origin-badge">India</span></td><td>1.8 kg (9-10 pcs)</td><td><span class="price-range">22-35</span></td></tr>
+                    <tr><td>Avocado (Uganda)</td><td><span class="origin-badge">Uganda</span></td><td>2.8 kg (10-12 pcs)</td><td><span class="price-range">40-65</span></td></tr>
+                    <tr><td>Watermelon (Oman/Iran)</td><td><span class="origin-badge">Oman/Iran</span></td><td>8-9 kg each</td><td><span class="price-range">15-28</span></td></tr>
+                    <tr><td>Pineapple (India)</td><td><span class="origin-badge">India</span></td><td>7-8 kg (6 pcs)</td><td><span class="price-range">40-60</span></td></tr>
+                    <tr><td>Fresh Coconut (Srilanka)</td><td><span class="origin-badge">Srilanka</span></td><td>6 pcs</td><td><span class="price-range">35-55</span></td></tr>
                 </tbody>
             </table>
-
-            <!-- Fresh Berries Section (UPDATED with new grapes items) -->
-            <h2>Fresh Berries & Grapes <span class="section-icon">🍇</span></h2>
-            <table class="berries-section">
-                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
-                <tbody>
-                    <tr><td>BlueBerry</td><td>Peru</td><td>125 gm</td><td>-</td><td>8-14</td></tr>
-                    <tr><td>BlueBerry</td><td>Peru</td><td>500 gm</td><td>-</td><td>35-55</td></tr>
-                    <tr><td>BlueBerry</td><td>Africa</td><td>125 gm</td><td>-</td><td>7-12</td></tr>
-                    <tr><td>BlueBerry</td><td>Africa</td><td>500 gm</td><td>-</td><td>30-48</td></tr>
-                    <tr><td>Strawberry</td><td>Egypt</td><td>250 gm</td><td>-</td><td>4-8</td></tr>
-                    <tr><td>Strawberry</td><td>Egypt</td><td>1 kg</td><td>-</td><td>12-20</td></tr>
-                    <tr><td>Strawberry</td><td>Morocco</td><td>1 Kg</td><td>-</td><td>32-50</td></tr>
-                    <tr><td>Lychee</td><td>Africa</td><td>2.25 kg</td><td>-</td><td>65-90</td></tr>
-                    <tr><td>Lychee</td><td>Madagascar</td><td>2.25 kg</td><td>-</td><td>40-65</td></tr>
-                    <tr><td>Longan</td><td>Thailand</td><td>1 kg</td><td>-</td><td>30-48</td></tr>
-                    <tr><td>Red Grapes</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45-70</td></tr>
-                    <tr><td>Red Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55-85</td></tr>
-                    <tr><td>Black Grape</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>45-70</td></tr>
-                    <tr><td>Black Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td>-</td><td>55-85</td></tr>
-                    <!-- NEW ITEMS ADDED: Green Grapes Australia -->
-                    <tr><td>🍇 Green Grapes Seedless</td><td>Australia</td><td>1 kg</td><td>-</td><td>45-60</td></tr>
-                    <tr><td>🍇 Green Grapes Seedless (Broken)</td><td>Australia</td><td>1 kg</td><td>-</td><td>20-30</td></tr>
-                </tbody>
-            </table>
-
-            <!-- Fresh Vegetables Section -->
-            <h2>Fresh Vegetables <span class="section-icon">🥦</span></h2>
-            <table class="vegetables-section">
-                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
-                <tbody>
-                    <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td>6-12</td></tr>
-                    <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td>25-42</td></tr>
-                    <tr><td>Green Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td>35-55</td></tr>
-                    <tr><td>Cucumber</td><td>Iran</td><td>10 kg</td><td>-</td><td>30-50</td></tr>
-                    <tr><td>Ginger</td><td>China</td><td>2.5 kg</td><td>-</td><td>20-35</td></tr>
-                    <tr><td>Garlic</td><td>China</td><td>1.8 kg</td><td>-</td><td>25-40</td></tr>
-                    <tr><td>Carrot</td><td>China</td><td>3.5 kg</td><td>-</td><td>15-28</td></tr>
-                    <tr><td>Lemon</td><td>Egypt</td><td>10 kg</td><td>-</td><td>55-85</td></tr>
-                    <tr><td>Onion</td><td>India</td><td>5 kg</td><td>-</td><td>15-28</td></tr>
-                    <tr><td>Lady's finger</td><td>India</td><td>5 kg</td><td>-</td><td>35-55</td></tr>
-                    <tr><td>French Beans</td><td>India</td><td>5 kg</td><td>-</td><td>40-65</td></tr>
-                    <tr><td>Bottle Gourd</td><td>India</td><td>5 kg</td><td>-</td><td>35-55</td></tr>
-                    <tr><td>Bitter gourd</td><td>India</td><td>5 kg</td><td>-</td><td>45-70</td></tr>
-                    <tr><td>Cauliflower</td><td>Iran</td><td>7 kg</td><td>-</td><td>40-65</td></tr>
-                    <tr><td>Broccoli</td><td>Iran</td><td>4 kg</td><td>-</td><td>55-85</td></tr>
-                </tbody>
-            </table>
-
-            <!-- Fresh Bhaji Section -->
-            <h2>Fresh Bhaji (Leafy Greens) <span class="section-icon">🌿</span></h2>
-            <table class="bhaji-section">
-                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
-                <tbody>
-                    <tr><td>Spinach/Palak</td><td>Alain</td><td>1 kg</td><td>-</td><td>5-9</td></tr>
-                    <tr><td>Mint</td><td>Alain</td><td>1 kg</td><td>-</td><td>7-12</td></tr>
-                    <tr><td>Coriander/Dhanya</td><td>Alain</td><td>1 kg</td><td>-</td><td>7-13</td></tr>
-                    <tr><td>Curry leaves/ Kari Patta</td><td>Alain</td><td>250 gm</td><td>-</td><td>7-12</td></tr>
-                    <tr><td>Spring onion</td><td>Alain</td><td>1 kg</td><td>-</td><td>10-18</td></tr>
-                    <tr><td>Methi</td><td>Alain</td><td>1 kg</td><td>-</td><td>7-13</td></tr>
-                </tbody>
-            </table>
-
-            <!-- 🆕 NEW SECTION: Premium Baby Vegetables & Specialty Items -->
-            <h2>Premium Baby Vegetables & Specialty <span class="section-icon">🥕🍄</span></h2>
-            <table class="baby-section">
-                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
-                <tbody>
-                    <!-- Baby carrots, baby corn, mushrooms, cherry tomatoes + more UAE-relevant baby veg -->
-                    <tr><td>🥕 Baby Carrots (Peeled & Ready)</td><td>UAE / Netherlands</td><td>250 gm</td><td>-</td><td>9-18</td></tr>
-                    <tr><td>🌽 Baby Corn</td><td>Thailand / India</td><td>200 gm</td><td>10-12 pcs</td><td>9-18</td></tr>
-                    <tr><td>🍄 Baby Mushrooms (White)</td><td>Iran / UAE</td><td>200 gm</td><td>-</td><td>9-18</td></tr>
-                    <tr><td>🍅 Cherry Tomato (Red)</td><td>Iran / Turkey</td><td>250 gm</td><td>15-20 pcs</td><td>9-18</td></tr>
-                    <tr><td>🍅 Cherry Tomato (Yellow/Mix)</td><td>Netherlands</td><td>250 gm</td><td>15-18 pcs</td><td>9-18</td></tr>
-                    <tr><td>🥒 Baby Cucumber / Gherkins</td><td>Iran / UAE</td><td>250 gm</td><td>8-10 pcs</td><td>9-18</td></tr>
-                    <tr><td>🥦 Baby Broccoli Florets</td><td>Iran / Kenya</td><td>200 gm</td><td>-</td><td>9-18</td></tr>
-                    <tr><td>🥬 Baby Zucchini / Courgette</td><td>Iran / Italy</td><td>250 gm</td><td>4-5 pcs</td><td>9-18</td></tr>
-                    <tr><td>🍆 Baby Eggplant (Brinjal Mini)</td><td>India / UAE</td><td>250 gm</td><td>6-8 pcs</td><td>9-18</td></tr>
-                    <tr><td>🌶️ Baby Bell Peppers (Mix - Red/Yellow/Orange)</td><td>Netherlands / Iran</td><td>200 gm</td><td>5-7 pcs</td><td>9-18</td></tr>
-                    <tr><td>🧅 Baby Onion (Pearl Onion)</td><td>India / Egypt</td><td>200 gm</td><td>12-15 pcs</td><td>9-18</td></tr>
-                    <tr><td>🥔 Baby Potato (Creamer)</td><td>Egypt / Pakistan</td><td>250 gm</td><td>8-10 pcs</td><td>9-18</td></tr>
-                    <tr><td>🍠 Baby Beetroot</td><td>India / Lebanon</td><td>250 gm</td><td>4-6 pcs</td><td>9-18</td></tr>
-                    <tr><td>🌱 Microgreens Mix (Seasonal)</td><td>UAE (Local)</td><td>100 gm</td><td>-</td><td>9-18</td></tr>
-                    <tr><td>🥗 Edible Flowers (Garnish Pack)</td><td>UAE / Netherlands</td><td>50 gm</td><td>10-12 flowers</td><td>9-18</td></tr>
-                    <tr><td>🍄 Shiitake Mushrooms (Baby size)</td><td>China / Korea</td><td>150 gm</td><td>-</td><td>9-18</td></tr>
-                </tbody>
-            </table>
-
-            <div class="disclaimer">
-                <strong>📌 Market Update Note:</strong> All prices are shown as estimated ranges (minimum - maximum) due to market fluctuations, seasonality, and availability. Final price may vary based on daily market rates, quality grade, and stock. The "Premium Baby Vegetables & Specialty" section items are priced between 9–18 AED per pack (approx weight 150-250g) depending on season and origin. Contact us for exact quote.
-            </div>
         </div>
     </div>
-
-    <div class="action-buttons">
-        <a href="https://www.instagram.com/almubarakaltijarah/" class="instagram-btn" target="_blank"><span class="btn-icon">📸</span> Follow Us</a>
-        <a href="https://maps.app.goo.gl/L29gi7fLLJvRXWUM8?g_st=ig" class="review-btn" target="_blank"><span class="btn-icon">⭐</span> Rate Us</a>
-        <a href="https://wa.me/971521790412" class="whatsapp-btn" target="_blank"><span class="btn-icon">💬</span> WhatsApp Us</a>
+    
+    <!-- =========================  PANEL 2: BERRIES & GRAPES (added green grapes AU) ========================= -->
+    <div id="berriesPanel" class="panel">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>🍇 Berries & Premium Grapes</h2>
+                <p>Fresh, juicy & exotic selections</p>
+            </div>
+            <table class="market-table">
+                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Avg Price (AED)</th></tr></thead>
+                <tbody>
+                    <tr><td>Blueberry (Peru)</td><td>Peru</td><td>125 gm / 500 gm</td><td><span class="price-range">8-14 / 35-55</span></td></tr>
+                    <tr><td>Strawberry (Egypt)</td><td>Egypt</td><td>250 gm / 1 kg</td><td><span class="price-range">4-8 / 12-20</span></td></tr>
+                    <tr><td>Lychee (Africa)</td><td>Africa</td><td>2.25 kg</td><td><span class="price-range">65-90</span></td></tr>
+                    <tr><td>Longan (Thailand)</td><td>Thailand</td><td>1 kg</td><td><span class="price-range">30-48</span></td></tr>
+                    <tr><td>Red Grapes Seedless (Lebanon)</td><td>Lebanon</td><td>3.5 kg</td><td><span class="price-range">55-85</span></td></tr>
+                    <tr><td>Black Grape Seedless</td><td>Lebanon</td><td>3.5 kg</td><td><span class="price-range">55-85</span></td></tr>
+                    <tr><td>🍏 <strong>Green Grapes Seedless (Australia)</strong></td><td>Australia</td><td>1 kg</td><td><span class="price-range">45-60</span></td></tr>
+                    <tr><td>🍏 Green Grapes Broken (Australia)</td><td>Australia</td><td>1 kg</td><td><span class="price-range">20-30</span></td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+    
+    <!-- =========================  PANEL 3: VEGETABLES (origin updates: UAE local produce) ========================= -->
+    <div id="vegetablesPanel" class="panel">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>🥬 Farm Fresh Vegetables</h2>
+                <p>Locally sourced from UAE farms & international origins</p>
+            </div>
+            <table class="market-table">
+                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Avg Price (AED)</th></tr></thead>
+                <tbody>
+                    <tr><td>Potato</td><td>Pakistan / UAE</td><td>4 kg / 7 kg</td><td><span class="price-range">6-12 / 15-25</span></td></tr>
+                    <tr><td>Tomato</td><td>Iran / Local UAE</td><td>10 kg</td><td><span class="price-range">25-42</span></td></tr>
+                    <tr><td>Green Capsicum</td><td>Iran / UAE</td><td>5 kg</td><td><span class="price-range">35-55</span></td></tr>
+                    <tr><td>Cucumber</td><td>Iran / UAE farms</td><td>10 kg</td><td><span class="price-range">30-50</span></td></tr>
+                    <tr><td>Ginger & Garlic</td><td>China / India</td><td>1.8-2.5 kg</td><td><span class="price-range">20-40</span></td></tr>
+                    <tr><td>Lemon</td><td>Egypt / Africa</td><td>10 kg</td><td><span class="price-range">45-85</span></td></tr>
+                    <tr><td>Onion (India/Iran)</td><td>India / Iran</td><td>5-18 kg</td><td><span class="price-range">8-50 (varies)</span></td></tr>
+                    <tr><td>Lady's finger / Okra</td><td>India / UAE</td><td>5 kg</td><td><span class="price-range">35-55</span></td></tr>
+                    <tr><td>French Beans</td><td>India / Kenya</td><td>5 kg</td><td><span class="price-range">40-65</span></td></tr>
+                    <tr><td>Bottle Gourd (Lauki)</td><td>India / Iran</td><td>5 kg</td><td><span class="price-range">25-45</span></td></tr>
+                    <tr><td>Bitter Gourd (Karela)</td><td>India / UAE</td><td>5 kg</td><td><span class="price-range">45-70</span></td></tr>
+                    <tr><td>Cauliflower & Broccoli</td><td>Iran / Local</td><td>4-7 kg</td><td><span class="price-range">40-85</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- =========================  PANEL 4: BHAJI (greens) - updated: origin 'Local Produce, UAE' ========================= -->
+    <div id="bhajiPanel" class="panel">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>🌱 Fresh Bhaji (Leafy Greens)</h2>
+                <p>Harvested daily from UAE local farms | farm-to-fork freshness</p>
+            </div>
+            <table class="market-table">
+                <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Avg Price (AED)</th></tr></thead>
+                <tbody>
+                    <tr><td>Spinach / Palak</td><td><span class="origin-badge local-badge">🇦🇪 Local Produce, UAE</span></td><td>1 kg bunch</td><td><span class="price-range">5-9</span></td></tr>
+                    <tr><td>Mint (Pudina)</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td><span class="price-range">7-12</span></td></tr>
+                    <tr><td>Coriander / Dhanya</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td><span class="price-range">7-13</span></td></tr>
+                    <tr><td>Curry leaves / Kari Patta</td><td><span class="origin-badge local-badge">Local UAE farms</span></td><td>250 gm</td><td><span class="price-range">7-12</span></td></tr>
+                    <tr><td>Spring onion (Hara Pyaz)</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td><span class="price-range">10-18</span></td></tr>
+                    <tr><td>Methi (Fenugreek)</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td><span class="price-range">7-13</span></td></tr>
+                </tbody>
+            </table>
+            <div style="padding: 12px 20px 18px; font-size: 0.75rem; color:#588157;"><span>📍</span> All bhaji items now sourced from local UAE growers — super fresh, less transport time.</div>
+        </div>
+    </div>
+    
+    <!-- =========================  PANEL 5: SPECIALTIES & MUKHWAS + BABY VEG, mouth freshener section ========================= -->
+    <div id="specialtyPanel" class="panel">
+        <div class="section-card">
+            <div class="section-header">
+                <h2>✨ Specialties • Baby Veg • Mukhwas</h2>
+                <p>Premium small batches & traditional mouth fresheners</p>
+            </div>
+            <table class="market-table">
+                <thead><tr><th>Item</th><th>Origin / Info</th><th>Pack Size</th><th>Price (AED)</th></tr></thead>
+                <tbody>
+                    <!-- Baby vegetables (range 9-18 as requested) -->
+                    <tr><td>🥕 Baby Carrots (peeled)</td><td>UAE / Netherlands</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🌽 Baby Corn</td><td>Thailand / India</td><td>200 gm (10-12 pcs)</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🍄 Baby Mushrooms (White)</td><td>Iran / UAE</td><td>200 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🍅 Cherry Tomato (Red / Yellow mix)</td><td>Iran / Turkey</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🥒 Baby Cucumber (Gherkins)</td><td>Iran / Local UAE</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🥦 Baby Broccoli Florets</td><td>Iran / Kenya</td><td>200 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🍆 Baby Eggplant (Brinjal mini)</td><td>India / UAE</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🌶️ Baby Bell Peppers (mix colors)</td><td>Netherlands / Iran</td><td>200 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🧅 Pearl Onion (Baby onion)</td><td>India / Egypt</td><td>200 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🥔 Baby Potato (Creamer)</td><td>Egypt / Pakistan</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <tr><td>🍠 Baby Beetroot</td><td>India / Lebanon</td><td>250 gm</td><td><span class="price-range">9-18</span></td></tr>
+                    <!-- MOUTHFRESHNER & MUKHWAS section (2-4 AED) -->
+                    <tr style="background:#FFF7EB;"><td>🌿 <strong>Mouth Freshener (Classic Saunf Mix)</strong></td><td>Indian traditional</td><td>50 gm pouch</td><td><span class="price-range">2-4</span></td></tr>
+                    <tr style="background:#FFF7EB;"><td>🍬 <strong>Indian Mukhwas (Sweet & Fennel)</strong></td><td>Homestyle blend</td><td>50 gm</td><td><span class="price-range">2-4</span></td></tr>
+                    <tr style="background:#FFF7EB;"><td>🌱 <strong>Indian Fresh Leaf Mukhwas (Handmade)</strong></td><td>Betel leaf / traditional recipe</td><td>30 gm (fresh pack)</td><td><span class="price-range">2-4</span></td></tr>
+                    <tr style="background:#FFF7EB;"><td>🌸 <strong>Premium Rose & Mint Mukhwas</strong></td><td>Handcrafted, no added sugar</td><td>40 gm</td><td><span class="price-range">2-4</span></td></tr>
+                </tbody>
+            </table>
+            <div style="padding: 12px 20px; background: #FEF3E2; border-radius: 0 0 24px 24px; font-size: 0.75rem;">✨ Mukhwas & mouth freshener range: 2-4 AED per small pack — perfect after meals, traditional Indian digestives.</div>
+        </div>
+    </div>
+    
+    <div class="disclaimer-note">
+        <strong>📌 Important Market Update:</strong> All prices are approximate ranges due to season & availability. Local bhaji is now sourced from UAE farms (Al Ain & other emirates replaced by “Local Produce, UAE”). Prices are indicative, contact for daily best rate.
+    </div>
+</div>
+
+<!-- Floating social/contact buttons -->
+<div class="action-buttons-fixed">
+    <a href="https://wa.me/971521790412" class="float-btn whats" target="_blank">💬 WhatsApp Order</a>
+    <a href="https://www.instagram.com/almubarakaltijarah/" class="float-btn insta" target="_blank">📸 Instagram</a>
+    <a href="https://maps.app.goo.gl/L29gi7fLLJvRXWUM8" class="float-btn" style="background:#2C6E2C;" target="_blank">⭐ Rate Us</a>
+</div>
+
+<script>
+    // TAB SWITCHING LOGIC - easy page-less navigation
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = {
+        fruits: document.getElementById('fruitsPanel'),
+        berries: document.getElementById('berriesPanel'),
+        vegetables: document.getElementById('vegetablesPanel'),
+        bhaji: document.getElementById('bhajiPanel'),
+        specialty: document.getElementById('specialtyPanel')
+    };
+    
+    function activateTab(tabId) {
+        // remove active from all panels and tabs
+        Object.values(panels).forEach(panel => {
+            if(panel) panel.classList.remove('active-panel');
+        });
+        tabs.forEach(btn => btn.classList.remove('active'));
+        
+        // show selected panel
+        if(panels[tabId]) panels[tabId].classList.add('active-panel');
+        const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        if(activeBtn) activeBtn.classList.add('active');
+    }
+    
+    tabs.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tabName = btn.getAttribute('data-tab');
+            if(tabName) activateTab(tabName);
+            // smooth scroll to top of tabs for better UX
+            window.scrollTo({ top: document.querySelector('.category-tabs').offsetTop - 20, behavior: 'smooth' });
+        });
+    });
+    
+    // default active: fruits (already active)
+    // small extra: for freshness, if URL hash
+    if(window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        if(panels[hash]) activateTab(hash);
+    }
+</script>
 </body>
 </html>
