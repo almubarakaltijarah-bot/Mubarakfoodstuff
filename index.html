@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
         
-        /* FIXED ACTION DOCK - BOTTOM CENTERED (no right-side overlap) */
+        /* FIXED ACTION DOCK - BOTTOM CENTERED */
         .action-dock {
             position: fixed;
             bottom: 16px;
@@ -109,13 +109,13 @@
             margin-top: 12px;
         }
         
-        /* ENHANCED TABS with visual arrow & finger hint - more professional */
+        /* TABS CONTAINER */
         .category-tabs {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 8px;
-            margin: 20px 0 16px;
+            margin: 20px 0 12px;
             position: sticky;
             top: 8px;
             background: rgba(255, 252, 240, 0.96);
@@ -127,11 +127,11 @@
             border: 1px solid rgba(167, 199, 138, 0.5);
         }
         
-        /* Animated hand pointer hint */
+        /* PROFESSIONAL HINT - BELOW TABS (repositioned) */
         .swipe-hint {
             display: flex;
             justify-content: center;
-            margin: -8px 0 8px 0;
+            margin: 4px 0 18px 0;
             font-size: 0.75rem;
             font-weight: 500;
             color: #C55A11;
@@ -139,15 +139,15 @@
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
-            padding: 5px 16px;
+            padding: 6px 18px;
             border-radius: 40px;
-            gap: 8px;
+            gap: 10px;
             align-items: center;
             border: 1px solid #FFDEB3;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
         
-        .swipe-hint span {
+        .swipe-hint span:first-child {
             font-size: 1rem;
             animation: fingerWiggle 1.2s ease-in-out infinite;
             display: inline-block;
@@ -264,7 +264,7 @@
         }
         .panel[data-theme="specialty"] .section-header h2 { color: #BF5E00; font-weight: 800; }
         
-        /* TABLE STYLES */
+        /* TABLE STYLES - fixed alignment */
         .section-card {
             border-radius: 32px;
             overflow: hidden;
@@ -328,6 +328,7 @@
             font-size: 0.7rem;
             font-weight: 600;
             display: inline-block;
+            white-space: nowrap;
         }
         .local-badge {
             background: #CFEBCD;
@@ -351,7 +352,7 @@
             .market-table td, .market-table th { padding: 10px 6px 10px 12px; font-size: 0.75rem; }
             .action-dock a { padding: 8px 14px; font-size: 0.7rem; }
             .action-dock { gap: 8px; bottom: 12px; }
-            .swipe-hint { font-size: 0.65rem; padding: 4px 14px; }
+            .swipe-hint { font-size: 0.65rem; padding: 5px 14px; margin-bottom: 14px; }
         }
         
         .tab-highlight {
@@ -371,17 +372,18 @@
         <div class="floating-badge">✅ Satisfaction First: Pay after you're happy!</div>
     </div>
     
-    <!-- PROFESSIONAL VISUAL HINT: hand gesture + arrow instead of long text -->
-    <div class="swipe-hint">
-        <span>👉</span> Browse all categories <span>👆</span> <span style="font-size:0.9rem;">|</span> <span>🍎 🍇 🥦 🌿 ✨</span>
-    </div>
-    
+    <!-- TABS FIRST -->
     <div class="category-tabs">
         <button class="tab-btn active" data-tab="fruits">🍎 Fruits</button>
         <button class="tab-btn" data-tab="berries">🍇 Berries & Grapes</button>
         <button class="tab-btn" data-tab="vegetables">🥦 Vegetables</button>
         <button class="tab-btn" data-tab="bhaji">🌿 Fresh Bhaji</button>
         <button class="tab-btn" data-tab="specialty">✨ Baby Veg & Mukhwas</button>
+    </div>
+    
+    <!-- PROFESSIONAL VISUAL HINT - NOW BELOW TABS (repositioned) -->
+    <div class="swipe-hint">
+        <span>👉</span> Tap any category to explore <span>👆</span> <span style="font-size:0.9rem;">|</span> <span>🍎 🍇 🥦 🌿 ✨</span>
     </div>
     
     <!-- PANEL 1: FRUITS - ALPHABETICAL ORDER -->
@@ -393,57 +395,56 @@
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></table></thead>
                     <tbody>
-                        <!-- Sorted alphabetically by item name -->
-                        <tr><td>Apple</td><td><span class="origin-badge">Iran</span></td><td>8/9 kg</td><td>55/60</td><td><span class="price-range">35-50</span></td></tr>
-                        <tr><td>Apple</td><td><span class="origin-badge">Italy</span></td><td>14 kg</td><td>90/95</td><td><span class="price-range">115-145</span></td></tr>
-                        <tr><td>Apple</td><td><span class="origin-badge">France</span></td><td>14 kg</td><td>90/95</td><td><span class="price-range">115-140</span></td></tr>
-                        <tr><td>Apple-Premium</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>50</td><td><span class="price-range">40-58</span></td></tr>
-                        <tr><td>Apple-Premium</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>60</td><td><span class="price-range">40-60</span></td></tr>
-                        <tr><td>Avacado</td><td><span class="origin-badge">Uganda</span></td><td>2.8 kg</td><td>10/12</td><td><span class="price-range">40-65</span></td></tr>
-                        <tr><td>Avacado</td><td><span class="origin-badge">Mexico</span></td><td>1 kg</td><td>6/7</td><td><span class="price-range">50-75</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Ecuador</span></td><td>14 kg</td><td>70</td><td><span class="price-range">60-85</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">India</span></td><td>14 kg</td><td>65</td><td><span class="price-range">45-65</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Chiquita</span></td><td>14 kg</td><td>75</td><td><span class="price-range">70-95</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Philippine</span></td><td>14 kg</td><td>75</td><td><span class="price-range">65-88</span></td></tr>
-                        <tr><td>chikoo</td><td><span class="origin-badge">India</span></td><td>1.8 kg</td><td>22/24</td><td><span class="price-range">35-55</span></td></tr>
-                        <tr><td>Custard Apple</td><td><span class="origin-badge">India</span></td><td>2.2 kg</td><td>9/10</td><td><span class="price-range">45-70</span></td></tr>
-                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Srilanka</span></td><td>-</td><td>6</td><td><span class="price-range">35-55</span></td></tr>
-                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Vietnam</span></td><td>-</td><td>9</td><td><span class="price-range">45-68</span></td></tr>
-                        <tr><td>Green Apple</td><td><span class="origin-badge">Africa</span></td><td>13 kg</td><td>70/75</td><td><span class="price-range">85-110</span></td></tr>
-                        <tr><td>Green Apple</td><td><span class="origin-badge">New zealand</span></td><td>14 kg</td><td>80/85</td><td><span class="price-range">110-135</span></td></tr>
-                        <tr><td>Guava</td><td><span class="origin-badge">India</span></td><td>1 kg</td><td>6/7</td><td><span class="price-range">15-25</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Egypt</span></td><td>9/10 kg</td><td>50</td><td><span class="price-range">40-58</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Pakistan</span></td><td>10 kg</td><td>48</td><td><span class="price-range">38-55</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Pakistan</span></td><td>10 kg</td><td>54</td><td><span class="price-range">35-52</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Spain</span></td><td>10 kg</td><td>60</td><td><span class="price-range">75-95</span></td></tr>
-                        <tr><td>Mandarin-Mini</td><td><span class="origin-badge">Egypt</span></td><td>9/10 kg</td><td>70/80</td><td><span class="price-range">35-50</span></td></tr>
-                        <tr><td>Mandarin-Mini</td><td><span class="origin-badge">Spain</span></td><td>10 kg</td><td>90/100</td><td><span class="price-range">95-120</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Yemen</span></td><td>2 kg</td><td>8/9</td><td><span class="price-range">40-60</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Yemen</span></td><td>2 kg</td><td>8/9</td><td><span class="price-range">30-50</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Africa</span></td><td>2.25 kg</td><td>9/10</td><td><span class="price-range">35-55</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Kenya</span></td><td>2.25 kg</td><td>9/10</td><td><span class="price-range">20-38</span></td></tr>
-                        <tr><td>Mangosteen</td><td><span class="origin-badge">Thailand</span></td><td>1 kg</td><td>15/18</td><td><span class="price-range">35-60</span></td></tr>
-                        <tr><td>Mini-Apple</td><td><span class="origin-badge">Iran</span></td><td>2.5 kg</td><td>30</td><td><span class="price-range">12-18</span></td></tr>
-                        <tr><td>Orange-Navel</td><td><span class="origin-badge">Egypt</span></td><td>8 kg</td><td>24</td><td><span class="price-range">30-45</span></td></tr>
-                        <tr><td>Orange-Navel</td><td><span class="origin-badge">Egypt</span></td><td>7 kg</td><td>36</td><td><span class="price-range">22-35</span></td></tr>
-                        <tr><td>Orange-Navel</td><td><span class="origin-badge">Egypt</span></td><td>7 kg</td><td>42</td><td><span class="price-range">25-40</span></td></tr>
-                        <tr><td>Orange-Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>72</td><td><span class="price-range">50-70</span></td></tr>
-                        <tr><td>Orange-Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>88</td><td><span class="price-range">55-75</span></td></tr>
-                        <tr><td>Orange-Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>64</td><td><span class="price-range">60-85</span></td></tr>
-                        <tr><td>Papaya</td><td><span class="origin-badge">Srilanka</span></td><td>10 kg</td><td>6/7</td><td><span class="price-range">50-75</span></td></tr>
-                        <tr><td>Pears</td><td><span class="origin-badge">US</span></td><td>14 kg</td><td>95</td><td><span class="price-range">125-155</span></td></tr>
-                        <tr><td>Pears</td><td><span class="origin-badge">Africa</span></td><td>12 kg</td><td>80/85</td><td><span class="price-range">110-140</span></td></tr>
-                        <tr><td>Pineapple</td><td><span class="origin-badge">India</span></td><td>7/8 kg</td><td>6</td><td><span class="price-range">40-60</span></td></tr>
-                        <tr><td>Pineapple</td><td><span class="origin-badge">Phillippine</span></td><td>15 kg</td><td>9</td><td><span class="price-range">65-90</span></td></tr>
-                        <tr><td>Pineapple-Mini</td><td><span class="origin-badge">Africa</span></td><td>9 kg</td><td>8</td><td><span class="price-range">60-85</span></td></tr>
-                        <tr><td>Pineapple Peeled</td><td><span class="origin-badge">Thailand</span></td><td>500 gm</td><td>5</td><td><span class="price-range">20-32</span></td></tr>
-                        <tr><td>Pomegranate</td><td><span class="origin-badge">India</span></td><td>1.8 kg</td><td>9/10</td><td><span class="price-range">22-35</span></td></tr>
-                        <tr><td>Pomegranate</td><td><span class="origin-badge">Iran</span></td><td>2.2 kg</td><td>12/15</td><td><span class="price-range">27-45</span></td></tr>
-                        <tr><td>Pomelo</td><td><span class="origin-badge">Lebanon</span></td><td>1 kg</td><td>1</td><td><span class="price-range">7-12</span></td></tr>
-                        <tr><td>Watermelon</td><td><span class="origin-badge">Iran</span></td><td>8/9 kg</td><td>1</td><td><span class="price-range">15-28</span></td></tr>
-                        <tr><td>Watermelon</td><td><span class="origin-badge">Oman</span></td><td>8/9 kg</td><td>1</td><td><span class="price-range">15-25</span></td></tr>
+                        <tr><td>Apple</span></span></td><td>Iran</span></span><td>8/9 kg</span></span><td>55/60</span></span><td><span class="price-range">35-50</span></span></span></tr>
+                        <tr><td>Apple</span></span></td><td>Italy</span></span><td>14 kg</span></span><td>90/95</span></span><td><span class="price-range">115-145</span></span></span></tr>
+                        <tr><td>Apple</span></span></td><td>France</span></span><td>14 kg</span></span><td>90/95</span></span><td><span class="price-range">115-140</span></span></span></tr>
+                        <td><td>Apple-Premium</span></span></td><td>Iran</span></span><td>10 kg</span></span><td>50</span></span><td><span class="price-range">40-58</span></span></span></tr>
+                        <tr><td>Apple-Premium</span></span></td><td>Iran</span></span><td>10 kg</span></span><td>60</span></span><td><span class="price-range">40-60</span></span></span></tr>
+                        <tr><td>Avacado</span></span></td><td>Uganda</span></span><td>2.8 kg</span></span><td>10/12</span></span><td><span class="price-range">40-65</span></span></span></tr>
+                        <tr><td>Avacado</span></span></td><td>Mexico</span></span><td>1 kg</span></span><td>6/7</span></span><td><span class="price-range">50-75</span></span></span></tr>
+                        <tr><td>Banana</span></span></td><td>Ecuador</span></span><td>14 kg</span></span><td>70</span></span><td><span class="price-range">60-85</span></span></span></tr>
+                        <tr><td>Banana</span></span></td><td>India</span></span><td>14 kg</span></span><td>65</span></span><td><span class="price-range">45-65</span></span></span></tr>
+                        <tr><td>Banana</span></span></td><td>Chiquita</span></span><td>14 kg</span></span><td>75</span></span><td><span class="price-range">70-95</span></span></span></tr>
+                        <tr><td>Banana</span></span></td><td>Philippine</span></span><td>14 kg</span></span><td>75</span></span><td><span class="price-range">65-88</span></span></span></tr>
+                        <tr><td>chikoo</span></span></td><td>India</span></span><td>1.8 kg</span></span><td>22/24</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                        <tr><td>Custard Apple</span></span></td><td>India</span></span><td>2.2 kg</span></span><td>9/10</span></span><td><span class="price-range">45-70</span></span></span></tr>
+                        <td><td>Fresh Coconut</span></span></td><td>Srilanka</span></span><td>-</span></span><td>6</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                        <tr><td>Fresh Coconut</span></span></td><td>Vietnam</span></span><td>-</span></span><td>9</span></span><td><span class="price-range">45-68</span></span></span></tr>
+                        <tr><td>Green Apple</span></span></td><td>Africa</span></span><td>13 kg</span></span><td>70/75</span></span><td><span class="price-range">85-110</span></span></span></tr>
+                        <tr><td>Green Apple</span></span></td><td>New zealand</span></span><td>14 kg</span></span><td>80/85</span></span><td><span class="price-range">110-135</span></span></span></tr>
+                        <tr><td>Guava</span></span></td><td>India</span></span><td>1 kg</span></span><td>6/7</span></span><td><span class="price-range">15-25</span></span></span></tr>
+                        <tr><td>Mandarin</span></span></td><td>Egypt</span></span><td>9/10 kg</span></span><td>50</span></span><td><span class="price-range">40-58</span></span></span></tr>
+                        <tr><td>Mandarin</span></span></td><td>Pakistan</span></span><td>10 kg</span></span><td>48</span></span><td><span class="price-range">38-55</span></span></span></tr>
+                        <tr><td>Mandarin</span></span></td><td>Pakistan</span></span><td>10 kg</span></span><td>54</span></span><td><span class="price-range">35-52</span></span></span></tr>
+                        <tr><td>Mandarin</span></span></td><td>Spain</span></span><td>10 kg</span></span><td>60</span></span><td><span class="price-range">75-95</span></span></span></tr>
+                        <tr><td>Mandarin-Mini</span></span></td><td>Egypt</span></span><td>9/10 kg</span></span><td>70/80</span></span><td><span class="price-range">35-50</span></span></span></tr>
+                        <tr><td>Mandarin-Mini</span></span></td><td>Spain</span></span><td>10 kg</span></span><td>90/100</span></span><td><span class="price-range">95-120</span></span></span></tr>
+                        <tr><td>Mango</span></span></td><td>Yemen</span></span><td>2 kg</span></span><td>8/9</span></span><td><span class="price-range">40-60</span></span></span></tr>
+                        <tr><td>Mango</span></span></td><td>Yemen</span></span><td>2 kg</span></span><td>8/9</span></span><td><span class="price-range">30-50</span></span></span></tr>
+                        <tr><td>Mango</span></span></td><td>Africa</span></span><td>2.25 kg</span></span><td>9/10</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                        <tr><td>Mango</span></span></td><td>Kenya</span></span><td>2.25 kg</span></span><td>9/10</span></span><td><span class="price-range">20-38</span></span></span></tr>
+                        <tr><td>Mangosteen</span></span></td><td>Thailand</span></span><td>1 kg</span></span><td>15/18</span></span><td><span class="price-range">35-60</span></span></span></tr>
+                        <tr><td>Mini-Apple</span></span></td><td>Iran</span></span><td>2.5 kg</span></span><td>30</span></span><td><span class="price-range">12-18</span></span></span></tr>
+                        <tr><td>Orange-Navel</span></span></td><td>Egypt</span></span><td>8 kg</span></span><td>24</span></span><td><span class="price-range">30-45</span></span></span></tr>
+                        <tr><td>Orange-Navel</span></span></td><td>Egypt</span></span><td>7 kg</span></span><td>36</span></span><td><span class="price-range">22-35</span></span></span></tr>
+                        <tr><td>Orange-Navel</span></span></td><td>Egypt</span></span><td>7 kg</span></span><td>42</span></span><td><span class="price-range">25-40</span></span></span></tr>
+                        <tr><td>Orange-Valencia</span></span></td><td>Egypt</span></span><td>15 kg</span></span><td>72</span></span><td><span class="price-range">50-70</span></span></span></tr>
+                        <tr><td>Orange-Valencia</span></span></td><td>Egypt</span></span><td>15 kg</span></span><td>88</span></span><td><span class="price-range">55-75</span></span></span></tr>
+                        <tr><td>Orange-Valencia</span></span></td><td>Egypt</span></span><td>15 kg</span></span><td>64</span></span><td><span class="price-range">60-85</span></span></span></tr>
+                        <tr><td>Papaya</span></span></td><td>Srilanka</span></span><td>10 kg</span></span><td>6/7</span></span><td><span class="price-range">50-75</span></span></span></tr>
+                        <tr><td>Pears</span></span></td><td>US</span></span><td>14 kg</span></span><td>95</span></span><td><span class="price-range">125-155</span></span></span></tr>
+                        <tr><td>Pears</span></span></td><td>Africa</span></span><td>12 kg</span></span><td>80/85</span></span><td><span class="price-range">110-140</span></span></span></tr>
+                        <tr><td>Pineapple</span></span></td><td>India</span></span><td>7/8 kg</span></span><td>6</span></span><td><span class="price-range">40-60</span></span></span></tr>
+                        <table><td>Pineapple</span></span></td><td>Phillippine</span></span><td>15 kg</span></span><td>9</span></span><td><span class="price-range">65-90</span></span></span></tr>
+                        <tr><td>Pineapple-Mini</span></span></td><td>Africa</span></span><td>9 kg</span></span><td>8</span></span><td><span class="price-range">60-85</span></span></span></tr>
+                        <tr><td>Pineapple Peeled</span></span></td><td>Thailand</span></span><td>500 gm</span></span><td>5</span></span><td><span class="price-range">20-32</span></span></span></tr>
+                        <tr><td>Pomegranate</span></span></td><td>India</span></span><td>1.8 kg</span></span><td>9/10</span></span><td><span class="price-range">22-35</span></span></span></tr>
+                        <tr><td>Pomegranate</span></span></td><td>Iran</span></span><td>2.2 kg</span></span><td>12/15</span></span><td><span class="price-range">27-45</span></span></span></tr>
+                        <tr><td>Pomelo</span></span></td><td>Lebanon</span></span><td>1 kg</span></span><td>1</span></span><td><span class="price-range">7-12</span></span></span></tr>
+                        <tr><td>Watermelon</span></span></td><td>Iran</span></span><td>8/9 kg</span></span><td>1</span></span><td><span class="price-range">15-28</span></span></span></tr>
+                        <tr><td>Watermelon</span></span></td><td>Oman</span></span><td>8/9 kg</span></span><td>1</span></span><td><span class="price-range">15-25</span></span></span></tr>
                     </tbody>
                 </table>
             </div>
@@ -453,26 +454,26 @@
     <!-- PANEL 2: BERRIES - ALPHABETICAL -->
     <div id="berriesPanel" class="panel" data-theme="berries">
         <div class="section-card">
-            <div class="section-header"><h2>🍓 Berries & Fresh Grapes</h2><p>Alphabetical order</p></div>
+            <div class="section-header"><h2>🍓 Berries & Fresh Grapes</h2><p>Sorted A–Z</p></div>
             <div class="table-wrapper">
                 <table class="market-table"><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
                 <tbody>
-                    <tr><td>Black Grape</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>-</td><td><span class="price-range">45-70</span></td></tr>
-                    <tr><td>Black Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>-</td><td><span class="price-range">55-85</span></td></tr>
-                    <tr><td>BlueBerry</td><td><span class="origin-badge">Peru</span></td><td>125 gm</td><td>-</td><td><span class="price-range">8-14</span></td></tr>
-                    <tr><td>BlueBerry</td><td><span class="origin-badge">Peru</span></td><td>500 gm</td><td>-</td><td><span class="price-range">35-55</span></td></tr>
-                    <tr><td>BlueBerry</td><td><span class="origin-badge">Africa</span></td><td>125 gm</td><td>-</td><td><span class="price-range">7-12</span></td></tr>
-                    <tr><td>BlueBerry</td><td><span class="origin-badge">Africa</span></td><td>500 gm</td><td>-</td><td><span class="price-range">30-48</span></td></tr>
-                    <tr><td>Green Grapes Broken (Australia)</td><td><span class="origin-badge">Australia</span></td><td>1 kg</td><td>-</td><td><span class="price-range">20-30</span></td></tr>
-                    <tr><td>Green Grapes Seedless Australia</td><td><span class="origin-badge">Australia</span></td><td>1 kg</td><td>-</td><td><span class="price-range">45-60</span></td></tr>
-                    <tr><td>Longan</td><td><span class="origin-badge">Thailand</span></td><td>1 kg</td><td>-</td><td><span class="price-range">30-48</span></td></tr>
-                    <tr><td>Lychee</td><td><span class="origin-badge">Africa</span></td><td>2.25 kg</td><td>-</td><td><span class="price-range">65-90</span></td></tr>
-                    <tr><td>Lychee</td><td><span class="origin-badge">Madagascar</span></td><td>2.25 kg</td><td>-</td><td><span class="price-range">40-65</span></td></tr>
-                    <tr><td>Red Grapes</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>-</td><td><span class="price-range">45-70</span></td></tr>
-                    <tr><td>Red Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>-</td><td><span class="price-range">55-85</span></td></tr>
-                    <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td>250 gm</td><td>-</td><td><span class="price-range">4-8</span></td></tr>
-                    <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td>1 kg</td><td>-</td><td><span class="price-range">12-20</span></td></tr>
-                    <tr><td>Strawberry</td><td><span class="origin-badge">Morocco</span></td><td>1 Kg</td><td>-</td><td><span class="price-range">32-50</span></td></tr>
+                    <tr><td>Black Grape</span></span></td><td>Lebanon</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">45-70</span></span></span></tr>
+                    <tr><td>Black Grape Seedless</span></span></td><td>Lebanon</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></tr>
+                    <tr><td>BlueBerry</span></span></td><td>Peru</span></span><td>125 gm</span></span><td>-</span></span><td><span class="price-range">8-14</span></span></span></tr>
+                    <tr><td>BlueBerry</span></span></td><td>Peru</span></span><td>500 gm</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                    <tr><td>BlueBerry</span></span></td><td>Africa</span></span><td>125 gm</span></span><td>-</span></span><td><span class="price-range">7-12</span></span></span></tr>
+                    <tr><td>BlueBerry</span></span></td><td>Africa</span></span><td>500 gm</span></span><td>-</span></span><td><span class="price-range">30-48</span></span></span></tr>
+                    <tr><td>Green Grapes Broken (Australia)</span></span></td><td>Australia</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">20-30</span></span></span></tr>
+                    <tr><td>Green Grapes Seedless Australia</span></span></td><td>Australia</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">45-60</span></span></span></tr>
+                    <tr><td>Longan</span></span></td><td>Thailand</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">30-48</span></span></span></tr>
+                    <tr><td>Lychee</span></span></td><td>Africa</span></span><td>2.25 kg</span></span><td>-</span></span><td><span class="price-range">65-90</span></span></span></tr>
+                    <tr><td>Lychee</span></span></td><td>Madagascar</span></span><td>2.25 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></tr>
+                    <tr><td>Red Grapes</span></span></td><td>Lebanon</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">45-70</span></span></span></tr>
+                    <tr><td>Red Grape Seedless</span></span></td><td>Lebanon</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></tr>
+                    <tr><td>Strawberry</span></span></td><td>Egypt</span></span><td>250 gm</span></span><td>-</span></span><td><span class="price-range">4-8</span></span></span></tr>
+                    <tr><td>Strawberry</span></span></td><td>Egypt</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">12-20</span></span></span></tr>
+                    <tr><td>Strawberry</span></span></td><td>Morocco</span></span><td>1 Kg</span></span><td>-</span></span><td><span class="price-range">32-50</span></span></span></tr>
                 </tbody></table>
             </div>
         </div>
@@ -484,67 +485,67 @@
             <div class="section-header"><h2>🥕 Fresh Vegetables</h2><p>Sorted A–Z</p></div>
             <div class="table-wrapper"><table class="market-table"><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
             <tbody>
-                <tr><td>Beetroot</td><td>India</td><td>3 kg</td><td>-</td><td><span class="price-range">12-22</span></td></tr>
-                <tr><td>Bitter gourd</td><td>India</td><td>5 kg</td><td>-</td><td><span class="price-range">45-70</span></td></tr>
-                <tr><td>Bitter gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td><span class="price-range">30-50</span></td></tr>
-                <tr><td>Bottle Gourd</td><td>India</td><td>5 kg</td><td>-</td><td><span class="price-range">35-55</span></td></tr>
-                <tr><td>Bottle Gourd</td><td>Iran</td><td>5 kg</td><td>-</td><td><span class="price-range">25-45</span></td></tr>
-                <tr><td>Brinjal</td><td>India</td><td>5 kg</td><td>-</td><td><span class="price-range">15-28</span></td></tr>
-                <tr><td>Brinjal Big</td><td>India</td><td>5 kg</td><td>-</td><td class="price-range">30-48</td></tr>
-                <tr><td>Brinjal Mini</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">20-35</span></span></span></span></span></tr>
-                <tr><td>Broccoli</span></span></td><td>Iran</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></span></span></tr>
-                <tr><td>Cabbage</span></span></td><td>Iran</span></span><td>12 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></span></span></tr>
-                <tr><td>Carrot</span></span></td><td>China</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">15-28</span></span></span></span></span></tr>
-                <tr><td>Carrot</span></span></td><td>India</span></span><td>6 kg</span></span><td>-</span></span><td><span class="price-range">30-48</span></span></span></span></span></tr>
-                <tr><td>Cauliflower</span></span></td><td>Iran</span></span><td>7 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></span></span></tr>
-                <tr><td>Chilly</span></span></td><td>Indian</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></span></span></tr>
-                <tr><td>Cucumber</span></span><td>Iran</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">30-50</span></span></span></span></span></tr>
-                <tr><td>Drumstick</span></span><td>India</span></span><td>3 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></span></span></tr>
-                <tr><td>French Beans</span></span><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></span></span></tr>
-                <tr><td>Garlic</span></span><td>China</span></span><td>1.8 kg</span></span><td>-</span></span><td><span class="price-range">25-40</span></span></span></span></span></tr>
-                <tr><td>Garlic-Premium</span></span><td>China</span></span><td>250 gm</span></span><td>-</span></span><td><span class="price-range">7-13</span></span></span></span></span></tr>
-                <tr><td>Ginger</span></span><td>China</span></span><td>2.5 kg</span></span><td>-</span></span><td><span class="price-range">20-35</span></span></span></span></span></tr>
-                <tr><td>Ginger</span></span><td>India</span></span><td>1.8 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></span></span></tr>
-                <tr><td>Green Capsicum</span></span><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></span></span></tr>
-                <tr><td>Green papaya</span></span><td>Srilanka</span></span><td>8 kg</span></span><td>-</span></span><td><span class="price-range">20-38</span></span></span></span></span></tr>
-                <tr><td>Green Peas</span></span><td>India</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">10-18</span></span></span></span></span></tr>
-                <tr><td>Lady's finger</span></span><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></span></span></tr>
-                <tr><td>Lemon</span></span><td>Egypt</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></span></span></tr>
-                <tr><td>Lemon</span></span><td>Africa</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">45-72</span></span></span></span></span></tr>
-                <tr><td>Lettuce</span></span><td>Iran</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></span></span></tr>
-                <tr><td>Lime</span></span><td>India</span></span><td>2.5 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></span></span></tr>
-                <tr><td>Lime Seedless</span></span><td>Vietnam</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">25-40</span></span></span></span></span></tr>
-                <tr><td>Mushroom</span></span><td>Iran</span></span><td>150 gm</span></span><td>-</span></span><td><span class="price-range">5-10</span></span></span></span></span></tr>
-                <tr><td>Onion</span></span><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">15-28</span></span></span></span></span></tr>
-                <td><td>Onion</td><td>India</td><td>18 kg</td><td>-</td><td class="price-range">50-80</td></tr>
-                <tr><td>Onion</td><td>Iran</td><td>5 kg</td><td>-</td><td class="price-range">8-15</td></tr>
-                <tr><td>Onion</td><td>Iran</td><td>18 kg</td><td>-</td><td class="price-range">32-55</td></tr>
-                <tr><td>Peeled Garlic</td><td>China</td><td>2.5 kg</td><td>-</td><td class="price-range">25-42</td></tr>
-                <tr><td>Potato</td><td>Pakistan</td><td>4 kg</td><td>-</td><td class="price-range">6-12</td></tr>
-                <tr><td>Potato</td><td>Pakistan</td><td>7 kg</td><td>-</td><td class="price-range">15-25</td></tr>
-                <tr><td>Pumpkin</td><td>Iran</td><td>1 kg</td><td>-</td><td class="price-range">1.5-3.5</td></tr>
-                <tr><td>Pumpkin big</td><td>Iran</td><td>1 kg</td><td>-</td><td class="price-range">1-2.5</td></tr>
-                <tr><td>Red Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td class="price-range">45-70</td></tr>
-                <tr><td>Sweet potato Red</td><td>Egypt</td><td>4 kg</td><td>-</td><td class="price-range">25-42</td></tr>
-                <tr><td>Sweet potato White</td><td>Egypt</td><td>4 kg</td><td>-</td><td class="price-range">20-35</td></tr>
-                <tr><td>Tomato</td><td>Iran</td><td>10 kg</td><td>-</td><td class="price-range">25-42</td></tr>
-                <tr><td>Yellow Capsicum</td><td>Iran</td><td>5 kg</td><td>-</td><td class="price-range">55-80</td></tr>
+                <tr><td>Beetroot</span></span></td><td>India</span></span><td>3 kg</span></span><td>-</span></span><td><span class="price-range">12-22</span></span></span></tr>
+                <tr><td>Bitter gourd</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">45-70</span></span></span></tr>
+                <tr><td>Bitter gourd</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">30-50</span></span></span><tr>
+                <tr><td>Bottle Gourd</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                <tr><td>Bottle Gourd</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></tr>
+                <tr><td>Brinjal</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">15-28</span></span></span></tr>
+                <tr><td>Brinjal Big</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">30-48</span></span></span></tr>
+                <tr><td>Brinjal Mini</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">20-35</span></span></span></tr>
+                <tr><td>Broccoli</span></span></td><td>Iran</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></tr>
+                <tr><td>Cabbage</span></span></td><td>Iran</span></span><td>12 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></tr>
+                <tr><td>Carrot</span></span></td><td>China</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">15-28</span></span></span></tr>
+                <tr><td>Carrot</span></span><tr><td>India</span></span><td>6 kg</span></span><td>-</span></span><td><span class="price-range">30-48</span></span></span></tr>
+                <td><td>Cauliflower</span></span></td><td>Iran</span></span><td>7 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></tr>
+                <tr><td>Chilly</span></span></td><td>Indian</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></tr>
+                <tr><td>Cucumber</span></span></td><td>Iran</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">30-50</span></span></span></tr>
+                <tr><td>Drumstick</span></span></td><td>India</span></span><td>3 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></td>
+                <tr><td>French Beans</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">40-65</span></span></span></tr>
+                <tr><td>Garlic</span></span></td><td>China</span></span><td>1.8 kg</span></span><td>-</span></span><td><span class="price-range">25-40</span></span></span></tr>
+                <tr><td>Garlic-Premium</span></span></td><td>China</span></span><td>250 gm</span></span><td>-</span></span><td><span class="price-range">7-13</span></span></span></td>
+                </td><td>Ginger</span></span></td><td>China</span></span><td>2.5 kg</span></span><td>-</span></span><td><span class="price-range">20-35</span></span></span></tr>
+                <tr><td>Ginger</span></span></td><td>India</span></span><td>1.8 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></tr>
+                <tr><td>Green Capsicum</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></tr>
+                <tr><td>Green papaya</span></span></td><td>Srilanka</span></span><td>8 kg</span></span><td>-</span></span><td><span class="price-range">20-38</span></span></span></td>
+                <tr><td>Green Peas</span></span></td><td>India</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">10-18</span></span></span></tr>
+                <tr><td>Lady's finger</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">35-55</span></span></span></td>
+                <tr><td>Lemon</span></span></td><td>Egypt</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">55-85</span></span></span></tr>
+                <tr><td>Lemon</span></span></td><td>Africa</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">45-72</span></span></span></tr>
+                </tr><td>Lettuce</span></span></td><td>Iran</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">25-45</span></span></span></tr>
+                <tr><td>Lime</span></span></td><td>India</span></span><td>2.5 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></tr>
+                <tr><td>Lime Seedless</span></span></td><td>Vietnam</span></span><td>3.5 kg</span></span><td>-</span></span><td><span class="price-range">25-40</span></span></span></tr>
+                <tr><td>Mushroom</span></span></td><td>Iran</span></span><td>150 gm</span></span><td>-</span></span><td><span class="price-range">5-10</span></span></span></td>
+                <tr><td>Onion</span></span></td><td>India</span></span><td>5 kg</span></span><td>-</span></span><table><td class="price-range">15-28</span></span></td>
+                <tr><td>Onion</span></span></td><td>India</span></span><td>18 kg</span></span><td>-</span></span><td><span class="price-range">50-80</span></span></span></tr>
+                <tr><td>Onion</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">8-15</span></span></span></tr>
+                <tr><td>Onion</span></span></td><td>Iran</span></span><td>18 kg</span></span><td>-</span></span><td><span class="price-range">32-55</span></span></span></tr>
+                </tr><td>Peeled Garlic</span></span></td><td>China</span></span><td>2.5 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></tr>
+                <tr><td>Potato</span></span></td><td>Pakistan</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">6-12</span></span></span></tr>
+                <tr><td>Potato</span></span></td><td>Pakistan</span></span><td>7 kg</span></span><td>-</span></span><td><span class="price-range">15-25</span></span></span></tr>
+                <tr><td>Pumpkin</span></span></td><td>Iran</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">1.5-3.5</span></span></span></td>
+                <tr><td>Pumpkin big</span></span></td><td>Iran</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">1-2.5</span></span></span></tr>
+                <tr><td>Red Capsicum</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">45-70</span></span></span></tr>
+                <tr><td>Sweet potato Red</span></span></td><td>Egypt</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></tr>
+                <tr><td>Sweet potato White</span></span></td><td>Egypt</span></span><td>4 kg</span></span><td>-</span></span><td><span class="price-range">20-35</span></span></span></tr>
+                <tr><td>Tomato</span></span></td><td>Iran</span></span><td>10 kg</span></span><td>-</span></span><td><span class="price-range">25-42</span></span></span></tr>
+                <tr><td>Yellow Capsicum</span></span></td><td>Iran</span></span><td>5 kg</span></span><td>-</span></span><td><span class="price-range">55-80</span></span></span></tr>
             </tbody></table></div>
         </div>
     </div>
     
-    <!-- PANEL 4: BHAJI - alphabetical -->
+    <!-- PANEL 4: BHAJI - alphabetical (fixed alignment) -->
     <div id="bhajiPanel" class="panel" data-theme="bhaji">
         <div class="section-card">
-            <div class="section-header"><h2>🌱 Fresh Bhaji — Local UAE Produce</h2></div>
+            <div class="section-header"><h2>🌱 Fresh Bhaji — Local UAE Produce</h2><p>Farm fresh daily</p></div>
             <div class="table-wrapper"><table class="market-table"><thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
             <tbody>
-                <tr><td>Coriander/Dhanya</span></span><tr><td class="origin-badge local-badge">Local Produce, UAE</td><td>1 kg</td><td>-</td><td class="price-range">7-13</td></tr>
-                <tr><td>Curry leaves/ Kari Patta</td><td class="origin-badge local-badge">Local UAE farms</td><td>250 gm</td><td>-</td><td class="price-range">7-12</td></tr>
-                <tr><td>Methi</td><td class="origin-badge local-badge">Local Produce, UAE</td><td>1 kg</td><td>-</td><td class="price-range">7-13</td></tr>
-                <tr><td>Mint</td><td class="origin-badge local-badge">Local Produce, UAE</td><td>1 kg</td><td>-</td><td class="price-range">7-12</td></tr>
-                <tr><td>Spinach/Palak</td><td class="origin-badge local-badge">Local Produce, UAE</td><td>1 kg</td><td>-</td><td class="price-range">5-9</td></tr>
-                <tr><td>Spring onion</td><td class="origin-badge local-badge">Local Produce, UAE</td><td>1 kg</td><td>-</td><td class="price-range">10-18</td></tr>
+                <tr><td>Coriander/Dhanya</span></span></td><td class="origin-badge local-badge">Local Produce, UAE</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">7-13</span></span></span></tr>
+                <tr><td>Curry leaves/ Kari Patta</span></span></td><td class="origin-badge local-badge">Local UAE farms</span></span><td>250 gm</span></span><td>-</span></span><td><span class="price-range">7-12</span></span></span></tr>
+                <tr><td>Methi</span></span></td><td class="origin-badge local-badge">Local Produce, UAE</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">7-13</span></span></span></tr>
+                <tr><td>Mint</span></span></td><td class="origin-badge local-badge">Local Produce, UAE</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">7-12</span></span></span></tr>
+                <tr><td>Spinach/Palak</span></span></td><td class="origin-badge local-badge">Local Produce, UAE</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">5-9</span></span></span></tr>
+                <tr><td>Spring onion</span></span></td><td class="origin-badge local-badge">Local Produce, UAE</span></span><td>1 kg</span></span><td>-</span></span><td><span class="price-range">10-18</span></span></span></tr>
             </tbody></table></div>
         </div>
     </div>
@@ -555,19 +556,19 @@
             <div class="section-header"><h2>✨ Baby Vegetables & Mukhwas</h2></div>
             <div class="table-wrapper"><table class="market-table"><thead><tr><th>Item</th><th>Origin</th><th>Pack Size</th><th>Price (AED)</th></tr></thead>
             <tbody>
-                <tr><td>🥕 Baby Carrots (peeled)</span></span><td>UAE / Netherlands</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🌶️ Baby Bell Peppers (mix)</span></span><td>Netherlands / Iran</span></span><td>200 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🍠 Baby Beetroot</span></span><td>India / Lebanon</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🥦 Baby Broccoli Florets</span></span><td>Iran / Kenya</span></span><td>200 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🌽 Baby Corn</span></span><td>Thailand / India</span></span><td>200 gm (10-12 pcs)</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🥒 Baby Cucumber (Gherkins)</span></span><td>Iran / Local UAE</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🍆 Baby Eggplant (Brinjal mini)</span></span><td>India / UAE</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🍄 Baby Mushrooms (White)</span></span><td>Iran / UAE</span></span><td>200 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🧅 Pearl Onion (Baby onion)</span></span><td>India / Egypt</span></span><td>200 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🥔 Baby Potato (Creamer)</span></span><td>Egypt / Pakistan</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td>🍅 Cherry Tomato (Red/Yellow)</span></span><td>Iran / Turkey</span></span><td>250 gm</span></span><td class="price-range">9-18</td></tr>
-                <tr><td style="background:#FFF3E0;">🌿 Mouth Freshener (Saunf Gulkand Mix)</td><td>Indian traditional</td><td>20 gm Ball</td><td class="price-range">1-2</td></tr>
-                <tr><td style="background:#FFF3E0;">🌱 Indian Fresh Leaf Mukhwas (Handmade)</td><td>Betel leaf recipe</td><td>1 Pc fresh</td><td class="price-range">2-4</td></tr>
+                <tr><td>🥕 Baby Carrots (peeled)</span></span><td>UAE / Netherlands</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🌶️ Baby Bell Peppers (mix)</span></span><td>Netherlands / Iran</span></span><td>200 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🍠 Baby Beetroot</span></span><td>India / Lebanon</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🥦 Baby Broccoli Florets</span></span><td>Iran / Kenya</span></span><td>200 gm</span></span><td class="price-range">9-18</span></span></td>
+                <tr><td>🌽 Baby Corn</span></span><td>Thailand / India</span></span><td>200 gm (10-12 pcs)</span></span><td class="price-range">9-18</span></span></td>
+                <tr><td>🥒 Baby Cucumber (Gherkins)</span></span><td>Iran / Local UAE</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🍆 Baby Eggplant (Brinjal mini)</span></span><td>India / UAE</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                </tr><td>🍄 Baby Mushrooms (White)</span></span><td>Iran / UAE</span></span><td>200 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🧅 Pearl Onion (Baby onion)</span></span><td>India / Egypt</span></span><td>200 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🥔 Baby Potato (Creamer)</span></span><td>Egypt / Pakistan</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td>🍅 Cherry Tomato (Red/Yellow)</span></span><td>Iran / Turkey</span></span><td>250 gm</span></span><td class="price-range">9-18</span></span></tr>
+                <tr><td style="background:#FFF7EB;">🌿 Mouth Freshener (Saunf Gulkand Mix)</span></span><td>Indian traditional</span></span><td>20 gm Ball</span></span><td class="price-range">1-2</span></span></td>
+                <tr><td style="background:#FFF7EB;">🌱 Indian Fresh Leaf Mukhwas (Handmade)</span></span><td>Betel leaf recipe</span></span><td>1 Pc fresh</span></span><td class="price-range">2-4</span></span></tr>
             </tbody></table></div>
             <div style="padding: 12px 20px; background:#FEF3E2; font-size:0.75rem;">✨ Mukhwas 1-4 AED • Baby vegetables 9-18 AED</div>
         </div>
