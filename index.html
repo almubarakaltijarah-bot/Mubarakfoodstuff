@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>AMT Fresh Market | Complete Catalog</title>
+    <title>AMT Fresh Market | Family Shopping Guide</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231B5E20'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='serif'>🛒</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +115,7 @@
             margin: 18px 0 14px;
         }
         .showcase-chip {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -150,7 +151,27 @@
             color: #555;
         }
 
-        /* chip colors per category */
+        /* ===== NUMBERED CIRCLE BADGE ===== */
+        .chip-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--chip-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+            border: 2px solid white;
+            z-index: 2;
+        }
+
         .chip-fruits  { --chip-color:#F97316; --chip-bg:#FFF5EC; }
         .chip-berries { --chip-color:#D81B60; --chip-bg:#FFF0F6; }
         .chip-veg     { --chip-color:#388E3C; --chip-bg:#F0FBF0; }
@@ -222,6 +243,7 @@
         .search-results-header {
             background: linear-gradient(100deg, #1B5E20, #2E7D32);
             padding: 16px 20px;
+            text-align: center;
         }
         .search-results-header h2 {
             color: white;
@@ -267,8 +289,12 @@
             margin-bottom: 28px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.06);
         }
-        .section-header { padding: 20px 22px 14px; }
+        .section-header {
+            padding: 20px 22px 14px;
+            text-align: center;  /* CENTER ALL SECTION HEADERS */
+        }
         .section-header h2 {
+            justify-content: center;  /* center flex items */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -277,6 +303,7 @@
             font-size: 0.74rem;
             color: #6A6F4D;
             margin-top: 5px;
+            text-align: center;
         }
 
         /* ===== FRUITS THEME ===== */
@@ -362,7 +389,7 @@
         .table-wrapper { overflow-x: auto; width: 100%; }
         .market-table { width: 100%; border-collapse: collapse; min-width: 480px; }
         .market-table th {
-            text-align: left;
+            text-align: center;
             padding: 12px 12px 10px 18px;
             background-color: rgba(240,240,220,0.45);
             font-weight: 700;
@@ -377,6 +404,12 @@
             border-bottom: 1px solid #EAEEDD;
             font-size: 0.85rem;
             vertical-align: middle;
+            text-align: center;
+        }
+        /* Item name left-aligned for readability */
+        .market-table td:first-child {
+            text-align: left;
+            font-weight: 700;
         }
         .market-table tr:last-child td { border-bottom: none; }
         .market-table tr:hover td { background: rgba(0,0,0,0.018); }
@@ -392,6 +425,16 @@
             white-space: nowrap;
             font-family: 'Poppins', sans-serif;
         }
+        .per-kg-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #888;
+            display: block;
+            text-align: center;
+            margin-top: 2px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.3px;
+        }
         .origin-badge {
             background: #EFF7E6;
             color: #2A5A1A;
@@ -404,6 +447,19 @@
             font-family: 'Poppins', sans-serif;
         }
         .local-badge { background: #CFEBCD; color: #165a1f; }
+
+        /* packaging badge */
+        .pack-badge {
+            background: #E8F4FD;
+            color: #1565C0;
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-size: 0.69rem;
+            font-weight: 700;
+            display: inline-block;
+            white-space: nowrap;
+            font-family: 'Poppins', sans-serif;
+        }
 
         /* ===== SEARCH RESULT ROWS ===== */
         .search-section-label {
@@ -433,9 +489,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* ===== CATEGORY INTRO WELCOME (shown before a section is picked) ===== */
-        #welcomeBanner { display: none; }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 680px) {
             .app-wrapper { padding: 14px 10px 100px; }
@@ -448,6 +501,7 @@
             .chip-label { font-size: 0.55rem; }
             .amt-brand { font-size: 1.9rem; }
             .search-input { font-size: 0.82rem; padding: 11px 42px; }
+            .chip-number { width: 20px; height: 20px; font-size: 0.6rem; top: -8px; right: -8px; }
         }
     </style>
 </head>
@@ -465,26 +519,31 @@
     <!-- CATEGORY SHOWCASE STRIP -->
     <div class="category-showcase" id="showcaseStrip">
         <div class="showcase-chip chip-fruits active" data-tab="fruits" onclick="activateSection('fruits')">
+            <div class="chip-number">1</div>
             <div class="chip-icon">🍎</div>
             <div class="chip-label">Fruits</div>
-            <div class="chip-count">48 items</div>
+            <div class="chip-count">36 items</div>
         </div>
         <div class="showcase-chip chip-berries" data-tab="berries" onclick="activateSection('berries')">
+            <div class="chip-number">2</div>
             <div class="chip-icon">🍇</div>
             <div class="chip-label">Berries &<br>Grapes</div>
             <div class="chip-count">16 items</div>
         </div>
         <div class="showcase-chip chip-veg" data-tab="vegetables" onclick="activateSection('vegetables')">
+            <div class="chip-number">3</div>
             <div class="chip-icon">🥦</div>
             <div class="chip-label">Vegetables</div>
-            <div class="chip-count">44 items</div>
+            <div class="chip-count">27 items</div>
         </div>
         <div class="showcase-chip chip-bhaji" data-tab="bhaji" onclick="activateSection('bhaji')">
+            <div class="chip-number">4</div>
             <div class="chip-icon">🌿</div>
             <div class="chip-label">Fresh<br>Bhaji</div>
             <div class="chip-count">6 items</div>
         </div>
         <div class="showcase-chip chip-spec" data-tab="specialty" onclick="activateSection('specialty')">
+            <div class="chip-number">5</div>
             <div class="chip-icon">✨</div>
             <div class="chip-label">Baby Veg &<br>Mukhwas</div>
             <div class="chip-count">13 items</div>
@@ -522,9 +581,9 @@
                             <th>Item</th>
                             <th>Category</th>
                             <th>Origin</th>
-                            <th>Weight</th>
+                            <th>Packaging</th>
                             <th>Pieces</th>
-                            <th>Avg Price (AED)</th>
+                            <th>Price (AED)</th>
                         </tr>
                     </thead>
                     <tbody id="searchResultsBody"></tbody>
@@ -541,61 +600,57 @@
     <div id="fruitsPanel" class="panel active-panel" data-theme="fruits">
         <div class="section-card">
             <div class="section-header">
-                <h2>🍊🍎🍋 Fresh Fruits</h2>
-                <p>All origins, weights &amp; pieces</p>
+                <h2>🍊 🍎 🍋 Fresh Fruits</h2>
+                <p>Buy as little as 1 kg &nbsp;|&nbsp; Prices per kg unless noted</p>
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Origin</th>
+                            <th>Packaging</th>
+                            <th>Pieces</th>
+                            <th>Price (AED)</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Apple</td><td><span class="origin-badge">Iran</span></td><td>8/9 kg</td><td>55/60</td><td><span class="price-range">35–50</span></td></tr>
-                        <tr><td>Apple</td><td><span class="origin-badge">Italy</span></td><td>14 kg</td><td>90/95</td><td><span class="price-range">115–145</span></td></tr>
-                        <tr><td>Apple</td><td><span class="origin-badge">France</span></td><td>14 kg</td><td>90/95</td><td><span class="price-range">115–140</span></td></tr>
-                        <tr><td>Apple Premium</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>50</td><td><span class="price-range">40–58</span></td></tr>
-                        <tr><td>Apple Premium</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>60</td><td><span class="price-range">40–60</span></td></tr>
-                        <tr><td>Avocado</td><td><span class="origin-badge">Uganda</span></td><td>2.8 kg</td><td>10/12</td><td><span class="price-range">40–65</span></td></tr>
-                        <tr><td>Avocado</td><td><span class="origin-badge">Mexico</span></td><td>1 kg</td><td>6/7</td><td><span class="price-range">50–75</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Ecuador</span></td><td>14 kg</td><td>70</td><td><span class="price-range">60–85</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">India</span></td><td>14 kg</td><td>65</td><td><span class="price-range">45–65</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Chiquita</span></td><td>14 kg</td><td>75</td><td><span class="price-range">70–95</span></td></tr>
-                        <tr><td>Banana</td><td><span class="origin-badge">Philippines</span></td><td>14 kg</td><td>75</td><td><span class="price-range">65–88</span></td></tr>
-                        <tr><td>Chikoo</td><td><span class="origin-badge">India</span></td><td>1.8 kg</td><td>22/24</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Custard Apple</td><td><span class="origin-badge">India</span></td><td>2.2 kg</td><td>9/10</td><td><span class="price-range">45–70</span></td></tr>
-                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Sri Lanka</span></td><td>—</td><td>6</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Vietnam</span></td><td>—</td><td>9</td><td><span class="price-range">45–68</span></td></tr>
-                        <tr><td>Green Apple</td><td><span class="origin-badge">Africa</span></td><td>13 kg</td><td>70/75</td><td><span class="price-range">85–110</span></td></tr>
-                        <tr><td>Green Apple</td><td><span class="origin-badge">New Zealand</span></td><td>14 kg</td><td>80/85</td><td><span class="price-range">110–135</span></td></tr>
-                        <tr><td>Guava</td><td><span class="origin-badge">India</span></td><td>1 kg</td><td>6/7</td><td><span class="price-range">15–25</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Egypt</span></td><td>9/10 kg</td><td>50</td><td><span class="price-range">40–58</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Pakistan</span></td><td>10 kg</td><td>48</td><td><span class="price-range">38–55</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Pakistan</span></td><td>10 kg</td><td>54</td><td><span class="price-range">35–52</span></td></tr>
-                        <tr><td>Mandarin</td><td><span class="origin-badge">Spain</span></td><td>10 kg</td><td>60</td><td><span class="price-range">75–95</span></td></tr>
-                        <tr><td>Mandarin Mini</td><td><span class="origin-badge">Egypt</span></td><td>9/10 kg</td><td>70/80</td><td><span class="price-range">35–50</span></td></tr>
-                        <tr><td>Mandarin Mini</td><td><span class="origin-badge">Spain</span></td><td>10 kg</td><td>90/100</td><td><span class="price-range">95–120</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Yemen</span></td><td>2 kg</td><td>8/9</td><td><span class="price-range">40–60</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Yemen</span></td><td>2 kg</td><td>8/9</td><td><span class="price-range">30–50</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Africa</span></td><td>2.25 kg</td><td>9/10</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Mango</td><td><span class="origin-badge">Kenya</span></td><td>2.25 kg</td><td>9/10</td><td><span class="price-range">20–38</span></td></tr>
-                        <tr><td>Mangosteen</td><td><span class="origin-badge">Thailand</span></td><td>1 kg</td><td>15/18</td><td><span class="price-range">35–60</span></td></tr>
-                        <tr><td>Mini Apple</td><td><span class="origin-badge">Iran</span></td><td>2.5 kg</td><td>30</td><td><span class="price-range">12–18</span></td></tr>
-                        <tr><td>Orange Navel</td><td><span class="origin-badge">Egypt</span></td><td>8 kg</td><td>24</td><td><span class="price-range">30–45</span></td></tr>
-                        <tr><td>Orange Navel</td><td><span class="origin-badge">Egypt</span></td><td>7 kg</td><td>36</td><td><span class="price-range">22–35</span></td></tr>
-                        <tr><td>Orange Navel</td><td><span class="origin-badge">Egypt</span></td><td>7 kg</td><td>42</td><td><span class="price-range">25–40</span></td></tr>
-                        <tr><td>Orange Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>72</td><td><span class="price-range">50–70</span></td></tr>
-                        <tr><td>Orange Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>88</td><td><span class="price-range">55–75</span></td></tr>
-                        <tr><td>Orange Valencia</td><td><span class="origin-badge">Egypt</span></td><td>15 kg</td><td>64</td><td><span class="price-range">60–85</span></td></tr>
-                        <tr><td>Papaya</td><td><span class="origin-badge">Sri Lanka</span></td><td>10 kg</td><td>6/7</td><td><span class="price-range">50–75</span></td></tr>
-                        <tr><td>Pears</td><td><span class="origin-badge">US</span></td><td>14 kg</td><td>95</td><td><span class="price-range">125–155</span></td></tr>
-                        <tr><td>Pears</td><td><span class="origin-badge">Africa</span></td><td>12 kg</td><td>80/85</td><td><span class="price-range">110–140</span></td></tr>
-                        <tr><td>Pineapple</td><td><span class="origin-badge">India</span></td><td>7/8 kg</td><td>6</td><td><span class="price-range">40–60</span></td></tr>
-                        <tr><td>Pineapple</td><td><span class="origin-badge">Philippines</span></td><td>15 kg</td><td>9</td><td><span class="price-range">65–90</span></td></tr>
-                        <tr><td>Pineapple Mini</td><td><span class="origin-badge">Africa</span></td><td>9 kg</td><td>8</td><td><span class="price-range">60–85</span></td></tr>
-                        <tr><td>Pineapple Peeled</td><td><span class="origin-badge">Thailand</span></td><td>500 gm</td><td>5</td><td><span class="price-range">20–32</span></td></tr>
-                        <tr><td>Pomegranate</td><td><span class="origin-badge">India</span></td><td>1.8 kg</td><td>9/10</td><td><span class="price-range">22–35</span></td></tr>
-                        <tr><td>Pomegranate</td><td><span class="origin-badge">Iran</span></td><td>2.2 kg</td><td>12/15</td><td><span class="price-range">27–45</span></td></tr>
-                        <tr><td>Pomelo</td><td><span class="origin-badge">Lebanon</span></td><td>1 kg</td><td>1</td><td><span class="price-range">7–12</span></td></tr>
-                        <tr><td>Watermelon</td><td><span class="origin-badge">Iran</span></td><td>8/9 kg</td><td>1</td><td><span class="price-range">15–28</span></td></tr>
-                        <tr><td>Watermelon</td><td><span class="origin-badge">Oman</span></td><td>8/9 kg</td><td>1</td><td><span class="price-range">15–25</span></td></tr>
+                        <tr><td>Apple</td><td><span class="origin-badge">Italy</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">18–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Apple</td><td><span class="origin-badge">France</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">18–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Avocado</td><td><span class="origin-badge">Uganda</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">24–33</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Avocado</td><td><span class="origin-badge">Mexico</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">60–85</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Banana</td><td><span class="origin-badge">Ecuador</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Banana</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">13–15</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Banana</td><td><span class="origin-badge">Chiquita</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">15–17</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Banana</td><td><span class="origin-badge">Philippines</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">15–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Chikoo</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">29–41</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Custard Apple</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">31–42</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Sri Lanka</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">7–11</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Fresh Coconut</td><td><span class="origin-badge">Vietnam</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">6–9</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Green Apple</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">17–19</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Green Apple</td><td><span class="origin-badge">New Zealand</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">18–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Guava</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">25–35</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mandarin</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mandarin</td><td><span class="origin-badge">Pakistan</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mandarin</td><td><span class="origin-badge">Spain</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">18–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mandarin Mini</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mandarin Mini</td><td><span class="origin-badge">Spain</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">20–22</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mango</td><td><span class="origin-badge">Yemen</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">30–40</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mango</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">26–34</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mango</td><td><span class="origin-badge">Kenya</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">19–27</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mangosteen</td><td><span class="origin-badge">Thailand</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">45–70</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Orange Navel</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Orange Valencia</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">13–16</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Papaya</td><td><span class="origin-badge">Sri Lanka</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">15–18</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Pears</td><td><span class="origin-badge">US</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">19–21</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Pears</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">19–22</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Pineapple</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">15–22</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Pineapple</td><td><span class="origin-badge">Philippines</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">12–18</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Pineapple Mini</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">14–18</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Pineapple Peeled</td><td><span class="origin-badge">Thailand</span></td><td><span class="pack-badge">500 gm pack</span></td><td>—</td><td><span class="price-range">25–37</span><span class="per-kg-label">per 500 gm</span></td></tr>
+                        <tr><td>Pomegranate</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">22–29</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Pomelo</td><td><span class="origin-badge">Lebanon</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">17–22</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Watermelon</td><td><span class="origin-badge">Oman</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">12–13</span><span class="per-kg-label">per kg</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -606,29 +661,49 @@
     <div id="berriesPanel" class="panel" data-theme="berries">
         <div class="section-card">
             <div class="section-header">
-                <h2>🍓🫐🍇 Berries &amp; Fresh Grapes</h2>
-                <p>Hand-picked varieties from around the world</p>
+                <h2>🍓 🫐 🍇 Berries &amp; Fresh Grapes</h2>
+                <p>Hand-picked varieties &nbsp;|&nbsp; Grapes priced per 1 kg</p>
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Origin</th>
+                            <th>Packaging</th>
+                            <th>Pieces</th>
+                            <th>Price (AED)</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Black Grape</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">45–70</span></td></tr>
-                        <tr><td>Black Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">55–85</span></td></tr>
-                        <tr><td>Blueberry</td><td><span class="origin-badge">Peru</span></td><td>125 gm</td><td>—</td><td><span class="price-range">8–14</span></td></tr>
-                        <tr><td>Blueberry</td><td><span class="origin-badge">Peru</span></td><td>500 gm</td><td>—</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Blueberry</td><td><span class="origin-badge">Africa</span></td><td>125 gm</td><td>—</td><td><span class="price-range">7–12</span></td></tr>
-                        <tr><td>Blueberry</td><td><span class="origin-badge">Africa</span></td><td>500 gm</td><td>—</td><td><span class="price-range">30–48</span></td></tr>
-                        <tr><td>Green Grapes Broken</td><td><span class="origin-badge">Australia</span></td><td>1 kg</td><td>—</td><td><span class="price-range">20–30</span></td></tr>
-                        <tr><td>Green Grapes Seedless</td><td><span class="origin-badge">Australia</span></td><td>1 kg</td><td>—</td><td><span class="price-range">45–60</span></td></tr>
-                        <tr><td>Longan</td><td><span class="origin-badge">Thailand</span></td><td>1 kg</td><td>—</td><td><span class="price-range">30–48</span></td></tr>
-                        <tr><td>Lychee</td><td><span class="origin-badge">Africa</span></td><td>2.25 kg</td><td>—</td><td><span class="price-range">65–90</span></td></tr>
-                        <tr><td>Lychee</td><td><span class="origin-badge">Madagascar</span></td><td>2.25 kg</td><td>—</td><td><span class="price-range">40–65</span></td></tr>
-                        <tr><td>Red Grapes</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">45–70</span></td></tr>
-                        <tr><td>Red Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">55–85</span></td></tr>
-                        <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td>250 gm</td><td>—</td><td><span class="price-range">4–8</span></td></tr>
-                        <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td>1 kg</td><td>—</td><td><span class="price-range">12–20</span></td></tr>
-                        <tr><td>Strawberry</td><td><span class="origin-badge">Morocco</span></td><td>1 kg</td><td>—</td><td><span class="price-range">32–50</span></td></tr>
+                        <!-- GRAPES — convert 3.5 kg box price to per 1 kg -->
+                        <!-- Black Grape 45–70 for 3.5kg → per kg 12.9–20 → show 13–20/kg -->
+                        <tr><td>Black Grape</td><td><span class="origin-badge">Lebanon</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">13–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Black Grape Seedless 55–85 for 3.5kg → per kg 15.7–24.3 → 16–24/kg -->
+                        <tr><td>Black Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">16–24</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Blueberry — keep as is (already per 125gm / 500gm pack) -->
+                        <tr><td>Blueberry</td><td><span class="origin-badge">Peru</span></td><td><span class="pack-badge">125 gm pack</span></td><td>—</td><td><span class="price-range">8–14</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Blueberry</td><td><span class="origin-badge">Peru</span></td><td><span class="pack-badge">500 gm pack</span></td><td>—</td><td><span class="price-range">35–55</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Blueberry</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">125 gm pack</span></td><td>—</td><td><span class="price-range">7–12</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Blueberry</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">500 gm pack</span></td><td>—</td><td><span class="price-range">30–48</span><span class="per-kg-label">per pack</span></td></tr>
+                        <!-- Green Grapes Broken 20–30 for 1kg → already per kg -->
+                        <tr><td>Green Grapes Broken</td><td><span class="origin-badge">Australia</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">20–30</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Green Grapes Seedless 45–60 for 1kg → already per kg -->
+                        <tr><td>Green Grapes Seedless</td><td><span class="origin-badge">Australia</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">45–60</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Longan 30–48 for 1kg → already per kg -->
+                        <tr><td>Longan</td><td><span class="origin-badge">Thailand</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">30–48</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Lychee Africa 65–90 for 2.25kg → per kg 28.9–40 → 29–40/kg -->
+                        <tr><td>Lychee</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">29–40</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Lychee Madagascar 40–65 for 2.25kg → per kg 17.8–28.9 → 18–29/kg -->
+                        <tr><td>Lychee</td><td><span class="origin-badge">Madagascar</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">18–29</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Red Grapes 45–70 for 3.5kg → per kg 12.9–20 → 13–20/kg -->
+                        <tr><td>Red Grapes</td><td><span class="origin-badge">Lebanon</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">13–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Red Grape Seedless 55–85 for 3.5kg → per kg 15.7–24.3 → 16–24/kg -->
+                        <tr><td>Red Grape Seedless</td><td><span class="origin-badge">Lebanon</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">16–24</span><span class="per-kg-label">per kg</span></td></tr>
+                        <!-- Strawberry — keep as is -->
+                        <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">4–8</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Strawberry</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">1 kg pack</span></td><td>—</td><td><span class="price-range">12–20</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Strawberry</td><td><span class="origin-badge">Morocco</span></td><td><span class="pack-badge">1 kg pack</span></td><td>—</td><td><span class="price-range">32–50</span><span class="per-kg-label">per kg</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -639,58 +714,48 @@
     <div id="vegetablesPanel" class="panel" data-theme="vegetables">
         <div class="section-card">
             <div class="section-header">
-                <h2>🥕🥦🧅 Fresh Vegetables</h2>
-                <p>Farm fresh, globally sourced daily</p>
+                <h2>🥕 🥦 🧅 Fresh Vegetables</h2>
+                <p>Buy as little as 500 gm &nbsp;|&nbsp; Prices per kg</p>
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Origin</th>
+                            <th>Packaging</th>
+                            <th>Pieces</th>
+                            <th>Price (AED)</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Beetroot</td><td><span class="origin-badge">India</span></td><td>3 kg</td><td>—</td><td><span class="price-range">12–22</span></td></tr>
-                        <tr><td>Bitter Gourd</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">45–70</span></td></tr>
-                        <tr><td>Bitter Gourd</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">30–50</span></td></tr>
-                        <tr><td>Bottle Gourd</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Bottle Gourd</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">25–45</span></td></tr>
-                        <tr><td>Brinjal</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">15–28</span></td></tr>
-                        <tr><td>Brinjal Big</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">30–48</span></td></tr>
-                        <tr><td>Brinjal Mini</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">20–35</span></td></tr>
-                        <tr><td>Broccoli</td><td><span class="origin-badge">Iran</span></td><td>4 kg</td><td>—</td><td><span class="price-range">55–85</span></td></tr>
-                        <tr><td>Cabbage</td><td><span class="origin-badge">Iran</span></td><td>12 kg</td><td>—</td><td><span class="price-range">25–45</span></td></tr>
-                        <tr><td>Carrot</td><td><span class="origin-badge">China</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">15–28</span></td></tr>
-                        <tr><td>Carrot</td><td><span class="origin-badge">India</span></td><td>6 kg</td><td>—</td><td><span class="price-range">30–48</span></td></tr>
-                        <tr><td>Cauliflower</td><td><span class="origin-badge">Iran</span></td><td>7 kg</td><td>—</td><td><span class="price-range">40–65</span></td></tr>
-                        <tr><td>Chilly</td><td><span class="origin-badge">India</span></td><td>4 kg</td><td>—</td><td><span class="price-range">25–45</span></td></tr>
-                        <tr><td>Cucumber</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>—</td><td><span class="price-range">30–50</span></td></tr>
-                        <tr><td>Drumstick</td><td><span class="origin-badge">India</span></td><td>3 kg</td><td>—</td><td><span class="price-range">40–65</span></td></tr>
-                        <tr><td>French Beans</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">40–65</span></td></tr>
-                        <tr><td>Garlic</td><td><span class="origin-badge">China</span></td><td>1.8 kg</td><td>—</td><td><span class="price-range">25–40</span></td></tr>
-                        <tr><td>Garlic Premium</td><td><span class="origin-badge">China</span></td><td>250 gm</td><td>—</td><td><span class="price-range">7–13</span></td></tr>
-                        <tr><td>Ginger</td><td><span class="origin-badge">China</span></td><td>2.5 kg</td><td>—</td><td><span class="price-range">20–35</span></td></tr>
-                        <tr><td>Ginger</td><td><span class="origin-badge">India</span></td><td>1.8 kg</td><td>—</td><td><span class="price-range">25–42</span></td></tr>
-                        <tr><td>Green Capsicum</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Green Papaya</td><td><span class="origin-badge">Sri Lanka</span></td><td>8 kg</td><td>—</td><td><span class="price-range">20–38</span></td></tr>
-                        <tr><td>Green Peas</td><td><span class="origin-badge">India</span></td><td>1 kg</td><td>—</td><td><span class="price-range">10–18</span></td></tr>
-                        <tr><td>Lady's Finger</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">35–55</span></td></tr>
-                        <tr><td>Lemon</td><td><span class="origin-badge">Egypt</span></td><td>10 kg</td><td>—</td><td><span class="price-range">55–85</span></td></tr>
-                        <tr><td>Lemon</td><td><span class="origin-badge">Africa</span></td><td>10 kg</td><td>—</td><td><span class="price-range">45–72</span></td></tr>
-                        <tr><td>Lettuce</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>—</td><td><span class="price-range">25–45</span></td></tr>
-                        <tr><td>Lime</td><td><span class="origin-badge">India</span></td><td>2.5 kg</td><td>—</td><td><span class="price-range">25–42</span></td></tr>
-                        <tr><td>Lime Seedless</td><td><span class="origin-badge">Vietnam</span></td><td>3.5 kg</td><td>—</td><td><span class="price-range">25–40</span></td></tr>
-                        <tr><td>Mushroom</td><td><span class="origin-badge">Iran</span></td><td>150 gm</td><td>—</td><td><span class="price-range">5–10</span></td></tr>
-                        <tr><td>Onion</td><td><span class="origin-badge">India</span></td><td>5 kg</td><td>—</td><td><span class="price-range">15–28</span></td></tr>
-                        <tr><td>Onion</td><td><span class="origin-badge">India</span></td><td>18 kg</td><td>—</td><td><span class="price-range">50–80</span></td></tr>
-                        <tr><td>Onion</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">8–15</span></td></tr>
-                        <tr><td>Onion</td><td><span class="origin-badge">Iran</span></td><td>18 kg</td><td>—</td><td><span class="price-range">32–55</span></td></tr>
-                        <tr><td>Peeled Garlic</td><td><span class="origin-badge">China</span></td><td>2.5 kg</td><td>—</td><td><span class="price-range">25–42</span></td></tr>
-                        <tr><td>Potato</td><td><span class="origin-badge">Pakistan</span></td><td>4 kg</td><td>—</td><td><span class="price-range">6–12</span></td></tr>
-                        <tr><td>Potato</td><td><span class="origin-badge">Pakistan</span></td><td>7 kg</td><td>—</td><td><span class="price-range">15–25</span></td></tr>
-                        <tr><td>Pumpkin</td><td><span class="origin-badge">Iran</span></td><td>1 kg</td><td>—</td><td><span class="price-range">1.5–3.5</span></td></tr>
-                        <tr><td>Pumpkin Big</td><td><span class="origin-badge">Iran</span></td><td>1 kg</td><td>—</td><td><span class="price-range">1–2.5</span></td></tr>
-                        <tr><td>Red Capsicum</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">45–70</span></td></tr>
-                        <tr><td>Sweet Potato Red</td><td><span class="origin-badge">Egypt</span></td><td>4 kg</td><td>—</td><td><span class="price-range">25–42</span></td></tr>
-                        <tr><td>Sweet Potato White</td><td><span class="origin-badge">Egypt</span></td><td>4 kg</td><td>—</td><td><span class="price-range">20–35</span></td></tr>
-                        <tr><td>Tomato</td><td><span class="origin-badge">Iran</span></td><td>10 kg</td><td>—</td><td><span class="price-range">25–42</span></td></tr>
-                        <tr><td>Yellow Capsicum</td><td><span class="origin-badge">Iran</span></td><td>5 kg</td><td>—</td><td><span class="price-range">55–80</span></td></tr>
+                        <tr><td>Beetroot</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">8-12</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Bitter Gourd</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">9–14</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Bottle Gourd</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">7–11</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Brinjal</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">3–6</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Brinjal Big</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per pc</span></td><td>1 pc</td><td><span class="price-range">6–10</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr><td>Brinjal Mini</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">4–7</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Carrot</td><td><span class="origin-badge">China</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">6-8</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Carrot</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">8-12</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Chilly</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">6–11</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Drumstick</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">13–22</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>French Beans</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">8–13</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Garlic</td><td><span class="origin-badge">China</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–22</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Garlic Premium</td><td><span class="origin-badge">China</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">7–13</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Ginger</td><td><span class="origin-badge">China</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">8–14</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Ginger</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">14–23</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Green Papaya</td><td><span class="origin-badge">Sri Lanka</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">3–5</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Green Peas</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">10–18</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Lady's Finger</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">7–11</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Lemon</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">6–9</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Lemon</td><td><span class="origin-badge">Africa</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">5–7</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Lime</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">10–17</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Lime Seedless</td><td><span class="origin-badge">Vietnam</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">7–11</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Onion</td><td><span class="origin-badge">India</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">3–6</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Peeled Garlic</td><td><span class="origin-badge">China</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">10–17</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Potato</td><td><span class="origin-badge">Pakistan</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">2–4</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Sweet Potato Red</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">6–11</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Sweet Potato White</td><td><span class="origin-badge">Egypt</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">5–9</span><span class="per-kg-label">per kg</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -701,19 +766,27 @@
     <div id="bhajiPanel" class="panel" data-theme="bhaji">
         <div class="section-card">
             <div class="section-header">
-                <h2>🌱🌿🍃 Fresh Bhaji — Local UAE Produce</h2>
+                <h2>🌱 🌿 🍃 Fresh Bhaji — Local UAE Produce</h2>
                 <p>Farm fresh daily from UAE farms</p>
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Weight</th><th>Pieces</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Origin</th>
+                            <th>Packaging</th>
+                            <th>Pieces</th>
+                            <th>Price (AED)</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Coriander / Dhanya</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td>—</td><td><span class="price-range">7–13</span></td></tr>
-                        <tr><td>Curry Leaves / Kari Patta</td><td><span class="origin-badge local-badge">Local UAE Farms</span></td><td>250 gm</td><td>—</td><td><span class="price-range">7–12</span></td></tr>
-                        <tr><td>Methi</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td>—</td><td><span class="price-range">7–13</span></td></tr>
-                        <tr><td>Mint</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td>—</td><td><span class="price-range">7–12</span></td></tr>
-                        <tr><td>Spinach / Palak</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td>—</td><td><span class="price-range">5–9</span></td></tr>
-                        <tr><td>Spring Onion</td><td><span class="origin-badge local-badge">Local Produce, UAE</span></td><td>1 kg</td><td>—</td><td><span class="price-range">10–18</span></td></tr>
+                        <tr><td>Coriander / Dhanya</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">7–13</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Curry Leaves / Kari Patta</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">250 gm bunch</span></td><td>—</td><td><span class="price-range">7–12</span><span class="per-kg-label">per bunch</span></td></tr>
+                        <tr><td>Methi</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">7–13</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Mint</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">7–12</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Spinach / Palak</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">5–9</span><span class="per-kg-label">per kg</span></td></tr>
+                        <tr><td>Spring Onion</td><td><span class="origin-badge local-badge">Local UAE</span></td><td><span class="pack-badge">Per kg</span></td><td>—</td><td><span class="price-range">10–18</span><span class="per-kg-label">per kg</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -724,37 +797,45 @@
     <div id="specialtyPanel" class="panel" data-theme="specialty">
         <div class="section-card">
             <div class="section-header">
-                <h2>✨🥕🍄 Baby Vegetables &amp; Mukhwas</h2>
+                <h2>✨ 🥕 🍄 Baby Vegetables &amp; Mukhwas</h2>
                 <p>Petite picks and traditional Indian mouth fresheners</p>
             </div>
             <div class="table-wrapper">
                 <table class="market-table">
-                    <thead><tr><th>Item</th><th>Origin</th><th>Pack Size</th><th>Avg Price (AED)</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Origin</th>
+                            <th>Packaging</th>
+                            <th>Pieces</th>
+                            <th>Price (AED)</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Baby Carrots (peeled)</td><td><span class="origin-badge">UAE / Netherlands</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Bell Peppers (mix)</td><td><span class="origin-badge">Netherlands / Iran</span></td><td>200 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Beetroot</td><td><span class="origin-badge">India / Lebanon</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Broccoli Florets</td><td><span class="origin-badge">Iran / Kenya</span></td><td>200 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Corn</td><td><span class="origin-badge">Thailand / India</span></td><td>200 gm (10–12 pcs)</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Cucumber (Gherkins)</td><td><span class="origin-badge">Iran / Local UAE</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Eggplant (Brinjal Mini)</td><td><span class="origin-badge">India / UAE</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Mushrooms (White)</td><td><span class="origin-badge">Iran / UAE</span></td><td>200 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Pearl Onion (Baby Onion)</td><td><span class="origin-badge">India / Egypt</span></td><td>200 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Baby Potato (Creamer)</td><td><span class="origin-badge">Egypt / Pakistan</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr><td>Cherry Tomato (Red/Yellow)</td><td><span class="origin-badge">Iran / Turkey</span></td><td>250 gm</td><td><span class="price-range">9–18</span></td></tr>
-                        <tr style="background:#FFF7EB;"><td>Mouth Freshener (Saunf Gulkand Mix)</td><td><span class="origin-badge">Indian Traditional</span></td><td>20 gm Ball</td><td><span class="price-range">1–2</span></td></tr>
-                        <tr style="background:#FFF7EB;"><td>Indian Fresh Leaf Mukhwas (Handmade)</td><td><span class="origin-badge">Betel Leaf Recipe</span></td><td>1 Pc Fresh</td><td><span class="price-range">2–4</span></td></tr>
+                        <tr><td>Baby Carrots (peeled)</td><td><span class="origin-badge">UAE / Netherlands</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Bell Peppers (mix)</td><td><span class="origin-badge">Netherlands / Iran</span></td><td><span class="pack-badge">200 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Beetroot</td><td><span class="origin-badge">India / Lebanon</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Broccoli Florets</td><td><span class="origin-badge">Iran / Kenya</span></td><td><span class="pack-badge">200 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Corn</td><td><span class="origin-badge">Thailand / India</span></td><td><span class="pack-badge">200 gm pack</span></td><td>10–12 pcs</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Cucumber (Gherkins)</td><td><span class="origin-badge">Iran / Local UAE</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Eggplant (Brinjal Mini)</td><td><span class="origin-badge">India / UAE</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Mushrooms (White)</td><td><span class="origin-badge">Iran / UAE</span></td><td><span class="pack-badge">200 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Pearl Onion (Baby Onion)</td><td><span class="origin-badge">India / Egypt</span></td><td><span class="pack-badge">200 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Baby Potato (Creamer)</td><td><span class="origin-badge">Egypt / Pakistan</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr><td>Cherry Tomato (Red/Yellow)</td><td><span class="origin-badge">Iran / Turkey</span></td><td><span class="pack-badge">250 gm pack</span></td><td>—</td><td><span class="price-range">9–18</span><span class="per-kg-label">per pack</span></td></tr>
+                        <tr style="background:#FFF7EB;"><td>Mouth Freshener (Saunf Gulkand Mix)</td><td><span class="origin-badge">Indian Traditional</span></td><td><span class="pack-badge">20 gm ball</span></td><td>1 pc</td><td><span class="price-range">1–2</span><span class="per-kg-label">per pc</span></td></tr>
+                        <tr style="background:#FFF7EB;"><td>Indian Fresh Leaf Mukhwas (Handmade)</td><td><span class="origin-badge">Betel Leaf Recipe</span></td><td><span class="pack-badge">Fresh leaf</span></td><td>1 pc</td><td><span class="price-range">2–4</span><span class="per-kg-label">per pc</span></td></tr>
                     </tbody>
                 </table>
             </div>
-            <div style="padding:12px 20px;background:#FEF3E2;font-size:0.74rem;font-family:'Poppins',sans-serif;color:#9a5000;">
-                Mukhwas 1–4 AED &nbsp;|&nbsp; Baby Vegetables 9–18 AED
+            <div style="padding:12px 20px;background:#FEF3E2;font-size:0.74rem;font-family:'Poppins',sans-serif;color:#9a5000;text-align:center;">
+                Mukhwas 1–4 AED per piece &nbsp;|&nbsp; Baby Vegetables 9–18 AED per pack
             </div>
         </div>
     </div>
 
     <div class="disclaimer-note">
-        <strong>Market Update:</strong> All prices are ranges (min–max) due to market fluctuation.
+        <strong>Family Shopping Guide:</strong> All prices are per kg / per pc / per pack as shown. Prices may vary with market conditions!
     </div>
 </div>
 
@@ -766,148 +847,112 @@
 </div>
 
 <script>
-    // =========================================================
-    // MASTER DATA — used for search across all sections
-    // =========================================================
     const allItems = [
         // FRUITS
-        { name:'Apple', origin:'Iran', weight:'8/9 kg', pieces:'55/60', price:'35–50', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Apple', origin:'Italy', weight:'14 kg', pieces:'90/95', price:'115–145', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Apple', origin:'France', weight:'14 kg', pieces:'90/95', price:'115–140', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Apple Premium', origin:'Iran', weight:'10 kg', pieces:'50', price:'40–58', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Apple Premium', origin:'Iran', weight:'10 kg', pieces:'60', price:'40–60', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Avocado', origin:'Uganda', weight:'2.8 kg', pieces:'10/12', price:'40–65', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Avocado', origin:'Mexico', weight:'1 kg', pieces:'6/7', price:'50–75', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Banana', origin:'Ecuador', weight:'14 kg', pieces:'70', price:'60–85', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Banana', origin:'India', weight:'14 kg', pieces:'65', price:'45–65', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Banana', origin:'Chiquita', weight:'14 kg', pieces:'75', price:'70–95', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Banana', origin:'Philippines', weight:'14 kg', pieces:'75', price:'65–88', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Chikoo', origin:'India', weight:'1.8 kg', pieces:'22/24', price:'35–55', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Custard Apple', origin:'India', weight:'2.2 kg', pieces:'9/10', price:'45–70', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Fresh Coconut', origin:'Sri Lanka', weight:'—', pieces:'6', price:'35–55', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Fresh Coconut', origin:'Vietnam', weight:'—', pieces:'9', price:'45–68', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Green Apple', origin:'Africa', weight:'13 kg', pieces:'70/75', price:'85–110', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Green Apple', origin:'New Zealand', weight:'14 kg', pieces:'80/85', price:'110–135', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Guava', origin:'India', weight:'1 kg', pieces:'6/7', price:'15–25', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin', origin:'Egypt', weight:'9/10 kg', pieces:'50', price:'40–58', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin', origin:'Pakistan', weight:'10 kg', pieces:'48', price:'38–55', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin', origin:'Pakistan', weight:'10 kg', pieces:'54', price:'35–52', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin', origin:'Spain', weight:'10 kg', pieces:'60', price:'75–95', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin Mini', origin:'Egypt', weight:'9/10 kg', pieces:'70/80', price:'35–50', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mandarin Mini', origin:'Spain', weight:'10 kg', pieces:'90/100', price:'95–120', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mango', origin:'Yemen', weight:'2 kg', pieces:'8/9', price:'40–60', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mango', origin:'Yemen', weight:'2 kg', pieces:'8/9', price:'30–50', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mango', origin:'Africa', weight:'2.25 kg', pieces:'9/10', price:'35–55', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mango', origin:'Kenya', weight:'2.25 kg', pieces:'9/10', price:'20–38', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mangosteen', origin:'Thailand', weight:'1 kg', pieces:'15/18', price:'35–60', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Mini Apple', origin:'Iran', weight:'2.5 kg', pieces:'30', price:'12–18', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Navel', origin:'Egypt', weight:'8 kg', pieces:'24', price:'30–45', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Navel', origin:'Egypt', weight:'7 kg', pieces:'36', price:'22–35', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Navel', origin:'Egypt', weight:'7 kg', pieces:'42', price:'25–40', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Valencia', origin:'Egypt', weight:'15 kg', pieces:'72', price:'50–70', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Valencia', origin:'Egypt', weight:'15 kg', pieces:'88', price:'55–75', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Orange Valencia', origin:'Egypt', weight:'15 kg', pieces:'64', price:'60–85', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Papaya', origin:'Sri Lanka', weight:'10 kg', pieces:'6/7', price:'50–75', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pears', origin:'US', weight:'14 kg', pieces:'95', price:'125–155', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pears', origin:'Africa', weight:'12 kg', pieces:'80/85', price:'110–140', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pineapple', origin:'India', weight:'7/8 kg', pieces:'6', price:'40–60', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pineapple', origin:'Philippines', weight:'15 kg', pieces:'9', price:'65–90', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pineapple Mini', origin:'Africa', weight:'9 kg', pieces:'8', price:'60–85', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pineapple Peeled', origin:'Thailand', weight:'500 gm', pieces:'5', price:'20–32', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pomegranate', origin:'India', weight:'1.8 kg', pieces:'9/10', price:'22–35', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pomegranate', origin:'Iran', weight:'2.2 kg', pieces:'12/15', price:'27–45', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Pomelo', origin:'Lebanon', weight:'1 kg', pieces:'1', price:'7–12', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Watermelon', origin:'Iran', weight:'8/9 kg', pieces:'1', price:'15–28', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
-        { name:'Watermelon', origin:'Oman', weight:'8/9 kg', pieces:'1', price:'15–25', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Apple', origin:'Italy', packaging:'Per kg', pieces:'—', price:'18–20/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Apple', origin:'France', packaging:'Per kg', pieces:'—', price:'18–20/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Avocado', origin:'Uganda', packaging:'Per kg', pieces:'—', price:'24–33/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Avocado', origin:'Mexico', packaging:'Per kg', pieces:'—', price:'60–85/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Banana', origin:'Ecuador', packaging:'Per kg', pieces:'—', price:'12–15/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Banana', origin:'India', packaging:'Per kg', pieces:'—', price:'7-12/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Banana', origin:'Chiquita', packaging:'Per kg', pieces:'—', price:'12-15/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Banana', origin:'Philippines', packaging:'Per kg', pieces:'—', price:'10–14/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Chikoo', origin:'India', packaging:'Per kg', pieces:'—', price:'29–41/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Custard Apple', origin:'India', packaging:'Per kg', pieces:'—', price:'31–42/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Fresh Coconut', origin:'Sri Lanka', packaging:'Per pc', pieces:'1 pc', price:'15-25/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Fresh Coconut', origin:'Vietnam', packaging:'Per pc', pieces:'1 pc', price:'15-20/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Green Apple', origin:'Africa', packaging:'Per kg', pieces:'—', price:'17–19/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Green Apple', origin:'New Zealand', packaging:'Per kg', pieces:'—', price:'18–20/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Guava', origin:'India', packaging:'Per kg', pieces:'—', price:'25–35/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mandarin', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'14–16/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mandarin', origin:'Pakistan', packaging:'Per kg', pieces:'—', price:'14–16/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mandarin', origin:'Spain', packaging:'Per kg', pieces:'—', price:'18–20/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mandarin Mini', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'14–16/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mandarin Mini', origin:'Spain', packaging:'Per kg', pieces:'—', price:'20–22/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mango', origin:'Yemen', packaging:'Per kg', pieces:'—', price:'15–20/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mango', origin:'Africa', packaging:'Per kg', pieces:'—', price:'26–34/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mango', origin:'Kenya', packaging:'Per kg', pieces:'—', price:'19–27/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Mangosteen', origin:'Thailand', packaging:'Per kg', pieces:'—', price:'35–50/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Orange Navel', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'14–16/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Orange Valencia', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'13–16/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Papaya', origin:'Sri Lanka', packaging:'Per kg', pieces:'—', price:'15–18/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pears', origin:'US', packaging:'Per kg', pieces:'—', price:'19–21/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pears', origin:'Africa', packaging:'Per kg', pieces:'—', price:'19–22/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pineapple', origin:'India', packaging:'Per pc', pieces:'1 pc', price:'15–22/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pineapple', origin:'Philippines', packaging:'Per pc', pieces:'1 pc', price:'12–18/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pineapple Mini', origin:'Africa', packaging:'Per pc', pieces:'1 pc', price:'14–18/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pineapple Peeled', origin:'Thailand', packaging:'500 gm pack', pieces:'—', price:'25–35/pack', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pomegranate', origin:'India', packaging:'Per kg', pieces:'—', price:'15-23/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Pomelo', origin:'Lebanon', packaging:'Per pc', pieces:'1 pc', price:'17–22/pc', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
+        { name:'Watermelon', origin:'Oman', packaging:'Per kg', pieces:'—', price:'3-6/kg', cat:'fruits', label:'Fruits', labelClass:'label-fruits' },
         // BERRIES
-        { name:'Black Grape', origin:'Lebanon', weight:'3.5 kg', pieces:'—', price:'45–70', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Black Grape Seedless', origin:'Lebanon', weight:'3.5 kg', pieces:'—', price:'55–85', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Blueberry', origin:'Peru', weight:'125 gm', pieces:'—', price:'8–14', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Blueberry', origin:'Peru', weight:'500 gm', pieces:'—', price:'35–55', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Blueberry', origin:'Africa', weight:'125 gm', pieces:'—', price:'7–12', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Blueberry', origin:'Africa', weight:'500 gm', pieces:'—', price:'30–48', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Green Grapes Broken', origin:'Australia', weight:'1 kg', pieces:'—', price:'20–30', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Green Grapes Seedless', origin:'Australia', weight:'1 kg', pieces:'—', price:'45–60', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Longan', origin:'Thailand', weight:'1 kg', pieces:'—', price:'30–48', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Lychee', origin:'Africa', weight:'2.25 kg', pieces:'—', price:'65–90', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Lychee', origin:'Madagascar', weight:'2.25 kg', pieces:'—', price:'40–65', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Red Grapes', origin:'Lebanon', weight:'3.5 kg', pieces:'—', price:'45–70', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Red Grape Seedless', origin:'Lebanon', weight:'3.5 kg', pieces:'—', price:'55–85', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Strawberry', origin:'Egypt', weight:'250 gm', pieces:'—', price:'4–8', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Strawberry', origin:'Egypt', weight:'1 kg', pieces:'—', price:'12–20', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
-        { name:'Strawberry', origin:'Morocco', weight:'1 kg', pieces:'—', price:'32–50', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Black Grape', origin:'Lebanon', packaging:'Per kg', pieces:'—', price:'13–20/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Black Grape Seedless', origin:'Lebanon', packaging:'Per kg', pieces:'—', price:'16–24/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Blueberry', origin:'Peru', packaging:'125 gm pack', pieces:'—', price:'8–14/pack', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Blueberry', origin:'Peru', packaging:'500 gm pack', pieces:'—', price:'35–55/pack', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Blueberry', origin:'Africa', packaging:'125 gm pack', pieces:'—', price:'7–12/pack', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Blueberry', origin:'Africa', packaging:'500 gm pack', pieces:'—', price:'30–48/pack', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Green Grapes Broken', origin:'Australia', packaging:'Per kg', pieces:'—', price:'20–30/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Green Grapes Seedless', origin:'Australia', packaging:'Per kg', pieces:'—', price:'45–60/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Longan', origin:'Thailand', packaging:'Per kg', pieces:'—', price:'30–48/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Lychee', origin:'Africa', packaging:'Per kg', pieces:'—', price:'29–40/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Lychee', origin:'Madagascar', packaging:'Per kg', pieces:'—', price:'18–29/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Red Grapes', origin:'Lebanon', packaging:'Per kg', pieces:'—', price:'13–20/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Red Grape Seedless', origin:'Lebanon', packaging:'Per kg', pieces:'—', price:'16–24/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Strawberry', origin:'Egypt', packaging:'250 gm pack', pieces:'—', price:'8-15/pack', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Strawberry', origin:'Egypt', packaging:'1 kg pack', pieces:'—', price:'30-40/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
+        { name:'Strawberry', origin:'Morocco', packaging:'1 kg pack', pieces:'—', price:'32–50/kg', cat:'berries', label:'Berries & Grapes', labelClass:'label-berries' },
         // VEGETABLES
-        { name:'Beetroot', origin:'India', weight:'3 kg', pieces:'—', price:'12–22', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Bitter Gourd', origin:'India', weight:'5 kg', pieces:'—', price:'45–70', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Bitter Gourd', origin:'Iran', weight:'5 kg', pieces:'—', price:'30–50', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Bottle Gourd', origin:'India', weight:'5 kg', pieces:'—', price:'35–55', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Bottle Gourd', origin:'Iran', weight:'5 kg', pieces:'—', price:'25–45', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Brinjal', origin:'India', weight:'5 kg', pieces:'—', price:'15–28', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Brinjal Big', origin:'India', weight:'5 kg', pieces:'—', price:'30–48', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Brinjal Mini', origin:'India', weight:'5 kg', pieces:'—', price:'20–35', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Broccoli', origin:'Iran', weight:'4 kg', pieces:'—', price:'55–85', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Cabbage', origin:'Iran', weight:'12 kg', pieces:'—', price:'25–45', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Carrot', origin:'China', weight:'3.5 kg', pieces:'—', price:'15–28', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Carrot', origin:'India', weight:'6 kg', pieces:'—', price:'30–48', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Cauliflower', origin:'Iran', weight:'7 kg', pieces:'—', price:'40–65', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Chilly', origin:'India', weight:'4 kg', pieces:'—', price:'25–45', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Cucumber', origin:'Iran', weight:'10 kg', pieces:'—', price:'30–50', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Drumstick', origin:'India', weight:'3 kg', pieces:'—', price:'40–65', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'French Beans', origin:'India', weight:'5 kg', pieces:'—', price:'40–65', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Garlic', origin:'China', weight:'1.8 kg', pieces:'—', price:'25–40', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Garlic Premium', origin:'China', weight:'250 gm', pieces:'—', price:'7–13', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Ginger', origin:'China', weight:'2.5 kg', pieces:'—', price:'20–35', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Ginger', origin:'India', weight:'1.8 kg', pieces:'—', price:'25–42', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Green Capsicum', origin:'Iran', weight:'5 kg', pieces:'—', price:'35–55', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Green Papaya', origin:'Sri Lanka', weight:'8 kg', pieces:'—', price:'20–38', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Green Peas', origin:'India', weight:'1 kg', pieces:'—', price:'10–18', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:"Lady's Finger", origin:'India', weight:'5 kg', pieces:'—', price:'35–55', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Lemon', origin:'Egypt', weight:'10 kg', pieces:'—', price:'55–85', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Lemon', origin:'Africa', weight:'10 kg', pieces:'—', price:'45–72', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Lettuce', origin:'Iran', weight:'10 kg', pieces:'—', price:'25–45', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Lime', origin:'India', weight:'2.5 kg', pieces:'—', price:'25–42', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Lime Seedless', origin:'Vietnam', weight:'3.5 kg', pieces:'—', price:'25–40', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Mushroom', origin:'Iran', weight:'150 gm', pieces:'—', price:'5–10', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Onion', origin:'India', weight:'5 kg', pieces:'—', price:'15–28', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Onion', origin:'India', weight:'18 kg', pieces:'—', price:'50–80', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Onion', origin:'Iran', weight:'5 kg', pieces:'—', price:'8–15', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Onion', origin:'Iran', weight:'18 kg', pieces:'—', price:'32–55', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Peeled Garlic', origin:'China', weight:'2.5 kg', pieces:'—', price:'25–42', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Potato', origin:'Pakistan', weight:'4 kg', pieces:'—', price:'6–12', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Potato', origin:'Pakistan', weight:'7 kg', pieces:'—', price:'15–25', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Pumpkin', origin:'Iran', weight:'1 kg', pieces:'—', price:'1.5–3.5', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Pumpkin Big', origin:'Iran', weight:'1 kg', pieces:'—', price:'1–2.5', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Red Capsicum', origin:'Iran', weight:'5 kg', pieces:'—', price:'45–70', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Sweet Potato Red', origin:'Egypt', weight:'4 kg', pieces:'—', price:'25–42', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Sweet Potato White', origin:'Egypt', weight:'4 kg', pieces:'—', price:'20–35', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Tomato', origin:'Iran', weight:'10 kg', pieces:'—', price:'25–42', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
-        { name:'Yellow Capsicum', origin:'Iran', weight:'5 kg', pieces:'—', price:'55–80', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Beetroot', origin:'India', packaging:'Per kg', pieces:'—', price:'4–8/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Bitter Gourd', origin:'India', packaging:'Per kg', pieces:'—', price:'9–14/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Bottle Gourd', origin:'India', packaging:'Per pc', pieces:'1 pc', price:'7–11/pc', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Brinjal', origin:'India', packaging:'Per kg', pieces:'—', price:'3–6/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Brinjal Big', origin:'India', packaging:'Per pc', pieces:'1 pc', price:'6–10/pc', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Brinjal Mini', origin:'India', packaging:'Per kg', pieces:'—', price:'4–7/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Carrot', origin:'China', packaging:'Per kg', pieces:'—', price:'4–8/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Carrot', origin:'India', packaging:'Per kg', pieces:'—', price:'5–8/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Chilly', origin:'India', packaging:'Per kg', pieces:'—', price:'6–11/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Drumstick', origin:'India', packaging:'Per kg', pieces:'—', price:'13–22/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'French Beans', origin:'India', packaging:'Per kg', pieces:'—', price:'8–13/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Garlic', origin:'China', packaging:'Per kg', pieces:'—', price:'14–22/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Garlic Premium', origin:'China', packaging:'250 gm pack', pieces:'—', price:'7–13/pack', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Ginger', origin:'China', packaging:'Per kg', pieces:'—', price:'8–14/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Ginger', origin:'India', packaging:'Per kg', pieces:'—', price:'14–23/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Green Papaya', origin:'Sri Lanka', packaging:'Per kg', pieces:'—', price:'3–5/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Green Peas', origin:'India', packaging:'Per kg', pieces:'—', price:'10–18/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:"Lady's Finger", origin:'India', packaging:'Per kg', pieces:'—', price:'7–11/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Lemon', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'6–9/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Lemon', origin:'Africa', packaging:'Per kg', pieces:'—', price:'5–7/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Lime', origin:'India', packaging:'Per kg', pieces:'—', price:'10–17/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Lime Seedless', origin:'Vietnam', packaging:'Per kg', pieces:'—', price:'7–11/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Onion', origin:'India', packaging:'Per kg', pieces:'—', price:'3–6/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Peeled Garlic', origin:'China', packaging:'Per kg', pieces:'—', price:'10–17/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Potato', origin:'Pakistan', packaging:'Per kg', pieces:'—', price:'2–4/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Sweet Potato Red', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'6–11/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
+        { name:'Sweet Potato White', origin:'Egypt', packaging:'Per kg', pieces:'—', price:'5–9/kg', cat:'vegetables', label:'Vegetables', labelClass:'label-veg' },
         // BHAJI
-        { name:'Coriander / Dhanya', origin:'Local Produce, UAE', weight:'1 kg', pieces:'—', price:'7–13', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
-        { name:'Curry Leaves / Kari Patta', origin:'Local UAE Farms', weight:'250 gm', pieces:'—', price:'7–12', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
-        { name:'Methi', origin:'Local Produce, UAE', weight:'1 kg', pieces:'—', price:'7–13', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
-        { name:'Mint', origin:'Local Produce, UAE', weight:'1 kg', pieces:'—', price:'7–12', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
-        { name:'Spinach / Palak', origin:'Local Produce, UAE', weight:'1 kg', pieces:'—', price:'5–9', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
-        { name:'Spring Onion', origin:'Local Produce, UAE', weight:'1 kg', pieces:'—', price:'10–18', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Coriander / Dhanya', origin:'Local UAE', packaging:'Per kg', pieces:'—', price:'7–13/kg', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Curry Leaves / Kari Patta', origin:'Local UAE', packaging:'250 gm bunch', pieces:'—', price:'7–12/bunch', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Methi', origin:'Local UAE', packaging:'Per kg', pieces:'—', price:'7–13/kg', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Mint', origin:'Local UAE', packaging:'Per kg', pieces:'—', price:'7–12/kg', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Spinach / Palak', origin:'Local UAE', packaging:'Per kg', pieces:'—', price:'5–9/kg', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
+        { name:'Spring Onion', origin:'Local UAE', packaging:'Per kg', pieces:'—', price:'10–18/kg', cat:'bhaji', label:'Fresh Bhaji', labelClass:'label-bhaji' },
         // SPECIALTY
-        { name:'Baby Carrots (peeled)', origin:'UAE / Netherlands', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Bell Peppers (mix)', origin:'Netherlands / Iran', weight:'200 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Beetroot', origin:'India / Lebanon', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Broccoli Florets', origin:'Iran / Kenya', weight:'200 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Corn', origin:'Thailand / India', weight:'200 gm (10-12 pcs)', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Cucumber (Gherkins)', origin:'Iran / Local UAE', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Eggplant (Brinjal Mini)', origin:'India / UAE', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Mushrooms (White)', origin:'Iran / UAE', weight:'200 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Pearl Onion (Baby Onion)', origin:'India / Egypt', weight:'200 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Baby Potato (Creamer)', origin:'Egypt / Pakistan', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Cherry Tomato (Red/Yellow)', origin:'Iran / Turkey', weight:'250 gm', pieces:'—', price:'9–18', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Mouth Freshener (Saunf Gulkand Mix)', origin:'Indian Traditional', weight:'20 gm Ball', pieces:'—', price:'1–2', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
-        { name:'Indian Fresh Leaf Mukhwas (Handmade)', origin:'Betel Leaf Recipe', weight:'1 Pc Fresh', pieces:'—', price:'2–4', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' }
+        { name:'Baby Carrots (peeled)', origin:'UAE / Netherlands', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Bell Peppers (mix)', origin:'Netherlands / Iran', packaging:'200 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Beetroot', origin:'India / Lebanon', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Broccoli Florets', origin:'Iran / Kenya', packaging:'200 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Corn', origin:'Thailand / India', packaging:'200 gm pack', pieces:'10–12 pcs', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Cucumber (Gherkins)', origin:'Iran / Local UAE', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Eggplant (Brinjal Mini)', origin:'India / UAE', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Mushrooms (White)', origin:'Iran / UAE', packaging:'200 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Pearl Onion (Baby Onion)', origin:'India / Egypt', packaging:'200 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Baby Potato (Creamer)', origin:'Egypt / Pakistan', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Cherry Tomato (Red/Yellow)', origin:'Iran / Turkey', packaging:'250 gm pack', pieces:'—', price:'9–18/pack', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Mouth Freshener (Saunf Gulkand Mix)', origin:'Indian Traditional', packaging:'20 gm ball', pieces:'1 pc', price:'1–2/pc', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' },
+        { name:'Indian Fresh Leaf Mukhwas (Handmade)', origin:'Betel Leaf Recipe', packaging:'Fresh leaf', pieces:'1 pc', price:'2–4/pc', cat:'specialty', label:'Baby Veg & Mukhwas', labelClass:'label-spec' }
     ];
 
-    // =========================================================
-    // PANELS & CHIPS
-    // =========================================================
     const panelMap = {
         fruits:     document.getElementById('fruitsPanel'),
         berries:    document.getElementById('berriesPanel'),
@@ -918,38 +963,29 @@
     const searchResultsPanel = document.getElementById('searchResultsPanel');
 
     function activateSection(sectionId) {
-        // Hide search
         searchResultsPanel.classList.remove('active-panel');
         document.getElementById('searchInput').value = '';
         document.getElementById('searchClear').style.display = 'none';
         document.getElementById('searchInfo').textContent = '';
 
-        // Hide all panels
         Object.values(panelMap).forEach(p => p.classList.remove('active-panel'));
-
-        // Show chosen
         if (panelMap[sectionId]) panelMap[sectionId].classList.add('active-panel');
 
-        // Update chips
         document.querySelectorAll('.showcase-chip').forEach(c => {
             c.classList.toggle('active', c.getAttribute('data-tab') === sectionId);
         });
 
-        // Scroll to top of content smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // =========================================================
-    // SEARCH
-    // =========================================================
-    const searchInput  = document.getElementById('searchInput');
-    const searchClear  = document.getElementById('searchClear');
-    const searchBody   = document.getElementById('searchResultsBody');
-    const searchInfo   = document.getElementById('searchInfo');
+    const searchInput    = document.getElementById('searchInput');
+    const searchClear    = document.getElementById('searchClear');
+    const searchBody     = document.getElementById('searchResultsBody');
+    const searchInfo     = document.getElementById('searchInfo');
     const searchNoResult = document.getElementById('searchNoResult');
-    const searchTitle  = document.getElementById('searchResultsTitle');
-    const searchSub    = document.getElementById('searchResultsSubtitle');
-    const searchTable  = document.getElementById('searchTable');
+    const searchTitle    = document.getElementById('searchResultsTitle');
+    const searchSub      = document.getElementById('searchResultsSubtitle');
+    const searchTable    = document.getElementById('searchTable');
 
     function hl(text, query) {
         if (!query) return text;
@@ -959,15 +995,10 @@
 
     function doSearch(q) {
         const query = q.trim();
-        if (!query) {
-            clearSearch();
-            return;
-        }
+        if (!query) { clearSearch(); return; }
         searchClear.style.display = 'block';
 
-        // Hide all section panels
         Object.values(panelMap).forEach(p => p.classList.remove('active-panel'));
-        // Clear chip active states
         document.querySelectorAll('.showcase-chip').forEach(c => c.classList.remove('active'));
 
         const results = allItems.filter(item =>
@@ -985,19 +1016,18 @@
         } else {
             searchTable.style.display = '';
             searchNoResult.style.display = 'none';
-            searchTitle.innerHTML = 'Results for "' + hl(query, '') + query + '"';
+            searchTitle.innerHTML = 'Results for "' + query + '"';
             searchSub.textContent = results.length + ' item' + (results.length > 1 ? 's' : '') + ' found across all categories';
             searchInfo.textContent = results.length + ' item' + (results.length > 1 ? 's' : '') + ' found — tap a category card above to browse the full section';
 
             results.forEach(item => {
                 const tr = document.createElement('tr');
-                const hasPieces = item.pieces && item.pieces !== '—';
                 tr.innerHTML =
                     '<td>' + hl(item.name, query) + '</td>' +
                     '<td><span class="search-section-label ' + item.labelClass + '">' + item.label + '</span></td>' +
                     '<td><span class="origin-badge">' + hl(item.origin, query) + '</span></td>' +
-                    '<td>' + item.weight + '</td>' +
-                    '<td>' + (hasPieces ? item.pieces : '—') + '</td>' +
+                    '<td><span class="pack-badge">' + item.packaging + '</span></td>' +
+                    '<td>' + item.pieces + '</td>' +
                     '<td><span class="price-range">' + item.price + '</span></td>';
                 searchBody.appendChild(tr);
             });
@@ -1011,7 +1041,6 @@
         searchClear.style.display = 'none';
         searchInfo.textContent = '';
         searchResultsPanel.classList.remove('active-panel');
-        // Restore fruits panel as default
         activateSection('fruits');
     }
 
@@ -1023,9 +1052,7 @@
         debounceTimer = setTimeout(() => doSearch(v), 250);
     });
 
-    // Init
     activateSection('fruits');
 </script>
 </body>
 </html>
-```
